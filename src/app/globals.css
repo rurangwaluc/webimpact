@@ -32,3 +32,85 @@ body {
   background: #fd5b38;
   color: #ffffff;
 }
+
+.input-field {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background: rgb(0 0 0 / 0.025);
+  padding: 0.95rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgb(0 0 0 / 0.78);
+  outline: none;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.input-field::placeholder {
+  color: rgb(0 0 0 / 0.35);
+}
+
+.input-field:focus {
+  border-color: rgb(253 91 56 / 0.55);
+  background: white;
+  box-shadow: 0 0 0 4px rgb(253 91 56 / 0.12);
+}
+
+.dark .input-field {
+  border-color: rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 0.04);
+  color: rgb(255 255 255 / 0.78);
+}
+
+.dark .input-field::placeholder {
+  color: rgb(255 255 255 / 0.35);
+}
+
+.dark .input-field:focus {
+  background: rgb(255 255 255 / 0.06);
+}
+
+.textarea-field {
+  width: 100%;
+  min-height: 10rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background: rgb(0 0 0 / 0.025);
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: rgb(0 0 0 / 0.78);
+  outline: none;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.textarea-field::placeholder {
+  color: rgb(0 0 0 / 0.35);
+}
+
+.textarea-field:focus {
+  border-color: rgb(253 91 56 / 0.55);
+  background: white;
+  box-shadow: 0 0 0 4px rgb(253 91 56 / 0.12);
+}
+
+.dark .textarea-field {
+  border-color: rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 0.04);
+  color: rgb(255 255 255 / 0.78);
+}
+
+.dark .textarea-field::placeholder {
+  color: rgb(255 255 255 / 0.35);
+}
+
+.dark .textarea-field:focus {
+  background: rgb(255 255 255 / 0.06);
+}

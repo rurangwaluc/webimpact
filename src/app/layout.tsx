@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import FloatingAdminButton from "@/components/admin/FloatingAdminButton"; // client-only component
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "WebImpact Lab is a software development company in Rwanda building websites, business systems, SaaS platforms, dashboards, e-commerce systems, and automation tools for companies in Rwanda, East Africa, and Africa.",
+  icons: { icon: "/siteIcon.webp" },
   keywords: [
     "software development company in Rwanda",
     "web development company in Rwanda",
@@ -43,7 +45,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -51,6 +55,8 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          {/* Client component */}
+          <FloatingAdminButton />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

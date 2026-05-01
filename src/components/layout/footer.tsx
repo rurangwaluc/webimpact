@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Mail,
@@ -7,6 +10,7 @@ import {
   MessageCircle,
   Sparkles,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const services = [
   { label: "Software Development", href: "/services/software-development" },
@@ -25,6 +29,17 @@ const company = [
 ];
 
 export function Footer() {
+  const { resolvedTheme } = useTheme();
+  const [themeReady, setThemeReady] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setThemeReady(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  const isDark = resolvedTheme === "dark";
+  const logoSrc = themeReady && isDark ? "/logo.webp" : "/darkLogo.webp";
+
   return (
     <footer className="border-t border-black/10 bg-white dark:border-white/10 dark:bg-[#070707]">
       <div className="px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
@@ -41,7 +56,7 @@ export function Footer() {
                     className="relative block h-12 w-[210px] overflow-hidden sm:h-14 sm:w-[245px]"
                   >
                     <Image
-                      src="/logo.webp"
+                      src={logoSrc}
                       alt="WebImpact Lab - Software development company in Rwanda"
                       fill
                       sizes="(max-width: 640px) 210px, 245px"
@@ -86,7 +101,7 @@ export function Footer() {
                     Services
                   </h3>
 
-                  <nav className="mt-5 grid gap-2">
+                  <nav className="mt-5 grid gap-2" aria-label="Footer services">
                     {services.map((item) => (
                       <Link
                         key={item.href}
@@ -105,7 +120,7 @@ export function Footer() {
                     Company
                   </h3>
 
-                  <nav className="mt-5 grid gap-2">
+                  <nav className="mt-5 grid gap-2" aria-label="Footer company">
                     {company.map((item) => (
                       <Link
                         key={item.href}

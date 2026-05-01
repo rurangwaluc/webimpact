@@ -8,12 +8,24 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/services", label: "Services", hint: "Websites, software, SaaS & automation" },
+  {
+    href: "/services",
+    label: "Services",
+    hint: "Websites, software, SaaS & automation",
+  },
   { href: "/work", label: "Work", hint: "Real systems and case studies" },
-  { href: "/industries", label: "Industries", hint: "Rwanda and East Africa businesses" },
+  {
+    href: "/industries",
+    label: "Industries",
+    hint: "Rwanda and East Africa businesses",
+  },
   { href: "/about", label: "About", hint: "Who builds your systems" },
   { href: "/blog", label: "Blog", hint: "Software, SEO and growth insights" },
-  { href: "/contact", label: "Contact", hint: "Start with a free consultation" },
+  {
+    href: "/contact",
+    label: "Contact",
+    hint: "Start with a free consultation",
+  },
 ];
 
 function subscribeToScroll(callback: () => void) {
@@ -58,7 +70,10 @@ export function Navbar() {
   }, [open]);
 
   const isDark = resolvedTheme === "dark";
-  const logoSrc = "/logo.webp";
+
+  // dark mode uses logo.webp, light mode uses darkLogo.webp
+  // before theme is ready, use darkLogo.webp to avoid hydration mismatch.
+  const logoSrc = themeReady && isDark ? "/logo.webp" : "/darkLogo.webp";
 
   return (
     <>
@@ -92,7 +107,10 @@ export function Navbar() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+          <nav
+            className="hidden items-center gap-7 lg:flex"
+            aria-label="Main navigation"
+          >
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -199,10 +217,13 @@ export function Navbar() {
                 Software Development Rwanda
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight text-black dark:text-white">
-                Websites, systems, SaaS and automation for businesses that want growth and control.
+                Websites, systems, SaaS and automation for businesses that want
+                growth and control.
               </h2>
               <p className="mt-3 text-sm leading-6 text-black/60 dark:text-white/60">
-                We help companies in Rwanda and East Africa replace weak online presence and manual workflows with digital systems that sell, track and scale.
+                We help companies in Rwanda and East Africa replace weak online
+                presence and manual workflows with digital systems that sell,
+                track and scale.
               </p>
             </div>
 
