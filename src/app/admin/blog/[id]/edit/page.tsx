@@ -6,7 +6,6 @@ import {
   ArrowRight,
   BookOpenText,
   CheckCircle2,
-  Clock3,
   ExternalLink,
   Eye,
   EyeOff,
@@ -15,7 +14,6 @@ import {
   Link2,
   Save,
   Search,
-  ShieldCheck,
   Star,
   StarOff,
   Trash2,
@@ -24,6 +22,7 @@ import {
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { SubmitButton } from "@/components/ui/submit-button";
+import { PremiumSelect } from "@/components/ui/premium-select";
 import { getBlogPostForAdmin, type BlogPost } from "@/lib/cms/blog";
 
 type PageProps = {
@@ -37,6 +36,70 @@ const inputClass =
 
 const textareaClass =
   "min-h-[190px] w-full resize-none rounded-[1.75rem] border border-black/10 bg-black/[0.025] px-5 py-4 text-sm font-bold leading-7 text-black/78 outline-none transition placeholder:text-black/35 focus:border-[#fd5b38]/55 focus:bg-white focus:shadow-[0_0_0_4px_rgb(253_91_56_/_0.12)] dark:border-white/10 dark:bg-white/[0.04] dark:text-white/78 dark:placeholder:text-white/35 dark:focus:bg-white/[0.06]";
+
+const categoryOptions = [
+  {
+    value: "Software Development",
+    label: "Software Development",
+    description: "Custom systems, platforms, and backend/frontend builds.",
+  },
+  {
+    value: "Web Development",
+    label: "Web Development",
+    description: "Websites, landing pages, SEO pages, and conversion pages.",
+  },
+  {
+    value: "Business Systems",
+    label: "Business Systems",
+    description: "Operations, dashboards, workflows, and internal tools.",
+  },
+  {
+    value: "Dashboards",
+    label: "Dashboards",
+    description: "Reporting, analytics, KPIs, and business visibility.",
+  },
+  {
+    value: "Automation",
+    label: "Automation",
+    description: "Manual work reduction, process automation, and alerts.",
+  },
+  {
+    value: "SaaS",
+    label: "SaaS",
+    description: "Subscription platforms, portals, and product systems.",
+  },
+  {
+    value: "SEO",
+    label: "SEO",
+    description: "Search growth, programmatic SEO, and content strategy.",
+  },
+];
+
+const statusOptions = [
+  {
+    value: "draft",
+    label: "Draft - hidden",
+    description: "Only visible inside admin.",
+  },
+  {
+    value: "published",
+    label: "Published - visible",
+    description: "Visible on the public blog.",
+  },
+];
+
+const featuredOptions = [
+  {
+    value: "no",
+    label: "No",
+    description: "Keep it as a normal blog post.",
+  },
+  {
+    value: "yes",
+    label: "Yes, feature it",
+    description: "Use it as a stronger homepage/blog highlight.",
+  },
+];
 
 function slugify(value: string) {
   return value
@@ -77,13 +140,14 @@ export default async function EditBlogPostPage({ params }: PageProps) {
   await requireAdmin();
 
   const { id } = await params;
- const maybePost = await getBlogPostForAdmin(id);
+  const maybePost = await getBlogPostForAdmin(id);
 
-if (!maybePost) {
-  notFound();
-}
+  if (!maybePost) {
+    notFound();
+  }
 
-const post = maybePost;
+  const post = maybePost;
+
   async function updateBlogPost(formData: FormData) {
     "use server";
 
@@ -167,6 +231,8 @@ const post = maybePost;
         is_featured: isFeatured,
         meta_title: metaTitle,
         meta_description: metaDescription,
+        seo_title: metaTitle,
+        seo_description: metaDescription,
         published_at: status === "published" ? publishedAt : null,
         updated_at: new Date().toISOString(),
       })
@@ -301,11 +367,11 @@ const post = maybePost;
   }
 
   return (
-    <main className="min-h-screen bg-white px-4 py-8 dark:bg-[#070707] sm:px-6 lg:px-8 lg:py-10">
+    <main className="min-h-screen overflow-x-hidden bg-white px-4 py-8 dark:bg-[#070707] sm:px-6 lg:px-8 lg:py-10">
       <div className="mx-auto max-w-7xl">
         <form
           action={updateBlogPost}
-          className="relative overflow-hidden rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111]"
+          className="relative rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111]"
         >
           <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/20 blur-3xl" />
 
@@ -332,7 +398,7 @@ const post = maybePost;
             </p>
           </div>
 
-          <div className="relative grid gap-6 p-6 sm:p-8 lg:grid-cols-[0.7fr_0.3fr] lg:p-10">
+          <div className="relative grid gap-6 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_390px] lg:p-10 xl:grid-cols-[minmax(0,1fr)_430px]">
             <div className="grid gap-5">
               <SectionCard
                 icon={BookOpenText}
@@ -369,11 +435,10 @@ const post = maybePost;
                   </Field>
 
                   <Field label="Category" required>
-                    <input
+                    <PremiumSelect
                       name="category"
-                      required
                       defaultValue={post.category}
-                      className={inputClass}
+                      options={categoryOptions}
                     />
                   </Field>
                 </div>
@@ -444,7 +509,7 @@ const post = maybePost;
                 <Field label="SEO title">
                   <input
                     name="meta_title"
-                    defaultValue={post.meta_title || ""}
+                    defaultValue={post.meta_title || post.seo_title || ""}
                     placeholder="Optional. If empty, post title will be used."
                     className={inputClass}
                   />
@@ -454,7 +519,9 @@ const post = maybePost;
                   <textarea
                     name="meta_description"
                     rows={4}
-                    defaultValue={post.meta_description || ""}
+                    defaultValue={
+                      post.meta_description || post.seo_description || ""
+                    }
                     placeholder="Optional. If empty, excerpt will be used."
                     className={textareaClass}
                   />
@@ -479,25 +546,19 @@ const post = maybePost;
 
                 <div className="mt-6 grid gap-4">
                   <Field label="Website visibility" required>
-                    <select
+                    <PremiumSelect
                       name="status"
                       defaultValue={post.status}
-                      className={inputClass}
-                    >
-                      <option value="draft">Draft - hidden</option>
-                      <option value="published">Published - visible</option>
-                    </select>
+                      options={statusOptions}
+                    />
                   </Field>
 
                   <Field label="Feature this post?">
-                    <select
+                    <PremiumSelect
                       name="is_featured"
                       defaultValue={post.is_featured ? "yes" : "no"}
-                      className={inputClass}
-                    >
-                      <option value="no">No</option>
-                      <option value="yes">Yes, feature it</option>
-                    </select>
+                      options={featuredOptions}
+                    />
                   </Field>
                 </div>
 
@@ -585,7 +646,9 @@ function BlogFastControls({
       <div className="mt-4 grid gap-2">
         <button
           type="submit"
-          formAction={post.status === "published" ? unpublishAction : publishAction}
+          formAction={
+            post.status === "published" ? unpublishAction : publishAction
+          }
           className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-black text-black transition hover:-translate-y-0.5 hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.05] dark:text-white"
         >
           {post.status === "published" ? (

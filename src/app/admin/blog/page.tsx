@@ -60,41 +60,55 @@ export default async function AdminBlogPage() {
           <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/20 blur-3xl" />
           <div className="pointer-events-none absolute bottom-[-160px] left-[-120px] h-[28rem] w-[28rem] rounded-full bg-black/[0.05] blur-3xl dark:bg-white/10" />
 
-          <div className="relative border-b border-black/10 p-6 dark:border-white/10 sm:p-8 lg:p-10">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <Link
-                  href="/admin"
-                  className="inline-flex items-center gap-2 text-sm font-black text-[#fd5b38] transition hover:gap-3"
-                >
-                  <ArrowRight className="h-4 w-4 rotate-180" />
-                  Back to admin
-                </Link>
+         <div className="relative border-b border-black/10 p-6 dark:border-white/10 sm:p-8 lg:p-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            
+            {/* LEFT CONTENT */}
+            <div>
+              <Link
+                href="/admin"
+                className="inline-flex items-center gap-2 text-sm font-black text-[#fd5b38] transition hover:gap-3"
+              >
+                <ArrowRight className="h-4 w-4 rotate-180" />
+                Back to admin
+              </Link>
 
-                <p className="mt-8 text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
-                  Blog manager
-                </p>
+              <p className="mt-8 text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
+                Blog manager
+              </p>
 
-                <h1 className="mt-4 max-w-4xl text-[clamp(2.15rem,5.5vw,4.35rem)] font-semibold leading-[0.96] tracking-[-0.065em] text-black dark:text-white">
-                  Publish content that brings serious buyers from search.
-                </h1>
+              <h1 className="mt-4 max-w-4xl text-[clamp(2.15rem,5.5vw,4.35rem)] font-semibold leading-[0.96] tracking-[-0.065em] text-black dark:text-white">
+                Publish content that brings serious buyers from search.
+              </h1>
 
-                <p className="mt-5 max-w-2xl text-[15px] leading-7 text-black/62 dark:text-white/62 sm:text-base">
-                  Use blog posts to explain business problems, prove expertise,
-                  support programmatic SEO pages, and turn search traffic into
-                  leads.
-                </p>
-              </div>
+              <p className="mt-5 max-w-2xl text-[15px] leading-7 text-black/62 dark:text-white/62 sm:text-base">
+                Use blog posts to explain business problems, prove expertise,
+                support programmatic SEO pages, and turn search traffic into
+                leads.
+              </p>
+            </div>
 
+            {/* RIGHT SIDE BUTTONS */}
+            <div className="flex flex-wrap items-center gap-3 lg:flex-nowrap">
+              
               <Link
                 href="/admin/blog/new"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-6 py-4 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#fd5b38] px-6 py-4 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
               >
                 Add new post
                 <FilePlus2 className="h-4 w-4" />
               </Link>
+
+              <Link
+                href="/admin/blog/comments"
+                className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-black/10 px-5 py-3 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:text-white"
+              >
+                Moderate comments
+              </Link>
+
             </div>
           </div>
+        </div>
 
           <div className="relative grid gap-4 p-6 sm:grid-cols-2 sm:p-8 lg:grid-cols-4 lg:p-10">
             {[
