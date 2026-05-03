@@ -19,6 +19,7 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { JsonLd } from "@/components/seo/json-ld";
 import { BlogEngagementPanel } from "@/components/blog/blog-engagement-panel";
 import { ArticleShareActions } from "@/components/blog/article-share-actions";
+import { BlogCTAInline } from "@/components/blog/blog-cta-inline";
 
 type PageProps = {
   params: Promise<{
@@ -168,6 +169,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   const engagement = await getBlogEngagement(post.id);
   const allPosts = await getPublishedBlogPosts();
   const articleUrl = `https://webimpactlab.com/blog/${post.slug}`;
+
+  const parts = post.content.split("\n\n");
+  const mid = Math.max(1, Math.floor(parts.length / 2));
 
   const blocks = parseMarkdownBlocks(post.content);
   const tableOfContents = blocks.filter(
@@ -363,8 +367,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </aside>
 
-              <article className="min-w-0">
-                <div className="relative overflow-hidden bg-black">
+              <article className="min-w-0 overflow-hidden rounded-r-[2.35rem]">
+                <div className="relative overflow-hidden rounded-t-[2.35rem] bg-black lg:rounded-tl-none lg:rounded-tr-[2.35rem]">
                   {post.cover_image_url ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -412,7 +416,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <span>{post.author_name}</span>
                   </div>
 
-                  <h1 className="mt-5 max-w-4xl text-[clamp(2.2rem,5.8vw,4.9rem)] font-semibold leading-[0.93] tracking-[-0.075em] text-black dark:text-white">
+                  <h1 className="mt-5 max-w-4xl text-[clamp(1.6rem,3.6vw,3rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
                     {post.title}
                   </h1>
 
@@ -431,7 +435,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                 <div className="bg-white px-6 py-10 dark:bg-[#070707] sm:px-8 lg:px-12 lg:py-14">
                   <div className="mx-auto max-w-[760px]">
-                    <BlogMarkdown blocks={blocks} />
+                    <BlogMarkdown content={parts.slice(0, mid).join("\n\n")} />
+
+                    <BlogCTAInline />
+
+                    <BlogMarkdown content={parts.slice(mid).join("\n\n")} />
                   </div>
                 </div>
               </article>
@@ -542,14 +550,14 @@ export default async function BlogPostPage({ params }: PageProps) {
                     className="group"
                   >
                     <article className="h-full rounded-[2rem] border border-black/10 bg-white p-3 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#070707]">
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-black">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-tr-[15px] rounded-[1.5rem] bg-black">
                         {item.cover_image_url ? (
                           // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={item.cover_image_url}
-                            alt={item.title}
-                            className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.05]"
-                          />
+                        <img
+                          src={item.cover_image_url}
+                          alt={item.title}
+                          className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.05] rounded-tr-[15px]"
+                        />
                         ) : (
                           <div className="flex h-full items-center justify-center text-white/20">
                             <BookOpenText className="h-12 w-12" />
@@ -563,7 +571,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         </span>
                       </div>
 
-                      <h3 className="mt-5 px-2 text-xl font-semibold leading-tight tracking-[-0.04em] text-black transition group-hover:text-[#fd5b38] dark:text-white dark:group-hover:text-[#fd5b38]">
+                      <h3 className="mt-5 px-2 text-[35px]  font-semibold leading-tight tracking-[-0.04em] text-black transition group-hover:text-[#fd5b38] dark:text-white dark:group-hover:text-[#fd5b38]">
                         {item.title}
                       </h3>
 
@@ -582,7 +590,8 @@ export default async function BlogPostPage({ params }: PageProps) {
   );
 }
 
-function BlogMarkdown({ blocks }: { blocks: MarkdownBlock[] }) {
+function BlogMarkdown({ content }: { content: string }) {
+  const blocks = parseMarkdownBlocks(content);
   return (
     <div>
       {blocks.map((block, index) => {
@@ -591,7 +600,7 @@ function BlogMarkdown({ blocks }: { blocks: MarkdownBlock[] }) {
             <h2
               id={block.id}
               key={index}
-              className="scroll-mt-28 pt-10 text-[clamp(1.65rem,4vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.052em] text-black first:pt-0 dark:text-white"
+              className="scroll-mt-28 pt-10 text-[clamp(1rem,2vw,1.4rem)] font-semibold leading-[1.05] tracking-[-0.052em] text-black first:pt-0 dark:text-white"
             >
               {block.content}
             </h2>
@@ -603,7 +612,7 @@ function BlogMarkdown({ blocks }: { blocks: MarkdownBlock[] }) {
             <h3
               id={block.id}
               key={index}
-              className="scroll-mt-28 pt-8 text-2xl font-semibold tracking-[-0.045em] text-black dark:text-white"
+              className="scroll-mt-28 pt-8 text-lg font-semibold tracking-[-0.045em] text-black dark:text-white"
             >
               {block.content}
             </h3>

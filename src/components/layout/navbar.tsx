@@ -14,11 +14,7 @@ const navItems = [
     hint: "Websites, software, SaaS & automation",
   },
   { href: "/work", label: "Work", hint: "Real systems and case studies" },
-  {
-    href: "/industries",
-    label: "Industries",
-    hint: "Rwanda and East Africa businesses",
-  },
+  
   { href: "/about", label: "About", hint: "Who builds your systems" },
   { href: "/blog", label: "Blog", hint: "Software, SEO and growth insights" },
   {

@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
+import { Quicksand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import FloatingAdminButton from "@/components/admin/FloatingAdminButton"; // client-only component
+import FloatingAdminButton from "@/components/admin/FloatingAdminButton";
 import "./globals.css";
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-quicksand",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -49,13 +57,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={quicksand.variable}>
       <body>
         <ThemeProvider>
           <Navbar />
           {children}
           <Footer />
-          {/* Client component */}
           <FloatingAdminButton />
         </ThemeProvider>
         <Analytics />

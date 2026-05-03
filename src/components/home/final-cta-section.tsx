@@ -84,7 +84,7 @@ export function FinalCtaSection() {
                   </Link>
 
                   <Link
-                    href="https://wa.me/"
+                    href="https://wa.me/+250785587830"
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-6 py-4 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.05] dark:text-white"
                   >
                     <MessageCircle className="h-4 w-4" />

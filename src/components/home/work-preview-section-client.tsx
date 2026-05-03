@@ -276,14 +276,7 @@ function WorkImage({
       aria-label={`View ${project.title} case study`}
       className={`relative block overflow-hidden bg-black ${heightClass}`}
     >
-      <div className="absolute left-4 right-4 top-4 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-2 backdrop-blur-xl sm:left-5 sm:right-auto">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-2 truncate text-[11px] font-black uppercase tracking-[0.12em] text-white/70">
-          {project.project_type}
-        </span>
-      </div>
+     
 
       {project.cover_image_url ? (
   <div
@@ -313,18 +306,7 @@ function WorkImage({
 
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/88 via-black/20 to-black/5 transition-opacity duration-700 group-hover:from-black/78" />
 
-      <div className="absolute bottom-5 left-5 right-5 z-20 text-white transition duration-700 group-hover:-translate-y-1">
-        <p className="text-xs font-bold text-white/65">{project.project_type}</p>
-        <h3
-          className={
-            large
-              ? "mt-2 text-[clamp(2.2rem,6vw,4.5rem)] font-semibold leading-[0.9] tracking-[-0.075em]"
-              : "mt-1 text-2xl font-semibold tracking-[-0.055em]"
-          }
-        >
-          {project.title}
-        </h3>
-      </div>
+     
 
       <div className="pointer-events-none absolute right-5 top-5 z-30 hidden h-10 w-10 items-center justify-center rounded-full bg-[#fd5b38] text-white opacity-0 shadow-lg shadow-[#fd5b38]/25 transition duration-500 group-hover:opacity-100 md:flex">
         <ExternalLink className="h-4 w-4" />
