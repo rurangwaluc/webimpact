@@ -86,7 +86,7 @@ export function HeroSection() {
               </div>
 
               <h1
-                className="hero-fade-up mt-5 text-[clamp(2.25rem,7vw,4.25rem)] font-bold leading-[0.96] tracking-[-0.055em] text-black dark:text-white"
+                  className="hero-fade-up mt-5 text-[clamp(1.75rem,5vw,3rem)] font-bold leading-[0.96] tracking-[-0.055em] text-black dark:text-white"
                 style={{ animationDelay: "120ms" }}
                 >
                 Your Business May Not Need More Marketing. It May Need A Better Machine.

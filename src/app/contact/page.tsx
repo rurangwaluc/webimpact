@@ -81,7 +81,7 @@ export default function ContactPage() {
                   Contact WebImpact Lab
                 </p>
 
-                <h1 className="mt-4 max-w-4xl text-[clamp(2.05rem,5.6vw,4.35rem)] font-semibold leading-[0.96] tracking-[-0.065em] text-black dark:text-white">
+                <h1 className="mt-4 max-w-4xl text-[clamp(1.5rem,4vw,3rem)] font-semibold leading-[1.1] tracking-[-0.05em] text-black dark:text-white">
                   Tell us what is broken. We will help you decide what to build.
                 </h1>
 

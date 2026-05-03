@@ -151,9 +151,8 @@ export default function ServicesPage() {
                   Software development services in Rwanda
                 </p>
 
-                <h1 className="mt-4 max-w-4xl text-[clamp(2.05rem,5.6vw,4.35rem)] font-semibold leading-[0.96] tracking-[-0.065em] text-black dark:text-white">
-                  Your business is leaking money in places better software can
-                  fix.
+                <h1 className="mt-4 max-w-4xl text-[clamp(1.5rem,4vw,3rem)] font-semibold leading-[1.1] tracking-[-0.05em] uppercase text-black dark:text-white">
+                  Your business is leaking money in places better software can fix.
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-[15px] leading-7 text-black/62 dark:text-white/62 sm:text-base">
