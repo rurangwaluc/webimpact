@@ -41,6 +41,26 @@ export function HeroSection() {
           to { transform: scale(1.06); }
         }
 
+        @keyframes heroFloat {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
+        }
+
+        @keyframes heroFloatReverse {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(7px); }
+        }
+
+        @keyframes heroSoftGlow {
+          0%, 100% { opacity: .45; transform: scale(1); }
+          50% { opacity: .85; transform: scale(1.08); }
+        }
+
+        @keyframes heroChipShine {
+          from { transform: translateX(-120%); }
+          to { transform: translateX(120%); }
+        }
+
         .hero-fade-up {
           animation: heroFadeUp .8s ease both;
         }
@@ -49,25 +69,47 @@ export function HeroSection() {
           animation: heroImageZoom 18s ease-in-out infinite alternate;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-          .hero-fade-up,
-          .hero-image {
-            animation: none !important;
-          }
-        }
-          @keyframes heroFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-
         .hero-float {
           animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        .hero-float-reverse {
+          animation: heroFloatReverse 7s ease-in-out infinite;
+        }
+
+        .hero-soft-glow {
+          animation: heroSoftGlow 5.5s ease-in-out infinite;
+        }
+
+        .hero-shine::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.18) 45%, transparent 70%);
+          transform: translateX(-120%);
+          transition: transform .8s ease;
+        }
+
+        .hero-shine:hover::after {
+          animation: heroChipShine .85s ease both;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-fade-up,
+          .hero-image,
+          .hero-float,
+          .hero-float-reverse,
+          .hero-soft-glow,
+          .hero-shine:hover::after {
+            animation: none !important;
+          }
         }
       `}</style>
 
       <div className="mx-auto max-w-7xl">
         <div className="relative overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-2xl shadow-black/[0.08] dark:border-white/10 dark:bg-[#0b0b0b] sm:rounded-[2.25rem]">
-          <div className="pointer-events-none absolute right-[-90px] top-[-90px] h-72 w-72 rounded-full bg-[#fd5b38]/18 blur-3xl" />
+          <div className="hero-soft-glow pointer-events-none absolute right-[-90px] top-[-90px] h-72 w-72 rounded-full bg-[#fd5b38]/18 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-[-140px] left-[-120px] h-80 w-80 rounded-full bg-black/[0.04] blur-3xl dark:bg-white/10" />
 
           <div className="relative grid gap-8 px-4 py-7 min-[390px]:px-5 sm:px-7 sm:py-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-10 lg:px-12 lg:py-14 xl:px-14">
             <div className="max-w-2xl">
@@ -110,10 +152,10 @@ export function HeroSection() {
 
                 <Link
                   href="/work"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-5 py-3 text-sm font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/15 dark:bg-white/10 dark:text-white"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-5 py-3 text-sm font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/15 dark:bg-white/10 dark:text-white"
                 >
                   See our work
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </Link>
               </div>
 
@@ -152,7 +194,7 @@ export function HeroSection() {
                     return (
                       <div
                         key={card.title}
-                        className="hero-fade-up rounded-[1.15rem] border border-black/10 bg-[#111827] p-3 text-white shadow-xl shadow-black/10 dark:border-white/10 min-[390px]:rounded-[1.35rem] sm:min-h-[132px] sm:p-4"
+                        className="hero-fade-up hero-shine relative overflow-hidden rounded-[1.15rem] border border-black/10 bg-[#111827] p-3 text-white shadow-xl shadow-black/10 transition duration-500 hover:-translate-y-1 hover:border-[#fd5b38]/35 dark:border-white/10 min-[390px]:rounded-[1.35rem] sm:min-h-[132px] sm:p-4"
                         style={{ animationDelay: `${360 + index * 100}ms` }}
                       >
                         <div className="grid h-8 w-8 place-items-center rounded-xl bg-[#fd5b38]/15 text-[#fd5b38] min-[390px]:h-9 min-[390px]:w-9 min-[390px]:rounded-2xl">
@@ -178,7 +220,7 @@ export function HeroSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/16 to-transparent" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/32 via-transparent to-transparent" />
 
-                    <div className="absolute right-3 top-3 max-w-[145px] rounded-[1.15rem] border border-white/15 bg-white/95 p-3 text-black shadow-2xl backdrop-blur-xl min-[390px]:right-4 min-[390px]:top-4 min-[390px]:max-w-[170px] sm:right-5 sm:top-5 sm:max-w-[210px] sm:rounded-[1.5rem] sm:p-4">
+                    <div className="hero-float-reverse absolute right-3 top-3 max-w-[145px] rounded-[1.15rem] border border-white/15 bg-white/95 p-3 text-black shadow-2xl backdrop-blur-xl min-[390px]:right-4 min-[390px]:top-4 min-[390px]:max-w-[170px] sm:right-5 sm:top-5 sm:max-w-[210px] sm:rounded-[1.5rem] sm:p-4">
                       <div className="flex items-center gap-2">
                         <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#fd5b38] text-white">
                           <Globe2 className="h-4 w-4" />
@@ -207,7 +249,7 @@ export function HeroSection() {
                         {proofItems.map((item) => (
                           <div
                             key={item}
-                            className="rounded-xl border border-white/10 bg-white/10 px-1.5 py-2 text-center text-[9px] font-bold text-white/85 min-[390px]:text-[10px]"
+                            className="hero-shine relative overflow-hidden rounded-xl border border-white/10 bg-white/10 px-1.5 py-2 text-center text-[9px] font-bold text-white/85 transition hover:bg-white/15 min-[390px]:text-[10px]"
                           >
                             {item}
                           </div>
@@ -218,9 +260,9 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <div className="mt-3 rounded-[1.35rem] border border-black/10 bg-white p-4 shadow-2xl shadow-black/12 dark:border-white/10 dark:bg-[#111111] sm:mx-auto sm:max-w-[520px] sm:rounded-[1.5rem]">
+              <div className="hero-fade-up mt-3 rounded-[1.35rem] border border-black/10 bg-white p-4 shadow-2xl shadow-black/12 dark:border-white/10 dark:bg-[#111111] sm:mx-auto sm:max-w-[520px] sm:rounded-[1.5rem]">
                 <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#fd5b38] text-white">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20">
                     <BarChart3 className="h-5 w-5" />
                   </div>
 
