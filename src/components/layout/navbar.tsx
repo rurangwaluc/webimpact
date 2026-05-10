@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -28,20 +28,33 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
+  const lastScrolled = useRef(false);
 
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
-    setThemeReady(true);
+    const readyId = requestAnimationFrame(() => {
+      setThemeReady(true);
+    });
 
     function handleScroll() {
-      setScrolled(window.scrollY > 10);
+      const nextScrolled = window.scrollY > 10;
+
+      if (lastScrolled.current === nextScrolled) return;
+
+      lastScrolled.current = nextScrolled;
+      setScrolled(nextScrolled);
     }
 
-    handleScroll();
+    const scrollId = requestAnimationFrame(handleScroll);
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(readyId);
+      cancelAnimationFrame(scrollId);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -63,7 +76,9 @@ export function Navbar() {
       <header
         className={cn(
           "sticky top-0 z-50 w-full px-3 pt-3 transition-opacity duration-300 sm:px-5",
-          open ? "pointer-events-none opacity-0 lg:pointer-events-auto lg:opacity-100" : "",
+          open
+            ? "pointer-events-none opacity-0 lg:pointer-events-auto lg:opacity-100"
+            : "",
         )}
       >
         <div
@@ -151,14 +166,14 @@ export function Navbar() {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              initial={{ opacity: 0, y: -18, scale: 0.96 }}
+              initial={{ opacity: 0, y: -18, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -14, scale: 0.96 }}
+              exit={{ opacity: 0, y: -14, scale: 0.98 }}
               transition={{ type: "spring", stiffness: 420, damping: 34 }}
-              className="mx-auto max-h-[calc(100svh-1.5rem)] max-w-[430px] overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-2xl shadow-black/25 dark:border-white/10 dark:bg-[#080808]"
+              className="h-full max-h-[calc(100svh-1.5rem)] w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-2xl shadow-black/25 dark:border-white/10 dark:bg-[#080808]"
               aria-label="Mobile menu"
             >
-              <div className="relative">
+              <div className="relative flex h-full flex-col">
                 <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-56 w-56 rounded-full bg-[#fd5b38]/20 blur-3xl" />
 
                 <div className="relative flex items-center justify-between gap-4 border-b border-black/10 p-5 dark:border-white/10">
@@ -188,7 +203,7 @@ export function Navbar() {
                   </button>
                 </div>
 
-                <div className="max-h-[calc(100svh-8.5rem)] overflow-y-auto p-3">
+                <div className="relative flex-1 overflow-y-auto p-3">
                   <div className="rounded-[1.5rem] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
                     <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#fd5b38]">
                       Rwanda-first systems company
@@ -233,8 +248,10 @@ export function Navbar() {
                       </motion.div>
                     ))}
                   </nav>
+                </div>
 
-                  <div className="mt-3 grid gap-3 min-[390px]:grid-cols-2">
+                <div className="relative border-t border-black/10 p-3 dark:border-white/10">
+                  <div className="grid gap-3 min-[390px]:grid-cols-2">
                     <Link
                       href="/contact"
                       onClick={() => setOpen(false)}
@@ -245,7 +262,7 @@ export function Navbar() {
                     </Link>
 
                     <Link
-                      href="https://wa.me/"
+                      href="https://wa.me/+250785587830"
                       onClick={() => setOpen(false)}
                       className="inline-flex items-center justify-center rounded-full border border-black/10 px-5 py-4 text-sm font-black text-black transition hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:text-white"
                     >
