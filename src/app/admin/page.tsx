@@ -7,9 +7,11 @@ import {
   BriefcaseBusiness,
   CheckCircle2,
   FilePlus2,
+  FileText,
   LayoutDashboard,
   LockKeyhole,
   LogOut,
+  Search,
   ShieldCheck,
 } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -52,6 +54,8 @@ export default async function AdminDashboardPage() {
     { count: totalPosts },
     { count: publishedPosts },
     { count: featuredPosts },
+    { count: totalSeoPages },
+    { count: publishedSeoPages },
   ] = await Promise.all([
     supabaseAdmin
       .from("work_projects")
@@ -75,6 +79,13 @@ export default async function AdminDashboardPage() {
       .from("blog_posts")
       .select("id", { count: "exact", head: true })
       .eq("is_featured", true),
+    supabaseAdmin
+      .from("seo_pages")
+      .select("id", { count: "exact", head: true }),
+    supabaseAdmin
+      .from("seo_pages")
+      .select("id", { count: "exact", head: true })
+      .eq("is_published", true),
   ]);
 
   const stats = [
@@ -97,10 +108,10 @@ export default async function AdminDashboardPage() {
       icon: BookOpenText,
     },
     {
-      label: "Featured articles",
-      value: featuredPosts ?? 0,
-      note: "Ready for blog and homepage sections",
-      icon: LayoutDashboard,
+      label: "SEO pages",
+      value: totalSeoPages ?? 0,
+      note: `${publishedSeoPages ?? 0} published for Google`,
+      icon: Search,
     },
   ];
 
@@ -133,6 +144,20 @@ export default async function AdminDashboardPage() {
       icon: FilePlus2,
       cta: "Write article",
     },
+    {
+      title: "SEO landing pages",
+      text: "Create service, city, industry, and buyer-intent pages that publish automatically to public SEO URLs.",
+      href: "/admin/seo-pages",
+      icon: FileText,
+      cta: "Manage SEO pages",
+    },
+    {
+      title: "Create SEO page",
+      text: "Add a new programmatic SEO page for searches like software development Rwanda, SaaS development, or dashboards.",
+      href: "/admin/seo-pages/new",
+      icon: Search,
+      cta: "Create SEO page",
+    },
   ];
 
   return (
@@ -154,9 +179,8 @@ export default async function AdminDashboardPage() {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-[15px] leading-7 text-black/62 dark:text-white/62 sm:text-base">
-                  Add projects, publish articles, and choose what appears on the
-                  website without touching code. This is where you manage the
-                  proof that helps serious business owners trust WebImpact Lab.
+                  Add projects, publish articles, create SEO landing pages, and
+                  choose what appears on the website without touching code.
                 </p>
               </div>
 
@@ -202,7 +226,7 @@ export default async function AdminDashboardPage() {
             })}
           </div>
 
-          <div className="relative grid gap-6 border-t border-black/10 p-6 dark:border-white/10 sm:p-8 lg:grid-cols-[0.38fr_1fr] lg:p-10">
+          <div className="relative grid gap-6 border-t border-black/10 p-6 dark:border-white/10 sm:p-8 lg:grid-cols-[0.34fr_1fr] lg:p-10">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-[#fd5b38]/20 bg-[#fd5b38]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#fd5b38]">
                 <ShieldCheck className="h-4 w-4" />
@@ -214,9 +238,9 @@ export default async function AdminDashboardPage() {
               </h2>
 
               <p className="mt-4 max-w-md text-sm leading-6 text-black/60 dark:text-white/60">
-                Use this area to manage work, articles, and featured content.
-                The goal is simple: keep your website fresh, useful, and strong
-                enough to make buyers believe you can solve their problem.
+                Use this area to manage proof, authority, and SEO pages. The
+                goal is simple: keep WebImpact Lab fresh, useful, and visible to
+                serious buyers.
               </p>
 
               <div className="mt-6 rounded-[1.75rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.04]">
@@ -234,7 +258,7 @@ export default async function AdminDashboardPage() {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {actions.map((action) => {
                 const Icon = action.icon;
 
@@ -274,8 +298,8 @@ export default async function AdminDashboardPage() {
             <div className="flex flex-col gap-3 text-sm font-semibold text-black/55 dark:text-white/55 md:flex-row md:items-center md:justify-between">
               <p className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-[#fd5b38]" />
-                Next goal: add projects from here and show the best ones on the
-                homepage.
+                Next goal: publish buyer-intent SEO pages and connect them to
+                your services.
               </p>
 
               <Link
