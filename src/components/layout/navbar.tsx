@@ -83,7 +83,7 @@ export function Navbar() {
       >
         <div
           className={cn(
-            "mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-full border transition-all duration-300",
+            "mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-[15px] border transition-all duration-300",
             scrolled
               ? "border-black/10 bg-white/82 px-3 py-2 shadow-2xl shadow-black/[0.08] backdrop-blur-2xl dark:border-white/10 dark:bg-[#070707]/82"
               : "border-black/5 bg-white/70 px-3 py-2.5 shadow-xl shadow-black/[0.04] backdrop-blur-xl dark:border-white/10 dark:bg-[#070707]/70",
@@ -106,14 +106,14 @@ export function Navbar() {
           </Link>
 
           <nav
-            className="hidden items-center gap-1 rounded-full border border-black/10 bg-black/[0.025] p-1 dark:border-white/10 dark:bg-white/[0.04] lg:flex"
+            className="hidden items-center gap-1 rounded-[15px] border border-black/10 bg-black/[0.025] p-1 dark:border-white/10 dark:bg-white/[0.04] lg:flex"
             aria-label="Main navigation"
           >
             {navItems.slice(0, 4).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative rounded-full px-4 py-2 text-sm font-black text-black/60 transition hover:bg-white hover:text-[#fd5b38] hover:shadow-sm dark:text-white/60 dark:hover:bg-white/[0.08] dark:hover:text-[#fd5b38]"
+                className="group relative rounded-[12px] px-4 py-2 text-sm font-black text-black/60 transition hover:bg-white hover:text-[#fd5b38] hover:shadow-sm dark:text-white/60 dark:hover:bg-white/[0.08] dark:hover:text-[#fd5b38]"
               >
                 {item.label}
               </Link>
@@ -125,9 +125,9 @@ export function Navbar() {
               type="button"
               aria-label="Toggle dark and light mode"
               onClick={() => setTheme(isDark ? "light" : "dark")}
-              className="group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-black/10 bg-black/[0.03] text-black shadow-sm transition hover:-translate-y-0.5 hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:text-[#fd5b38] sm:h-11 sm:w-11"
+              className="group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-[15px] border border-black/10 bg-black/[0.03] text-black shadow-sm transition hover:-translate-y-0.5 hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:text-[#fd5b38] sm:h-11 sm:w-11"
             >
-              <span className="absolute inset-0 scale-0 rounded-full bg-[#fd5b38]/10 transition group-hover:scale-100" />
+              <span className="absolute inset-0 scale-0 rounded-[15px] bg-[#fd5b38]/10 transition group-hover:scale-100" />
               {themeReady && isDark ? (
                 <Sun className="relative h-[18px] w-[18px]" />
               ) : (
@@ -137,7 +137,7 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="hidden items-center gap-2 rounded-full bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/20 transition hover:-translate-y-0.5 hover:bg-[#e84a2b] md:inline-flex"
+              className="hidden items-center gap-2 rounded-[15px] bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/20 transition hover:-translate-y-0.5 hover:bg-[#e84a2b] md:inline-flex"
             >
               Book audit
               <ArrowRight className="h-4 w-4" />
@@ -148,9 +148,9 @@ export function Navbar() {
               aria-label="Open menu"
               aria-expanded={open}
               onClick={() => setOpen(true)}
-              className="group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-black/10 bg-black/[0.03] text-black shadow-sm transition hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:text-[#fd5b38] lg:hidden sm:h-11 sm:w-11"
+              className="group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-[15px] border border-black/10 bg-black/[0.03] text-black shadow-sm transition hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:text-[#fd5b38] lg:hidden sm:h-11 sm:w-11"
             >
-              <span className="absolute inset-0 scale-0 rounded-full bg-[#fd5b38]/10 transition group-hover:scale-100" />
+              <span className="absolute inset-0 scale-0 rounded-[15px] bg-[#fd5b38]/10 transition group-hover:scale-100" />
               <Menu className="relative h-5 w-5" />
             </button>
           </div>
@@ -170,7 +170,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -14, scale: 0.98 }}
               transition={{ type: "spring", stiffness: 420, damping: 34 }}
-              className="h-full max-h-[calc(100svh-1.5rem)] w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-2xl shadow-black/25 dark:border-white/10 dark:bg-[#080808]"
+              className="h-full max-h-[calc(100svh-1.5rem)] w-full overflow-hidden rounded-[15px] border border-black/10 bg-white shadow-2xl shadow-black/25 dark:border-white/10 dark:bg-[#080808]"
               aria-label="Mobile menu"
             >
               <div className="relative flex h-full flex-col">
@@ -197,14 +197,14 @@ export function Navbar() {
                     type="button"
                     aria-label="Close menu"
                     onClick={() => setOpen(false)}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-[15px] bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20"
                   >
                     <X className="h-5 w-5" />
                   </button>
                 </div>
 
                 <div className="relative flex-1 overflow-y-auto p-3">
-                  <div className="rounded-[1.5rem] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
+                  <div className="rounded-[15px] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
                     <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#fd5b38]">
                       Rwanda-first systems company
                     </p>
@@ -230,7 +230,7 @@ export function Navbar() {
                         <Link
                           href={item.href}
                           onClick={() => setOpen(false)}
-                          className="group flex items-center justify-between rounded-[1.35rem] border border-black/10 bg-black/[0.025] p-4 transition hover:border-[#fd5b38]/40 hover:bg-[#fd5b38]/10 dark:border-white/10 dark:bg-white/[0.04]"
+                          className="group flex items-center justify-between rounded-[15px] border border-black/10 bg-black/[0.025] p-4 transition hover:border-[#fd5b38]/40 hover:bg-[#fd5b38]/10 dark:border-white/10 dark:bg-white/[0.04]"
                         >
                           <span>
                             <span className="block text-base font-black text-black dark:text-white">
@@ -241,7 +241,7 @@ export function Navbar() {
                             </span>
                           </span>
 
-                          <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-[#fd5b38] shadow-sm transition group-hover:translate-x-1 dark:bg-white/[0.08]">
+                          <span className="grid h-9 w-9 place-items-center rounded-[15px] bg-white text-[#fd5b38] shadow-sm transition group-hover:translate-x-1 dark:bg-white/[0.08]">
                             <ArrowRight className="h-4 w-4" />
                           </span>
                         </Link>
@@ -255,7 +255,7 @@ export function Navbar() {
                     <Link
                       href="/contact"
                       onClick={() => setOpen(false)}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-5 py-4 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25"
+                      className="inline-flex items-center justify-center gap-2 rounded-[15px] bg-[#fd5b38] px-5 py-4 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25"
                     >
                       Book audit
                       <ArrowRight className="h-4 w-4" />
@@ -264,7 +264,7 @@ export function Navbar() {
                     <Link
                       href="https://wa.me/+250785587830"
                       onClick={() => setOpen(false)}
-                      className="inline-flex items-center justify-center rounded-full border border-black/10 px-5 py-4 text-sm font-black text-black transition hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:text-white"
+                      className="inline-flex items-center justify-center rounded-[15px] border border-black/10 px-5 py-4 text-sm font-black text-black transition hover:border-[#fd5b38]/40 hover:text-[#fd5b38] dark:border-white/10 dark:text-white"
                     >
                       WhatsApp
                     </Link>
