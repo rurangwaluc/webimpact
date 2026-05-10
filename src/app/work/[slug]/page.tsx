@@ -215,7 +215,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
             featured
           />
 
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid items-start gap-5 lg:grid-cols-2">
             <CaseBlock
               icon={Lightbulb}
               label="Solution"
