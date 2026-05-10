@@ -94,12 +94,12 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
 
       <section className="px-3 pb-10 pt-6 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.75rem]">
+          <div className="relative overflow-hidden rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:bg-[#111111] sm:rounded-[15px]">
             <div className="pointer-events-none absolute right-[-150px] top-[-150px] h-[28rem] w-[28rem] rounded-full bg-[#fd5b38]/20 blur-3xl" />
             <div className="pointer-events-none absolute bottom-[-180px] left-[-140px] h-[30rem] w-[30rem] rounded-full bg-black/[0.05] blur-3xl dark:bg-white/10" />
 
             <div className="relative grid gap-5 p-4 sm:p-7 lg:grid-cols-[0.84fr_1.16fr] lg:items-stretch lg:p-10 xl:p-12">
-              <div className="flex flex-col justify-between rounded-[1.75rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#070707] sm:rounded-[2.25rem] sm:p-8">
+              <div className="flex flex-col justify-between rounded-[15px] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#070707] sm:rounded-[15px] sm:p-8">
                 <div>
                   <Link
                     href="/work"
@@ -153,7 +153,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="group relative h-[280px] overflow-hidden rounded-[1.75rem] border border-black/10 bg-black shadow-2xl dark:border-white/10 sm:h-[460px] sm:rounded-[2.25rem] lg:h-full lg:min-h-[560px]">
+              <div className="group relative h-[280px] overflow-hidden rounded-[15px] border border-black/10 bg-black shadow-2xl dark:border-white/10 sm:h-[460px] sm:rounded-[15px] lg:h-full lg:min-h-[560px]">
                 {project.cover_image_url ? (
                   <div className="absolute inset-0 transition-transform duration-[10000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -171,7 +171,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
 
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/72 via-black/10 to-transparent" />
 
-                <div className="absolute bottom-4 left-4 right-4 rounded-[1.35rem] border border-white/15 bg-black/50 p-4 text-white backdrop-blur-xl sm:bottom-6 sm:left-6 sm:right-6 sm:rounded-[1.75rem] sm:p-5">
+                <div className="absolute bottom-4 left-4 right-4 rounded-[15px] border border-white/15 bg-black/50 p-4 text-white backdrop-blur-xl sm:bottom-6 sm:left-6 sm:right-6 sm:rounded-[15px] sm:p-5">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[#fd5b38]">
                     Case study preview
                   </p>
@@ -239,7 +239,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
       <section className="px-3 pb-14 pt-4 sm:px-6 lg:px-8 lg:pb-24">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[2rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.5rem] sm:p-8">
+            <div className="rounded-[15px] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:rounded-[15px] sm:p-8">
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fd5b38] text-white">
                 <Sparkles className="h-5 w-5" />
               </div>
@@ -268,7 +268,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-[2rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111]"
+                  className="rounded-[15px] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111]"
                 >
                   <CheckCircle2 className="h-5 w-5 text-[#fd5b38]" />
                   <p className="mt-5 text-lg font-semibold tracking-[-0.04em] text-black dark:text-white">
@@ -287,7 +287,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
 
       <section className="px-3 pb-20 pt-4 sm:px-6 lg:px-8 lg:pb-28">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.75rem] sm:p-8 lg:p-12">
+          <div className="relative overflow-hidden rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:bg-[#111111] sm:rounded-[15px] sm:p-8 lg:p-12">
             <div className="pointer-events-none absolute right-[-120px] top-[-120px] h-80 w-80 rounded-full bg-[#fd5b38]/20 blur-3xl" />
 
             <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -369,8 +369,8 @@ function CaseBlock({
   return (
     <article
       className={[
-        "relative overflow-hidden rounded-[2rem] border p-6 shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] sm:p-7",
-        featured ? "sm:rounded-[2.5rem] sm:p-8" : "",
+        "relative overflow-hidden rounded-[15px] border p-6 shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] sm:p-7",
+        featured ? "sm:rounded-[15px] sm:p-8" : "",
         toneClass,
       ].join(" ")}
     >

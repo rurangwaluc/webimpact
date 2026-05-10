@@ -179,8 +179,8 @@ const detailRef = useRef<HTMLDivElement | null>(null);
 
           <div
             ref={servicesCardRef}
-            className="relative overflow-visible rounded-[2.4rem] border border-black/10 bg-[#f7f7f7] p-2 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111]"
-          >            <div className="pointer-events-none absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_78%_0%,rgba(253,91,56,0.16),transparent_34%)]" />
+            className="relative overflow-visible rounded-[15px] border-y border-black/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-2 shadow-2xl shadow-black/[0.06] dark:border-y-white/10 dark:bg-[#111111]"
+          >            <div className="pointer-events-none absolute inset-0 rounded-[15px] bg-[radial-gradient(circle_at_78%_0%,rgba(253,91,56,0.16),transparent_34%)]" />
 
             <div className="relative grid items-start gap-2 lg:grid-cols-[0.82fr_1.18fr]">
               <div className="rounded-[2rem] border border-black/5 bg-white p-2 dark:border-white/10 dark:bg-[#070707] lg:sticky lg:top-28 lg:self-start">
@@ -195,7 +195,7 @@ const detailRef = useRef<HTMLDivElement | null>(null);
                         type="button"
                         onClick={() => handleServiceClick(service)}
                         className={[
-                          "group relative flex w-full items-center gap-4 overflow-hidden rounded-[1.45rem] p-4 text-left transition duration-300",
+                          "group relative flex w-full items-center gap-4 overflow-hidden rounded-[15px] p-4 text-left transition duration-300",
                           isActive
                             ? "text-white shadow-xl shadow-[#fd5b38]/20"
                             : "text-black hover:bg-black/[0.035] dark:text-white dark:hover:bg-white/[0.05]",
@@ -204,7 +204,7 @@ const detailRef = useRef<HTMLDivElement | null>(null);
                         {isActive ? (
                           <motion.span
                             layoutId="activeServiceBackground"
-                            className="absolute inset-0 rounded-[1.45rem] bg-[#fd5b38]"
+                            className="absolute inset-0 rounded-[15px] bg-[#fd5b38]"
                             transition={{
                               type: "spring",
                               stiffness: 420,
@@ -268,7 +268,7 @@ const detailRef = useRef<HTMLDivElement | null>(null);
 
               <div
                 ref={detailRef}
-                className="scroll-mt-24 overflow-hidden rounded-[2rem] border border-black/5 bg-white dark:border-white/10 dark:bg-[#070707]"
+                className="scroll-mt-24 overflow-hidden rounded-[15px]  border border-black/5 bg-white dark:border-white/10 dark:bg-[#070707]"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -318,7 +318,7 @@ const detailRef = useRef<HTMLDivElement | null>(null);
                     </p>
 
                     <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-[1.5rem] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.035]">
+                      <div className="rounded-[15px] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.035]">
                         <p className="text-sm font-black text-black dark:text-white">
                           What it fixes
                         </p>
@@ -336,7 +336,7 @@ const detailRef = useRef<HTMLDivElement | null>(null);
                         </ul>
                       </div>
 
-                      <div className="rounded-[1.5rem] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.035]">
+                      <div className="rounded-[15px] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.035]">
                         <p className="text-sm font-black text-black dark:text-white">
                           What you get
                         </p>
@@ -347,7 +347,7 @@ const detailRef = useRef<HTMLDivElement | null>(null);
                       </div>
                     </div>
 
-                    <div className="mt-3 rounded-[1.5rem] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-5">
+                    <div className="mt-3 rounded-[15px] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-5">
                       <p className="text-sm font-black text-[#fd5b38]">
                         Why it matters
                       </p>

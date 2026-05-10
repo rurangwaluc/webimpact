@@ -14,7 +14,7 @@ export function BlogPreviewSectionClient({ posts }: { posts: BlogPost[] }) {
   return (
     <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-5 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-12">
+        <div className="rounded-[15px] border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-5 shadow-2xl shadow-black/[0.06] dark:bg-[#111111] sm:p-8 lg:p-12">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
               Insights

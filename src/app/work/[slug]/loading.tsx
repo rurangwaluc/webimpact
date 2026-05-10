@@ -6,7 +6,7 @@ export default function Loading() {
           {/* Hero skeleton */}
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             {/* Image */}
-            <div className="h-[380px] w-full rounded-[2rem] bg-black/10 dark:bg-white/10 sm:h-[460px]" />
+            <div className="h-[380px] w-full rounded-[15px] bg-black/10 dark:bg-white/10 sm:h-[460px]" />
 
             {/* Content */}
             <div className="flex flex-col justify-center">
@@ -32,7 +32,7 @@ export default function Loading() {
             {[1, 2].map((i) => (
               <div
                 key={i}
-                className="rounded-[1.75rem] border border-black/10 bg-white p-6 dark:border-white/10 dark:bg-[#111111]"
+                className="rounded-[15px] border border-black/10 bg-white p-6 dark:border-white/10 dark:bg-[#111111]"
               >
                 <div className="h-5 w-40 rounded bg-black/10 dark:bg-white/10" />
                 <div className="mt-4 space-y-3">

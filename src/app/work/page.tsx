@@ -155,7 +155,7 @@ export default async function WorkPage({
 
       <section className="px-3 pb-10 pt-6 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.75rem]">
+          <div className="relative overflow-hidden rounded-[15px] border-y border-black/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-y-white/10 dark:bg-[#111111] sm:rounded-[15px]">
             <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/20 blur-3xl" />
             <div className="pointer-events-none absolute bottom-[-160px] left-[-120px] h-[28rem] w-[28rem] rounded-full bg-black/[0.05] blur-3xl dark:bg-white/10" />
 
@@ -222,7 +222,7 @@ export default async function WorkPage({
                 </div>
               </div>
 
-              <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-4 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#070707] sm:rounded-[2.35rem] sm:p-5">
+              <div className="relative overflow-hidden rounded-[15px]  border border-black/10 bg-white p-4 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#070707] sm:rounded-[2.35rem] sm:p-5">
                 <div className="pointer-events-none absolute right-[-90px] top-[-90px] h-64 w-64 rounded-full bg-[#fd5b38]/15 blur-3xl" />
 
                 <div className="relative">
@@ -404,7 +404,7 @@ export default async function WorkPage({
 
 function EmptyState({ isAdmin }: { isAdmin: boolean }) {
   return (
-    <div className="rounded-[2rem] border border-black/10 bg-[#f7f7f7] p-8 text-center dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.5rem] sm:p-12">
+    <div className="rounded-[15px]  border border-black/10 bg-[#f7f7f7] p-8 text-center dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.5rem] sm:p-12">
       <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[#fd5b38] text-white">
         <Search className="h-6 w-6" />
       </div>
@@ -432,7 +432,7 @@ function EmptyState({ isAdmin }: { isAdmin: boolean }) {
 
 function FeaturedWorkCard({ project }: { project: WorkProject }) {
   return (
-    <article className="group overflow-hidden rounded-[2.5rem] border border-black/10 bg-white shadow-2xl shadow-black/[0.06] transition duration-500 hover:-translate-y-1 hover:shadow-black/[0.12] dark:border-white/10 dark:bg-[#111111]">
+    <article className="group overflow-hidden rounded-[15px] border border-black/10 bg-white shadow-2xl shadow-black/[0.06] transition duration-500 hover:-translate-y-1 hover:shadow-black/[0.12] dark:border-white/10 dark:bg-[#111111]">
       <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
         <WorkImage project={project} className="h-full min-h-[520px]" priority />
 
@@ -529,7 +529,7 @@ function MiniProofBlock({
 
 function CompactWorkCard({ project }: { project: WorkProject }) {
   return (
-    <article className="group overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111]">
+    <article className="group overflow-hidden rounded-[15px]  border border-black/10 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111]">
       <WorkImage project={project} className="h-[250px]" />
 
       <div className="p-5">

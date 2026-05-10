@@ -107,8 +107,7 @@ export function HeroSection() {
       `}</style>
 
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-2xl shadow-black/[0.08] dark:border-white/10 dark:bg-[#0b0b0b] sm:rounded-[2.25rem]">
-          <div className="hero-soft-glow pointer-events-none absolute right-[-90px] top-[-90px] h-72 w-72 rounded-full bg-[#fd5b38]/18 blur-3xl" />
+<div className="relative overflow-hidden rounded-[15px] border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-white shadow-2xl shadow-black/[0.08] dark:bg-[#0b0b0b] sm:rounded-[15px]">          <div className="hero-soft-glow pointer-events-none absolute right-[-90px] top-[-90px] h-72 w-72 rounded-full bg-[#fd5b38]/18 blur-3xl" />
           <div className="pointer-events-none absolute bottom-[-140px] left-[-120px] h-80 w-80 rounded-full bg-black/[0.04] blur-3xl dark:bg-white/10" />
 
           <div className="relative grid gap-8 px-4 py-7 min-[390px]:px-5 sm:px-7 sm:py-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-10 lg:px-12 lg:py-14 xl:px-14">

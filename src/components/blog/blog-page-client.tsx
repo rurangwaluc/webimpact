@@ -106,7 +106,7 @@ export function BlogPageClient({
   return (
     <main className="w-full overflow-x-hidden bg-white px-4 py-12 dark:bg-[#070707] sm:px-6 lg:px-8 lg:py-20">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="w-full overflow-hidden rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-5 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-12">
+        <div className="w-full overflow-hidden rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-5 shadow-2xl shadow-black/[0.06] dark:bg-[#111111] sm:p-8 lg:p-12">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
               Insights
@@ -133,7 +133,7 @@ export function BlogPageClient({
             ) : null}
           </div>
 
-          <section className="mt-10 w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-[#070707] sm:p-5">
+          <section className="mt-10 w-full overflow-hidden rounded-[15px] border border-black/10 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-[#070707] sm:p-5">
             <div className="flex min-w-0 flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <div className="flex min-w-0 items-center gap-3">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#fd5b38] text-white">
@@ -190,7 +190,7 @@ export function BlogPageClient({
               {featuredPost ? (
                 <Link
                   href={`/blog/${featuredPost.slug}`}
-                  className="group mt-12 grid min-w-0 overflow-hidden rounded-[2rem] border border-black/10 bg-white transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#070707] lg:grid-cols-[0.95fr_1fr]"
+                  className="group mt-12 grid min-w-0 overflow-hidden rounded-[15px] border border-black/10 bg-white transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#070707] lg:grid-cols-[0.95fr_1fr]"
                 >
                   <div className="relative min-h-[280px] overflow-hidden bg-black sm:min-h-[360px] lg:min-h-[430px]">
                     {featuredPost.cover_image_url ? (
@@ -252,8 +252,8 @@ export function BlogPageClient({
                     href={`/blog/${post.slug}`}
                     className="group min-w-0"
                   >
-                    <article className="h-full min-w-0 rounded-[2rem] border border-transparent p-2 transition hover:border-black/10 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.06] dark:hover:border-white/10 dark:hover:bg-[#070707]">
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-black">
+                    <article className="h-full min-w-0 rounded-[15px] border border-transparent p-2 transition hover:border-black/10 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.06] dark:hover:border-white/10 dark:hover:bg-[#070707]">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-[15px]  bg-black">
                         {post.cover_image_url ? (
                           <Image
                             src={post.cover_image_url}
@@ -359,8 +359,8 @@ function PremiumSortDropdown({
                 }}
                 className={
                   active
-                    ? "w-full rounded-[1.15rem] bg-[#fd5b38] px-4 py-3 text-left text-white"
-                    : "w-full rounded-[1.15rem] px-4 py-3 text-left text-black/75 transition hover:bg-black/[0.04] dark:text-white/75 dark:hover:bg-white/[0.06]"
+                    ? "w-full rounded-[15px]  bg-[#fd5b38] px-4 py-3 text-left text-white"
+                    : "w-full rounded-[15px]  px-4 py-3 text-left text-black/75 transition hover:bg-black/[0.04] dark:text-white/75 dark:hover:bg-white/[0.06]"
                 }
               >
                 <span className="block text-sm font-black">{sort.label}</span>
@@ -384,7 +384,7 @@ function PremiumSortDropdown({
 
 function EmptyState() {
   return (
-    <div className="mt-12 rounded-[2rem] border border-black/10 bg-white p-10 text-center dark:border-white/10 dark:bg-[#070707]">
+    <div className="mt-12 rounded-[15px] border border-black/10 bg-white p-10 text-center dark:border-white/10 dark:bg-[#070707]">
       <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[#fd5b38] text-white">
         <Search className="h-6 w-6" />
       </div>

@@ -44,7 +44,7 @@ export function Footer() {
     <footer className="border-t border-black/10 bg-white dark:border-white/10 dark:bg-[#070707]">
       <div className="px-3 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-[2rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.05] dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.5rem]">
+          <div className="overflow-hidden rounded-[15px] border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] shadow-2xl shadow-black/[0.05] dark:bg-[#111111] sm:rounded-[15px]">
             <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
               <div className="relative border-b border-black/10 p-5 dark:border-white/10 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
                 <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#fd5b38]/15 blur-3xl" />

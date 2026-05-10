@@ -37,7 +37,7 @@ export function WorkPreviewSectionClient({
     return (
       <section className="px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="rounded-[2.25rem] border border-black/10 bg-[#f7f7f7] p-8 text-center dark:border-white/10 dark:bg-[#111111] sm:p-10">
+          <div className="rounded-[15px]  border border-black/10 bg-[#f7f7f7] p-8 text-center dark:border-white/10 dark:bg-[#111111] sm:p-10">
             <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[#fd5b38] text-white">
               <Search className="h-6 w-6" />
             </div>
@@ -99,7 +99,7 @@ export function WorkPreviewSectionClient({
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.75, ease: smoothEase }}
-            className="group flex min-h-[720px] flex-col overflow-hidden rounded-[2.25rem] border border-black/10 bg-white shadow-2xl shadow-black/[0.055] transition duration-500 hover:-translate-y-1 hover:shadow-black/[0.11] dark:border-white/10 dark:bg-[#111111] lg:min-h-[620px]"
+            className="group flex min-h-[720px] flex-col overflow-hidden rounded-[15px] border border-black/10 bg-white shadow-2xl shadow-black/[0.055] transition duration-500 hover:-translate-y-1 hover:shadow-black/[0.11] dark:border-white/10 dark:bg-[#111111] lg:min-h-[620px]"
           >
             <WorkImage
               project={mainProject}
@@ -190,7 +190,7 @@ function SmallWorkCard({
         delay: index * 0.08,
         ease: smoothEase,
       }}
-      className="group grid min-h-[350px] overflow-hidden rounded-[1.85rem] border border-black/10 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111] sm:grid-cols-[0.62fr_1.38fr] lg:min-h-0"
+      className="group grid min-h-[350px] overflow-hidden rounded-[15px]  border border-black/10 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111] sm:grid-cols-[0.62fr_1.38fr] lg:min-h-0"
     >
       <WorkImage
         project={project}
@@ -252,8 +252,8 @@ function ComingSoonCard({ compact = false }: { compact?: boolean }) {
     <div
       className={
         compact
-          ? "rounded-[1.85rem] border border-dashed border-black/15 bg-black/[0.025] p-6 dark:border-white/15 dark:bg-white/[0.04]"
-          : "rounded-[1.85rem] border border-dashed border-black/15 bg-black/[0.025] p-6 dark:border-white/15 dark:bg-white/[0.04]"
+          ? "rounded-[15px] border border-dashed border-black/15 bg-black/[0.025] p-6 dark:border-white/15 dark:bg-white/[0.04]"
+          : "rounded-[15px] border border-dashed border-black/15 bg-black/[0.025] p-6 dark:border-white/15 dark:bg-white/[0.04]"
       }
     >
       <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#fd5b38] text-white">

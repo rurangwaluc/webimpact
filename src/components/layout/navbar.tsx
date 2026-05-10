@@ -83,7 +83,7 @@ export function Navbar() {
       >
         <div
           className={cn(
-            "mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-[15px] border transition-all duration-300",
+            "mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-[15px] border-y border-black/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] transition-all duration-300",
             scrolled
               ? "border-black/10 bg-white/82 px-3 py-2 shadow-2xl shadow-black/[0.08] backdrop-blur-2xl dark:border-white/10 dark:bg-[#070707]/82"
               : "border-black/5 bg-white/70 px-3 py-2.5 shadow-xl shadow-black/[0.04] backdrop-blur-xl dark:border-white/10 dark:bg-[#070707]/70",

@@ -58,7 +58,7 @@ export function WhyChooseSection() {
               return (
                 <article
                   key={reason.title}
-                  className="group flex min-h-[245px] flex-col rounded-[2rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-sm transition duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111] dark:hover:bg-[#151515]"
+                  className="group flex min-h-[245px] flex-col rounded-[15px] border border-black/10 bg-[#f7f7f7] p-6 shadow-sm transition duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111] dark:hover:bg-[#151515]"
                 >
                   <div className="flex items-center gap-3">
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-black/10 bg-white text-[#fd5b38] transition duration-500 group-hover:bg-[#fd5b38] group-hover:text-white dark:border-white/10 dark:bg-white/[0.06]">
@@ -85,7 +85,7 @@ export function WhyChooseSection() {
             })}
           </div>
 
-          <aside className="relative overflow-hidden rounded-[2rem] bg-[#fd5b38] p-7 text-white shadow-2xl shadow-[#fd5b38]/20 lg:min-h-full">
+          <aside className="relative overflow-hidden rounded-[15px] bg-[#fd5b38] p-7 text-white shadow-2xl shadow-[#fd5b38]/20 lg:min-h-full">
             <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-56 w-56 rounded-full bg-white/20 blur-3xl" />
 
             <div className="relative flex h-full flex-col justify-between">

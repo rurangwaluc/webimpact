@@ -12,7 +12,7 @@ export function FinalCtaSection() {
   return (
     <section className="px-4 pb-20 pt-10 sm:px-6 lg:px-8 lg:pb-28 lg:pt-14">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#0b0b0b] dark:shadow-black/20">
+        <div className="relative overflow-hidden rounded-[15px] border-y border-black/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-y-white/10 dark:bg-[#0b0b0b] dark:shadow-black/20">
           {/* glow accents */}
           <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/20 blur-3xl" />
           <div className="pointer-events-none absolute bottom-[-160px] left-[-120px] h-[28rem] w-[28rem] rounded-full bg-black/[0.05] blur-3xl dark:bg-white/10" />

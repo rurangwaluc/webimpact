@@ -316,11 +316,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <section className="px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-16 lg:pt-14">
         <div className="mx-auto max-w-7xl">
-          <div className="relative rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] p-3 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-4">
+          <div className="relative rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-3 shadow-2xl shadow-black/[0.06] dark:bg-[#111111] sm:p-4">
             <div className="pointer-events-none absolute left-[-120px] top-[-120px] h-96 w-96 rounded-full bg-[#fd5b38]/15 blur-3xl" />
             <div className="pointer-events-none absolute bottom-[-140px] right-[-140px] h-96 w-96 rounded-full bg-black/[0.05] blur-3xl dark:bg-white/10" />
 
-            <div className="relative grid gap-0 rounded-[2.35rem] bg-white dark:bg-[#070707] lg:grid-cols-[320px_minmax(0,1fr)]">
+            <div className="relative grid gap-0 rounded-[15px] bg-white dark:bg-[#070707] lg:grid-cols-[320px_minmax(0,1fr)]">
               <aside className="hidden border-r border-black/10 bg-black/[0.015] p-6 dark:border-white/10 dark:bg-white/[0.025] lg:block">
                 <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
                   <Link
@@ -450,7 +450,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <section className="px-4 pb-12 sm:px-6 lg:px-8 lg:pb-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[minmax(0,1fr)_400px]">
-          <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-10">
+          <div className="rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:bg-[#111111] sm:p-8 lg:p-10">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
@@ -487,7 +487,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8">
+          <div className="rounded-[15px] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8">
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fd5b38] text-white">
               <Sparkles className="h-5 w-5" />
             </div>
@@ -521,7 +521,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {relatedPosts.length > 0 ? (
         <section className="px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
           <div className="mx-auto max-w-7xl">
-            <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-10">
+            <div className="rounded-[15px] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-10">
               <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
@@ -549,7 +549,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     href={`/blog/${item.slug}`}
                     className="group"
                   >
-                    <article className="h-full rounded-[2rem] border border-black/10 bg-white p-3 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#070707]">
+                    <article className="h-full rounded-[15px] border border-black/10 bg-white p-3 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#070707]">
                       <div className="relative aspect-[4/3] overflow-hidden rounded-tr-[15px] rounded-[1.5rem] bg-black">
                         {item.cover_image_url ? (
                           // eslint-disable-next-line @next/next/no-img-element
@@ -621,7 +621,7 @@ function BlogMarkdown({ content }: { content: string }) {
 
         if (block.type === "image") {
           return (
-            <figure key={index} className="my-10 overflow-hidden rounded-[2rem]">
+            <figure key={index} className="my-10 overflow-hidden rounded-[15px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={block.url}
@@ -658,7 +658,7 @@ function BlogMarkdown({ content }: { content: string }) {
           return (
             <blockquote
               key={index}
-              className="my-8 rounded-[2rem] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-6 text-xl font-semibold leading-8 tracking-[-0.035em] text-black dark:text-white"
+              className="my-8 rounded-[15px] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-6 text-xl font-semibold leading-8 tracking-[-0.035em] text-black dark:text-white"
             >
               {block.content}
             </blockquote>

@@ -86,7 +86,7 @@ export function ProcessSection() {
   return (
     <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-visible rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] p-4 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-5 lg:p-7">
+        <div className="relative overflow-visible rounded-[15px] border-y border-black/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-4 shadow-2xl shadow-black/[0.06] dark:border-y-white/10 dark:bg-[#111111] sm:p-5 lg:p-7">
           <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/20 blur-3xl" />
           <div className="pointer-events-none absolute bottom-[-160px] left-[-140px] h-96 w-96 rounded-full bg-black/[0.04] blur-3xl dark:bg-white/10" />
 

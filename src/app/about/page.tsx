@@ -62,7 +62,7 @@ export default function AboutPage() {
       {/* WHAT WE DO */}
       <section className="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
         <div className="mx-auto max-w-7xl">
-          <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl dark:border-white/10 dark:bg-[#111111] sm:p-10">
+          <div className="rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-6 shadow-2xl dark:bg-[#111111] sm:p-10">
             <div className="grid gap-8 md:grid-cols-3">
               {[
                 {
@@ -83,7 +83,7 @@ export default function AboutPage() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="rounded-[2rem] border border-black/10 bg-white p-6 dark:border-white/10 dark:bg-[#070707]"
+                  className="rounded-[15px]  border border-black/10 bg-white p-6 dark:border-white/10 dark:bg-[#070707]"
                 >
                   <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fd5b38] text-white">
                     {item.icon}
@@ -139,7 +139,7 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div className="rounded-[2rem] border border-black/10 bg-[#f7f7f7] p-6 dark:border-white/10 dark:bg-[#111111]">
+            <div className="rounded-[15px]  border border-black/10 bg-[#f7f7f7] p-6 dark:border-white/10 dark:bg-[#111111]">
               <div className="grid gap-4">
                 {[
                   {
@@ -187,7 +187,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
         <div className="mx-auto max-w-5xl">
-          <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-8 text-center shadow-2xl dark:border-white/10 dark:bg-[#111111] sm:p-12">
+          <div className="rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-8 text-center shadow-2xl dark:bg-[#111111] sm:p-12">
             <h2 className="text-3xl font-semibold tracking-[-0.045em] text-black dark:text-white">
               Ready to build something serious?
             </h2>

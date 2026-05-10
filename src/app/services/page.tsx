@@ -141,7 +141,7 @@ export default function ServicesPage() {
 
       <section className="px-4 pb-12 pt-10 sm:px-6 sm:pt-14 lg:px-8 lg:pb-20 lg:pt-20">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111]">
+          <div className="relative overflow-hidden rounded-[15px] border-y border-black/10 dark:border-y-white/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:bg-[#111111]">
             <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/20 blur-3xl" />
             <div className="pointer-events-none absolute bottom-[-160px] left-[-120px] h-[28rem] w-[28rem] rounded-full bg-black/[0.05] blur-3xl dark:bg-white/10" />
 
@@ -186,7 +186,7 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              <div className="rounded-[2.25rem] border border-black/10 bg-white p-5 shadow-xl dark:border-white/10 dark:bg-[#070707] sm:p-6">
+              <div className="rounded-[15px] border border-black/10 bg-white p-5 shadow-xl dark:border-white/10 dark:bg-[#070707] sm:p-6">
                 <div className="flex items-center gap-3">
                   <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fd5b38] text-white">
                     <ShieldCheck className="h-5 w-5" />
@@ -262,7 +262,7 @@ export default function ServicesPage() {
                 return (
                   <article
                     key={service.href}
-                    className="group overflow-hidden rounded-[2.15rem] border border-black/10 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111]"
+                    className="group overflow-hidden rounded-[15px]  border border-black/10 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111]"
                   >
                     <div className="grid gap-0 lg:grid-cols-[0.82fr_1fr]">
                       <div className="relative border-b border-black/10 p-6 dark:border-white/10 lg:border-b-0 lg:border-r">
@@ -325,7 +325,7 @@ export default function ServicesPage() {
 
       <section className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2.75rem] border border-black/10 bg-black p-6 text-white shadow-2xl shadow-black/15 dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-12">
+          <div className="relative overflow-hidden rounded-[15px]  border border-black/10 bg-black p-6 text-white shadow-2xl shadow-black/15 dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-12">
             <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/25 blur-3xl" />
 
             <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -357,7 +357,7 @@ export default function ServicesPage() {
                 {seoClusters.map((cluster) => (
                   <div
                     key={cluster.title}
-                    className="rounded-[2rem] border border-white/10 bg-white/[0.055] p-5"
+                    className="rounded-[15px] border border-white/10 bg-white/[0.055] p-5"
                   >
                     <p className="text-sm font-black text-white">
                       {cluster.title}
@@ -415,7 +415,7 @@ export default function ServicesPage() {
               ].map(([number, title, text]) => (
                 <article
                   key={number}
-                  className="grid gap-5 rounded-[2rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111] sm:grid-cols-[80px_1fr]"
+                  className="grid gap-5 rounded-[15px] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111] sm:grid-cols-[80px_1fr]"
                 >
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#fd5b38] text-sm font-black text-white">
                     {number}
@@ -438,7 +438,7 @@ export default function ServicesPage() {
 
       <section className="px-4 pb-20 pt-10 sm:px-6 lg:px-8 lg:pb-28">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2.75rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-12">
+          <div className="relative overflow-hidden rounded-[15px]  border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-12">
             <div className="pointer-events-none absolute right-[-120px] top-[-120px] h-80 w-80 rounded-full bg-[#fd5b38]/20 blur-3xl" />
 
             <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
