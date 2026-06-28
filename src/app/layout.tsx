@@ -5,7 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import FloatingAdminButton from "@/components/admin/FloatingAdminButton";
 import "./globals.css";
 
 const quicksand = Quicksand({
@@ -63,7 +62,6 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <FloatingAdminButton />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

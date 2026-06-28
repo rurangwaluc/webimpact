@@ -4,297 +4,180 @@ import {
   BarChart3,
   CheckCircle2,
   Globe2,
-  LineChart,
-  ShieldCheck,
-  Sparkles,
-  Target,
+  Layers3,
+  LockKeyhole,
+  MonitorSmartphone,
+  Workflow,
 } from "lucide-react";
 
-const serviceCards = [
+const proofPoints = [
+  "Revenue websites that make buyers trust you faster",
+  "Internal tools that remove manual work and owner blindness",
+  "SaaS foundations built for real operations, not demos",
+];
+
+const systemLayers = [
   {
-    icon: Sparkles,
-    title: "Websites that sell",
+    label: "Market layer",
+    title: "Website, SEO, conversion",
+    icon: Globe2,
   },
   {
-    icon: Target,
-    title: "Systems that create control",
+    label: "Operations layer",
+    title: "Sales, stock, staff, reports",
+    icon: Workflow,
   },
   {
-    icon: LineChart,
-    title: "Dashboards that show truth",
+    label: "Product layer",
+    title: "Dashboards, portals, SaaS",
+    icon: Layers3,
   },
 ];
 
-const proofItems = ["Trust", "Sales", "Control", "Growth"];
+const dashboardStats = [
+  { label: "Lead quality", value: "+41%" },
+  { label: "Manual steps", value: "-62%" },
+  { label: "Decision speed", value: "3.4x" },
+];
 
 export function HeroSection() {
   return (
-    <section className="w-full overflow-x-hidden px-3 pb-8 pt-3 sm:px-5 lg:pb-10">
-      <style>{`
-        @keyframes heroFadeUp {
-          from { opacity: 0; transform: translateY(18px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes heroImageZoom {
-          from { transform: scale(1.02); }
-          to { transform: scale(1.06); }
-        }
-
-        @keyframes heroFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-
-        @keyframes heroFloatReverse {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(7px); }
-        }
-
-        @keyframes heroSoftGlow {
-          0%, 100% { opacity: .45; transform: scale(1); }
-          50% { opacity: .85; transform: scale(1.08); }
-        }
-
-        @keyframes heroChipShine {
-          from { transform: translateX(-120%); }
-          to { transform: translateX(120%); }
-        }
-
-        .hero-fade-up {
-          animation: heroFadeUp .8s ease both;
-        }
-
-        .hero-image {
-          animation: heroImageZoom 18s ease-in-out infinite alternate;
-        }
-
-        .hero-float {
-          animation: heroFloat 6s ease-in-out infinite;
-        }
-
-        .hero-float-reverse {
-          animation: heroFloatReverse 7s ease-in-out infinite;
-        }
-
-        .hero-soft-glow {
-          animation: heroSoftGlow 5.5s ease-in-out infinite;
-        }
-
-        .hero-shine::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.18) 45%, transparent 70%);
-          transform: translateX(-120%);
-          transition: transform .8s ease;
-        }
-
-        .hero-shine:hover::after {
-          animation: heroChipShine .85s ease both;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .hero-fade-up,
-          .hero-image,
-          .hero-float,
-          .hero-float-reverse,
-          .hero-soft-glow,
-          .hero-shine:hover::after {
-            animation: none !important;
-          }
-        }
-      `}</style>
-
+    <section className="w-full overflow-x-hidden px-3 pb-8 pt-3 sm:px-5 lg:pb-12">
       <div className="mx-auto max-w-7xl">
-<div className="relative overflow-hidden rounded-[15px] border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-white shadow-2xl shadow-black/[0.08] dark:bg-[#0b0b0b] sm:rounded-[15px]">          <div className="hero-soft-glow pointer-events-none absolute right-[-90px] top-[-90px] h-72 w-72 rounded-full bg-[#fd5b38]/18 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-[-140px] left-[-120px] h-80 w-80 rounded-full bg-black/[0.04] blur-3xl dark:bg-white/10" />
+        <div className="relative overflow-hidden rounded-[16px] border border-black/10 bg-[#f7f4ef] shadow-2xl shadow-black/[0.08] dark:border-white/10 dark:bg-[#0a0a0a]">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#fd5b38] to-transparent" />
+          <div className="pointer-events-none absolute right-[-18rem] top-[-18rem] h-[38rem] w-[38rem] rounded-full bg-[#fd5b38]/20 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-[-20rem] left-[-18rem] h-[34rem] w-[34rem] rounded-full bg-black/10 blur-3xl dark:bg-white/10" />
 
-          <div className="relative grid gap-8 px-4 py-7 min-[390px]:px-5 sm:px-7 sm:py-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-10 lg:px-12 lg:py-14 xl:px-14">
-            <div className="max-w-2xl">
-              <div className="hero-fade-up inline-flex max-w-full items-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-3 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-black/60 dark:border-white/10 dark:bg-white/[0.06] dark:text-white/65 min-[390px]:text-[10px] sm:px-3.5 sm:text-[11px] sm:tracking-[0.18em]">
+          <div className="relative grid gap-10 px-4 py-8 min-[390px]:px-5 sm:px-8 sm:py-12 lg:grid-cols-[0.94fr_1.06fr] lg:items-center lg:gap-12 lg:px-12 lg:py-16 xl:px-14">
+            <div className="max-w-3xl">
+              <div className="inline-flex max-w-full items-center gap-2 rounded-[12px] border border-black/10 bg-white/70 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-black/60 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.06] dark:text-white/65 sm:text-[11px]">
                 <span className="h-2 w-2 shrink-0 rounded-full bg-[#fd5b38]" />
-                <span className="truncate">
-                  Software Development Company in Rwanda
-                </span>
+                <span className="truncate">Rwanda-first. East Africa-ready.</span>
               </div>
 
-              <h1
-                className="hero-fade-up mt-5 max-w-3xl text-[clamp(2rem,9.7vw,3.15rem)] font-bold leading-[0.98] tracking-[-0.058em] text-black dark:text-white sm:text-[clamp(2.7rem,6vw,4.5rem)]"
-                style={{ animationDelay: "120ms" }}
-              >
+              <h1 className="mt-5 max-w-4xl text-[clamp(2.45rem,10vw,5.35rem)] font-bold leading-[0.88] tracking-[-0.075em] text-black dark:text-white">
                 Build the system your business should already be running on.
               </h1>
 
-              <p
-                className="hero-fade-up mt-5 max-w-xl text-[14px] font-medium leading-7 text-black/62 dark:text-white/68 min-[390px]:text-[15px] sm:text-base"
-                style={{ animationDelay: "220ms" }}
-              >
-                We build websites, dashboards, SaaS platforms, and business
-                systems that help serious businesses get more trust, more
-                control, and clearer growth.
+              <p className="mt-6 max-w-2xl text-[15px] font-semibold leading-7 text-black/64 dark:text-white/68 sm:text-base sm:leading-8">
+                WebImpact Lab builds premium websites, business systems,
+                dashboards, SaaS platforms, and automation for companies that
+                need trust, control, and measurable business momentum.
               </p>
 
-              <div
-                className="hero-fade-up mt-7 flex flex-col gap-3 min-[420px]:flex-row sm:mt-8 sm:flex-wrap"
-                style={{ animationDelay: "320ms" }}
-              >
+              <div className="mt-7 grid gap-3 min-[430px]:grid-cols-2 sm:max-w-xl">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#fd5b38]/25 transition duration-300 hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+                  className="group inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#fd5b38] px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition duration-300 hover:-translate-y-0.5 hover:bg-[#e84a2b]"
                 >
                   Start a project
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition group-hover:translate-x-0.5">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </Link>
 
                 <Link
                   href="/work"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-5 py-3 text-sm font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/15 dark:bg-white/10 dark:text-white"
+                  className="group inline-flex items-center justify-center gap-2 rounded-[14px] border border-black/10 bg-white/70 px-5 py-3.5 text-sm font-black text-black transition duration-300 hover:-translate-y-0.5 hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/15 dark:bg-white/[0.06] dark:text-white"
                 >
-                  See our work
+                  See proof
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </Link>
               </div>
 
-              <div
-                className="hero-fade-up mt-8 border-t border-black/10 pt-6 dark:border-white/10"
-                style={{ animationDelay: "420ms" }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#fd5b38]/10 text-[#fd5b38]">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-
-                  <div>
-                    <p className="max-w-md text-sm font-bold leading-6 text-black dark:text-white">
-                      We do not build random pages. We build the parts of the
-                      machine.
-                    </p>
-
-                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-black/40 dark:text-white/40">
-                      Rwanda-first. Built to scale.
+              <div className="mt-8 grid gap-3 border-t border-black/10 pt-6 dark:border-white/10">
+                {proofPoints.map((point) => (
+                  <div key={point} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#fd5b38]" />
+                    <p className="text-sm font-bold leading-5 text-black/70 dark:text-white/70">
+                      {point}
                     </p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div
-              className="hero-fade-up mx-auto w-full max-w-[660px] lg:mr-0"
-              style={{ animationDelay: "220ms" }}
-            >
-              <div className="grid gap-3 sm:grid-cols-[150px_minmax(0,1fr)] lg:grid-cols-[160px_minmax(0,1fr)]">
-                <div className="order-2 grid grid-cols-3 gap-2 min-[390px]:gap-3 sm:order-1 sm:grid-cols-1">
-                  {serviceCards.map((card, index) => {
-                    const Icon = card.icon;
+            <div className="min-w-0">
+              <div className="relative rounded-[16px] border border-black/10 bg-[#0b0b0b] p-3 shadow-2xl shadow-black/20 dark:border-white/10">
+                <div className="grid gap-3 lg:grid-cols-[0.82fr_1fr]">
+                  <div className="grid gap-3">
+                    {systemLayers.map((item) => {
+                      const Icon = item.icon;
 
-                    return (
-                      <div
-                        key={card.title}
-                        className="hero-fade-up hero-shine relative overflow-hidden rounded-[1.15rem] border border-black/10 bg-[#111827] p-3 text-white shadow-xl shadow-black/10 transition duration-500 hover:-translate-y-1 hover:border-[#fd5b38]/35 dark:border-white/10 min-[390px]:rounded-[1.35rem] sm:min-h-[132px] sm:p-4"
-                        style={{ animationDelay: `${360 + index * 100}ms` }}
-                      >
-                        <div className="grid h-8 w-8 place-items-center rounded-xl bg-[#fd5b38]/15 text-[#fd5b38] min-[390px]:h-9 min-[390px]:w-9 min-[390px]:rounded-2xl">
-                          <Icon className="h-4 w-4" />
+                      return (
+                        <div
+                          key={item.label}
+                          className="rounded-[15px] border border-white/10 bg-white/[0.06] p-4"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#fd5b38] text-white">
+                              <Icon className="h-4 w-4" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#fd5b38]">
+                                {item.label}
+                              </p>
+                              <p className="mt-1 text-sm font-black leading-5 text-white">
+                                {item.title}
+                              </p>
+                            </div>
+                          </div>
                         </div>
+                      );
+                    })}
 
-                        <p className="mt-4 text-[10px] font-bold leading-4 min-[390px]:text-[11px] sm:mt-5 sm:text-sm sm:leading-5">
-                          {card.title}
+                    <div className="rounded-[15px] border border-[#fd5b38]/25 bg-[#fd5b38]/10 p-4">
+                      <div className="flex items-start gap-3">
+                        <LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-[#fd5b38]" />
+                        <p className="text-sm font-bold leading-6 text-white/74">
+                          Built with clean UX, performance foundations, SEO,
+                          scalable structure, and handover your team can use.
                         </p>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  </div>
 
-                <div className="order-1 overflow-hidden rounded-[1.5rem] rounded-tr-[2.9rem] border border-black/10 bg-black shadow-2xl shadow-black/15 dark:border-white/10 min-[390px]:rounded-[1.75rem] min-[390px]:rounded-tr-[3.4rem] sm:order-2 sm:rounded-tr-[4.25rem]">
-                  <div className="relative h-[300px] overflow-hidden min-[390px]:h-[330px] sm:h-[440px] lg:h-[500px]">
-                    <img
-                      src="/hero-africa-team.webp"
-                      alt="African business team planning a digital growth system"
-                      className="hero-image h-full w-full object-cover object-center"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/16 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/32 via-transparent to-transparent" />
-
-                    <div className="hero-float-reverse absolute right-3 top-3 max-w-[145px] rounded-[1.15rem] border border-white/15 bg-white/95 p-3 text-black shadow-2xl backdrop-blur-xl min-[390px]:right-4 min-[390px]:top-4 min-[390px]:max-w-[170px] sm:right-5 sm:top-5 sm:max-w-[210px] sm:rounded-[1.5rem] sm:p-4">
-                      <div className="flex items-center gap-2">
-                        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#fd5b38] text-white">
-                          <Globe2 className="h-4 w-4" />
-                        </div>
-
-                        <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[#fd5b38]">
-                          Africa-ready
+                  <div className="overflow-hidden rounded-[15px] border border-white/10 bg-[#f7f7f7] dark:bg-[#111111]">
+                    <div className="flex items-center justify-between gap-3 border-b border-black/10 bg-white p-4 dark:border-white/10 dark:bg-[#070707]">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#fd5b38]">
+                          Control room
+                        </p>
+                        <p className="mt-1 text-lg font-bold tracking-[-0.04em] text-black dark:text-white">
+                          Business system preview
                         </p>
                       </div>
-
-                      <p className="mt-3 text-[12px] font-bold leading-5 text-black min-[390px]:text-[13px] sm:text-sm">
-                        Systems built for local realities and serious growth.
-                      </p>
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#fd5b38] text-white">
+                        <BarChart3 className="h-4 w-4" />
+                      </div>
                     </div>
 
-                    <div className="hero-float absolute bottom-3 left-3 right-3 rounded-[1.25rem] border border-white/15 bg-black/68 p-3 text-white shadow-2xl backdrop-blur-xl min-[390px]:bottom-4 min-[390px]:left-4 min-[390px]:right-4 sm:bottom-5 sm:left-5 sm:right-auto sm:w-[330px] sm:rounded-[1.5rem] sm:p-4">
-                      <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#fd5b38] sm:text-[10px]">
-                        Growth system
-                      </p>
+                    <div className="p-4">
+                      <div className="overflow-hidden rounded-[14px] border border-black/10 bg-white dark:border-white/10 dark:bg-[#070707]">
+                        <img
+                          src="/images/hero-business-systems.webp"
+                          alt="Business software dashboard interface preview"
+                          className="h-[210px] w-full object-cover object-top sm:h-[260px] lg:h-[320px]"
+                        />
+                      </div>
 
-                      <p className="mt-1 text-[15px] font-bold leading-5 tracking-[-0.035em] sm:text-lg">
-                        Website → Sales → Dashboard → Control
-                      </p>
-
-                      <div className="mt-3 grid grid-cols-4 gap-1.5 min-[390px]:gap-2">
-                        {proofItems.map((item) => (
+                      <div className="mt-3 grid grid-cols-3 gap-2">
+                        {dashboardStats.map((stat) => (
                           <div
-                            key={item}
-                            className="hero-shine relative overflow-hidden rounded-xl border border-white/10 bg-white/10 px-1.5 py-2 text-center text-[9px] font-bold text-white/85 transition hover:bg-white/15 min-[390px]:text-[10px]"
+                            key={stat.label}
+                            className="rounded-[13px] border border-black/10 bg-white p-3 dark:border-white/10 dark:bg-[#070707]"
                           >
-                            {item}
+                            <p className="text-lg font-black tracking-[-0.04em] text-black dark:text-white">
+                              {stat.value}
+                            </p>
+                            <p className="mt-1 text-[10px] font-bold leading-4 text-black/48 dark:text-white/48">
+                              {stat.label}
+                            </p>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="hero-fade-up mt-3 rounded-[1.35rem] border border-black/10 bg-white p-4 shadow-2xl shadow-black/12 dark:border-white/10 dark:bg-[#111111] sm:mx-auto sm:max-w-[520px] sm:rounded-[1.5rem]">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20">
-                    <BarChart3 className="h-5 w-5" />
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-bold text-black dark:text-white">
-                      Before we build, we find the leak.
-                    </p>
-                    <p className="mt-1 text-xs font-semibold text-black/50 dark:text-white/50">
-                      Trust, sales, visibility, operations, or growth.
-                    </p>
-                  </div>
-
-                  <CheckCircle2 className="ml-auto hidden h-5 w-5 text-[#fd5b38] min-[390px]:block" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative border-t border-black/10 px-4 py-4 dark:border-white/10 sm:px-7 lg:px-12">
-            <div className="flex flex-col gap-3 text-sm font-medium text-black/55 dark:text-white/60 md:flex-row md:items-center md:justify-between">
-              <p className="font-bold text-black dark:text-white">
-                Built for serious businesses, not decoration.
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {proofItems.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-black/10 bg-black/[0.03] px-3 py-1.5 text-xs font-bold text-black/60 dark:border-white/10 dark:bg-white/[0.06] dark:text-white/60"
-                  >
-                    {item}
-                  </span>
-                ))}
               </div>
             </div>
           </div>
