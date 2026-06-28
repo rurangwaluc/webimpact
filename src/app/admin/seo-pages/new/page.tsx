@@ -38,18 +38,31 @@ function parseKeywords(value: string) {
 
 function parseFaq(value: string) {
   return value
-    .split("\n")
+    .split(/\n{1,}/)
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
-      const [question, ...answerParts] = line.split("|");
+      const separatorIndex = line.indexOf("|");
+
+      if (separatorIndex === -1) {
+        return null;
+      }
+
+      const question = line.slice(0, separatorIndex).trim();
+      const answer = line.slice(separatorIndex + 1).trim();
+
+      if (!question || !answer) {
+        return null;
+      }
 
       return {
-        question: question?.trim() || "",
-        answer: answerParts.join("|").trim(),
+        question,
+        answer,
       };
     })
-    .filter((item) => item.question && item.answer);
+    .filter(
+      (item): item is { question: string; answer: string } => Boolean(item),
+    );
 }
 
 export default function NewSeoPage() {
