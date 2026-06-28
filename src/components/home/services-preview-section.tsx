@@ -1,379 +1,181 @@
-"use client";
-
-import { useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   Bot,
-  CheckCircle2,
   Code2,
   LayoutDashboard,
-  Layers3,
   MonitorSmartphone,
+  Sparkles,
 } from "lucide-react";
 
-type Service = {
-  id: string;
-  number: string;
+type BuildLane = {
   title: string;
-  short: string;
   description: string;
-  fixes: string[];
-  outcome: string;
-  seoLine: string;
-  proof: string;
+  result: string;
   href: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
 };
 
-const services: Service[] = [
+const buildLanes: BuildLane[] = [
   {
-    id: "software",
-    number: "01",
-    title: "Software Development",
-    short: "Custom business software for companies that need control.",
+    title: "Premium websites",
     description:
-      "We build custom software for businesses tired of running operations through Excel, WhatsApp, notebooks, and disconnected tools.",
-    fixes: ["Manual processes", "Operational mistakes", "Disconnected data"],
-    outcome:
-      "A structured software system that helps owners track operations, customers, staff, performance, and business activity in one place.",
-    seoLine:
-      "Custom software development in Rwanda for growing businesses across Kigali, Rwanda, and East Africa.",
-    proof:
-      "Ideal for retail, real estate, service businesses, and operations-heavy companies that need real visibility.",
-    href: "/services/software-development",
-    icon: Code2,
-  },
-  {
-    id: "web",
-    number: "02",
-    title: "Web Development",
-    short: "Websites that explain, sell, and build trust fast.",
-    description:
-      "We build business websites that make your offer clear, make your company look serious, and help visitors take the next step.",
-    fixes: ["Weak positioning", "Low trust", "Poor conversion"],
-    outcome:
-      "A professional website built for trust, SEO, lead generation, and customer conversion, not just decoration.",
-    seoLine:
-      "Web development company in Rwanda building business websites for companies that want more serious leads.",
-    proof:
-      "Built for businesses that need more than a pretty homepage — they need a website that supports sales.",
+      "Positioning, pages, SEO foundations, conversion paths, and trust signals for companies that need buyers to take them seriously.",
+    result: "Better first impression. Better lead quality.",
     href: "/services/web-development",
     icon: MonitorSmartphone,
   },
   {
-    id: "systems",
-    number: "03",
-    title: "Dashboards & Business Systems",
-    short: "Stop guessing. See the numbers that run the business.",
+    title: "Business systems",
     description:
-      "We build dashboards and internal systems that replace manual tracking with real-time visibility into sales, cash, stock, customers, and operations.",
-    fixes: ["No visibility", "Manual reporting", "Scattered workflows"],
-    outcome:
-      "Clear dashboards and workflows that show what is happening inside the business before small problems become expensive.",
-    seoLine:
-      "Business systems and dashboard development services for companies in Rwanda and East Africa.",
-    proof:
-      "Built from real business-control patterns used in systems like BCS and Storvex.",
+      "Sales, stock, cash, customers, staff, documents, branches, workflows, dashboards, and reports in one controlled flow.",
+    result: "Less manual work. More owner visibility.",
     href: "/services/business-systems",
     icon: LayoutDashboard,
   },
   {
-    id: "saas",
-    number: "04",
-    title: "SaaS Platforms",
-    short: "Turn a repeatable workflow into a scalable product.",
+    title: "SaaS & automation",
     description:
-      "We build SaaS platforms for marketplaces, portals, subscriptions, media, payments, search, and multi-tenant business models.",
-    fixes: ["Manual delivery", "No product engine", "Limited scale"],
-    outcome:
-      "A real product foundation that can support users, payments, automation, search, content, and recurring revenue.",
-    seoLine:
-      "SaaS development for founders and businesses building scalable platforms in Rwanda, East Africa, and Africa.",
-    proof:
-      "Designed for founders and businesses turning workflows into scalable digital products.",
+      "Product platforms, portals, subscriptions, marketplaces, AI-assisted workflows, alerts, reporting, and integrations.",
+    result: "Turn repeatable work into scalable software.",
     href: "/services/saas-development",
-    icon: Layers3,
-  },
-  {
-    id: "automation",
-    number: "05",
-    title: "AI & Automation",
-    short: "Remove repetitive work before it slows growth.",
-    description:
-      "We build automation and AI-assisted workflows that reduce repetitive tasks, speed up execution, and make teams more efficient.",
-    fixes: ["Slow tasks", "Human bottlenecks", "Repetitive workflows"],
-    outcome:
-      "A leaner business where common tasks, alerts, reports, and follow-ups happen faster with fewer manual mistakes.",
-    seoLine:
-      "Business automation and AI workflow development for companies that want faster execution and fewer bottlenecks.",
-    proof:
-      "Useful when your team is spending too much time doing work software should handle.",
-    href: "/services/ai-automation",
     icon: Bot,
   },
 ];
 
+const decisionChecks = [
+  "What business problem must this solve?",
+  "What should the software replace?",
+  "What will the owner see that they cannot see today?",
+  "What must happen for the project to pay for itself?",
+];
+
 export function ServicesPreviewSection() {
-  const [active, setActive] = useState<Service>(services[0]);
- const servicesCardRef = useRef<HTMLDivElement | null>(null);
-const detailRef = useRef<HTMLDivElement | null>(null);
-
- function handleServiceClick(service: Service) {
-  if (service.id === active.id) return;
-
-  setActive(service);
-
-  window.setTimeout(() => {
-    servicesCardRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 80);
-}
-
-  const ActiveIcon = active.icon;
-
   return (
-    <section className="px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <section className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
-        <div className="grid items-start gap-10 lg:grid-cols-[0.42fr_1fr] lg:gap-12">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
-              Services
-            </p>
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch">
+          <div className="relative overflow-hidden rounded-[16px] border border-black/10 bg-[#0b0b0b] p-5 text-white shadow-2xl shadow-black/[0.1] dark:border-white/10 sm:p-7 lg:p-8">
+            <div className="pointer-events-none absolute right-[-10rem] top-[-12rem] h-96 w-96 rounded-full bg-[#fd5b38]/25 blur-3xl" />
+            <div className="relative">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
+                What we build
+              </p>
 
-            <h2 className="mt-4 max-w-md text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1] tracking-[-0.055em] text-black dark:text-white">
-              Software development services built around real business growth.
-            </h2>
+              <h2 className="mt-4 max-w-xl text-[clamp(2rem,5vw,3.35rem)] font-semibold leading-[0.96] tracking-[-0.06em]">
+                Fewer services. Stronger business outcomes.
+              </h2>
 
-            <p className="mt-5 max-w-md text-[15px] leading-7 text-black/60 dark:text-white/60">
-              WebImpact Lab helps businesses build websites, business systems,
-              dashboards, SaaS platforms, and automation tools that connect
-              sales, operations, and growth.
-            </p>
+              <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-white/64">
+                WebImpact Lab is not trying to sell everything. We build the
+                digital layers that help a serious business sell, operate,
+                measure, and scale.
+              </p>
 
-            <p className="mt-4 max-w-md text-sm font-semibold leading-6 text-black/75 dark:text-white/75">
-              The goal is simple: more trust, better systems, clearer numbers,
-              and fewer expensive leaks.
-            </p>
+              <div className="mt-7 overflow-hidden rounded-[16px] border border-white/10 bg-white/[0.05]">
+                <div className="border-b border-white/10 p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[13px] bg-[#fd5b38] text-white">
+                      <Sparkles className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/45">
+                        Before we build
+                      </p>
+                      <p className="mt-1 text-lg font-black tracking-[-0.04em]">
+                        The decision filter
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+                <div className="grid gap-2 p-3">
+                  {decisionChecks.map((check) => (
+                    <div
+                      key={check}
+                      className="rounded-[13px] border border-white/10 bg-black/25 p-3 text-sm font-bold leading-5 text-white/72"
+                    >
+                      {check}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-5 py-3 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                className="mt-7 inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
               >
-                View all services
+                View services
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/20 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
-              >
-                Get a free audit
               </Link>
             </div>
           </div>
 
-          <div
-            ref={servicesCardRef}
-            className="relative overflow-visible rounded-[15px] border-y border-black/10 border-l-2 border-r-2 border-l-[#fd5b38] border-r-[#fd5b38] bg-[#f7f7f7] p-2 shadow-2xl shadow-black/[0.06] dark:border-y-white/10 dark:bg-[#111111]"
-          >            <div className="pointer-events-none absolute inset-0 rounded-[15px] bg-[radial-gradient(circle_at_78%_0%,rgba(253,91,56,0.16),transparent_34%)]" />
+          <div className="grid gap-3">
+            {buildLanes.map((lane, index) => {
+              const Icon = lane.icon;
 
-            <div className="relative grid items-start gap-2 lg:grid-cols-[0.82fr_1.18fr]">
-              <div className="rounded-[2rem] border border-black/5 bg-white p-2 dark:border-white/10 dark:bg-[#070707] lg:sticky lg:top-28 lg:self-start">
-                <div className="grid gap-2">
-                  {services.map((service) => {
-                    const isActive = active.id === service.id;
-                    const Icon = service.icon;
+              return (
+                <Link
+                  key={lane.title}
+                  href={lane.href}
+                  className="group grid gap-4 rounded-[16px] border border-black/10 bg-[#f7f7f7] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#fd5b38]/35 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.07] dark:border-white/10 dark:bg-[#111111] dark:hover:bg-[#151515] sm:grid-cols-[72px_1fr_0.76fr] sm:p-5"
+                >
+                  <div className="flex items-center gap-3 sm:block">
+                    <div className="grid h-12 w-12 place-items-center rounded-[14px] bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs font-black text-black/30 dark:text-white/30 sm:mt-4 sm:block">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
 
-                    return (
-                      <button
-                        key={service.id}
-                        type="button"
-                        onClick={() => handleServiceClick(service)}
-                        className={[
-                          "group relative flex w-full items-center gap-4 overflow-hidden rounded-[15px] p-4 text-left transition duration-300",
-                          isActive
-                            ? "text-white shadow-xl shadow-[#fd5b38]/20"
-                            : "text-black hover:bg-black/[0.035] dark:text-white dark:hover:bg-white/[0.05]",
-                        ].join(" ")}
-                      >
-                        {isActive ? (
-                          <motion.span
-                            layoutId="activeServiceBackground"
-                            className="absolute inset-0 rounded-[15px] bg-[#fd5b38]"
-                            transition={{
-                              type: "spring",
-                              stiffness: 420,
-                              damping: 34,
-                            }}
-                          />
-                        ) : null}
+                  <div>
+                    <h3 className="text-2xl font-semibold leading-tight tracking-[-0.05em] text-black dark:text-white">
+                      {lane.title}
+                    </h3>
+                    <p className="mt-3 text-sm font-medium leading-6 text-black/60 dark:text-white/58">
+                      {lane.description}
+                    </p>
+                  </div>
 
-                        <span
-                          className={[
-                            "relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-2xl border transition",
-                            isActive
-                              ? "border-white/20 bg-white/15 text-white"
-                              : "border-black/10 bg-black/[0.03] text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04]",
-                          ].join(" ")}
-                        >
-                          <Icon className="h-5 w-5" />
-                        </span>
+                  <div className="flex flex-col justify-between rounded-[14px] border border-[#fd5b38]/20 bg-white p-4 dark:bg-[#070707]">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#fd5b38]">
+                        Business result
+                      </p>
+                      <p className="mt-2 text-sm font-black leading-6 text-black/72 dark:text-white/72">
+                        {lane.result}
+                      </p>
+                    </div>
+                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-black text-[#fd5b38] transition group-hover:gap-3">
+                      Explore
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
 
-                        <span className="relative z-10 min-w-0 flex-1">
-                          <span className="flex items-center gap-2">
-                            <span
-                              className={[
-                                "text-[11px] font-black",
-                                isActive ? "text-white/65" : "text-[#fd5b38]",
-                              ].join(" ")}
-                            >
-                              {service.number}
-                            </span>
-
-                            <span className="truncate text-[15px] font-black tracking-[-0.02em]">
-                              {service.title}
-                            </span>
-                          </span>
-
-                          <span
-                            className={[
-                              "mt-1 line-clamp-1 block text-sm leading-5",
-                              isActive
-                                ? "text-white/76"
-                                : "text-black/50 dark:text-white/50",
-                            ].join(" ")}
-                          >
-                            {service.short}
-                          </span>
-                        </span>
-
-                        <ArrowRight
-                          className={[
-                            "relative z-10 h-4 w-4 shrink-0 transition",
-                            isActive
-                              ? "translate-x-0 text-white"
-                              : "text-black/25 group-hover:translate-x-1 group-hover:text-[#fd5b38] dark:text-white/25",
-                          ].join(" ")}
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
+            <div className="grid gap-3 min-[620px]:grid-cols-2">
+              <div className="rounded-[16px] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111]">
+                <Code2 className="h-5 w-5 text-[#fd5b38]" />
+                <p className="mt-4 text-xl font-semibold tracking-[-0.045em] text-black dark:text-white">
+                  We cut scope before we write code.
+                </p>
+                <p className="mt-3 text-sm font-medium leading-6 text-black/58 dark:text-white/58">
+                  Premium execution is not more features. It is building the
+                  few things that actually move the business.
+                </p>
               </div>
 
-              <div
-                ref={detailRef}
-                className="scroll-mt-24 overflow-hidden rounded-[15px]  border border-black/5 bg-white dark:border-white/10 dark:bg-[#070707]"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active.id}
-                    initial={{
-                      opacity: 0,
-                      y: 14,
-                      scale: 0.985,
-                      filter: "blur(8px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      filter: "blur(0px)",
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: -10,
-                      scale: 0.99,
-                      filter: "blur(6px)",
-                    }}
-                    transition={{
-                      duration: 0.38,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="p-5 sm:p-7"
-                  >
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
-                        <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
-                          {active.number} / {active.title}
-                        </p>
-
-                        <h3 className="mt-4 max-w-xl text-[clamp(1.35rem,2.4vw,2rem)] font-semibold leading-[1.08] tracking-[-0.045em] text-black dark:text-white">
-                          {active.description}
-                        </h3>
-                      </div>
-
-                      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20">
-                        <ActiveIcon className="h-6 w-6" />
-                      </div>
-                    </div>
-
-                    <p className="mt-5 max-w-2xl text-sm leading-6 text-black/58 dark:text-white/58">
-                      {active.seoLine}
-                    </p>
-
-                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-[15px] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.035]">
-                        <p className="text-sm font-black text-black dark:text-white">
-                          What it fixes
-                        </p>
-
-                        <ul className="mt-4 grid gap-3">
-                          {active.fixes.map((fix) => (
-                            <li
-                              key={fix}
-                              className="flex gap-3 text-sm leading-6 text-black/60 dark:text-white/60"
-                            >
-                              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#fd5b38]" />
-                              {fix}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="rounded-[15px] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.035]">
-                        <p className="text-sm font-black text-black dark:text-white">
-                          What you get
-                        </p>
-
-                        <p className="mt-4 text-sm leading-6 text-black/60 dark:text-white/60">
-                          {active.outcome}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-3 rounded-[15px] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-5">
-                      <p className="text-sm font-black text-[#fd5b38]">
-                        Why it matters
-                      </p>
-
-                      <p className="mt-2 text-sm leading-6 text-black/65 dark:text-white/65">
-                        {active.proof}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 flex flex-col gap-3 border-t border-black/10 pt-5 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between">
-                      <p className="max-w-md text-sm font-semibold leading-6 text-black/55 dark:text-white/55">
-                        Built for serious business owners who want systems, not decoration.
-                      </p>
-
-                      <div className="flex-shrink-0">
-                        <Link
-                          href={active.href}
-                          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/20 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
-                        >
-                          Learn more
-                          <ArrowRight className="h-4 w-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+              <div className="overflow-hidden rounded-[16px] border border-black/10 bg-[#0b0b0b] dark:border-white/10">
+                <img
+                  src="/hero-africa-team.webp"
+                  alt="Software team reviewing business system work"
+                  className="h-full min-h-[220px] w-full object-cover opacity-80"
+                />
               </div>
             </div>
           </div>

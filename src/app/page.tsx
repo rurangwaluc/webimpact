@@ -1,18 +1,12 @@
-import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
 import { HeroSection } from "@/components/home/hero-section";
-import { LeakSection } from "@/components/home/leak-section";
 import { ServicesPreviewSection } from "@/components/home/services-preview-section";
 import { WorkPreviewSection } from "@/components/home/work-preview-section";
-import { WhyChooseSection } from "@/components/home/why-choose-section";
-import { ProcessSection } from "@/components/home/process-section";
-import { BlogPreviewSection } from "@/components/home/blog-preview-section";
 import { FinalCtaSection } from "@/components/home/final-cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
 
 export default function HomePage() {
   return (
-    <main className="bg-white dark:bg-[#070707]">
+    <main className="overflow-x-hidden bg-white dark:bg-[#070707]">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -27,14 +21,9 @@ export default function HomePage() {
       />
 
       <HeroSection />
-      <LeakSection />
       <ServicesPreviewSection />
       <WorkPreviewSection />
-      <WhyChooseSection />
-      <ProcessSection />
-      <BlogPreviewSection />
       <FinalCtaSection />
-
     </main>
   );
 }
