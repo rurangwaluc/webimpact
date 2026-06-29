@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 
 export default function HomePage() {
   return (
-    <main className="overflow-x-hidden bg-white dark:bg-[#070707]">
+    <main className="overflow-x-hidden bg-white text-black dark:bg-[#070707] dark:text-white">
       <JsonLd
         data={{
           "@context": "https://schema.org",

@@ -1,8 +1,12 @@
-import { getFeaturedWorkProjects } from "@/lib/cms/work";
 import { WorkPreviewSectionClient } from "@/components/home/work-preview-section-client";
+import { getPublishedWorkProjects } from "@/lib/cms/work";
 
 export async function WorkPreviewSection() {
-  const projects = await getFeaturedWorkProjects(3);
+  const projects = await getPublishedWorkProjects();
 
-  return <WorkPreviewSectionClient projects={projects} />;
+  const visualProjects = projects
+    .filter((project) => Boolean(project.cover_image_url))
+    .slice(0, 5);
+
+  return <WorkPreviewSectionClient projects={visualProjects} />;
 }
