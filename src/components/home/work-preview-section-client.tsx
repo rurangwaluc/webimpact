@@ -17,11 +17,11 @@ export function WorkPreviewSectionClient({
 
   if (featuredProjects.length === 0) {
     return (
-      <section className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 rounded-[16px] border border-black/10 bg-[#f7f7f7] p-5 dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <div>
-              <div className="grid h-14 w-14 place-items-center rounded-[14px] bg-[#fd5b38] text-white">
+          <div className="grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+            <div className="bg-[#f7f7f7] p-5 dark:bg-[#111111] sm:p-8">
+              <div className="grid h-14 w-14 place-items-center bg-[#fd5b38] text-white">
                 <Search className="h-6 w-6" />
               </div>
               <h2 className="mt-6 max-w-2xl text-[clamp(2rem,5vw,3rem)] font-semibold leading-[1] tracking-[-0.055em] text-black dark:text-white">
@@ -34,13 +34,11 @@ export function WorkPreviewSectionClient({
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[16px] border border-black/10 bg-black dark:border-white/10">
-              <img
-                src="/work/bcs-full.webp"
-                alt="Business system case study preview"
-                className="h-[280px] w-full object-cover object-top opacity-80 sm:h-[360px]"
-              />
-            </div>
+            <img
+              src="/work/bcs-full.webp"
+              alt="Business system case study preview"
+              className="h-[280px] w-full object-cover object-top sm:h-[360px] lg:h-full"
+            />
           </div>
         </div>
       </section>
@@ -51,9 +49,9 @@ export function WorkPreviewSectionClient({
   const otherProjects = featuredProjects.slice(1);
 
   return (
-    <section className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <section className="px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-6 border-y border-black/10 py-8 dark:border-white/10 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="grid gap-6 border-y border-black/10 py-7 dark:border-white/10 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
               Proof
@@ -64,41 +62,40 @@ export function WorkPreviewSectionClient({
             </h2>
 
             <p className="mt-5 max-w-2xl text-[15px] font-medium leading-7 text-black/60 dark:text-white/60">
-              Case studies exist to lower buyer risk. Fewer examples. Stronger
-              evidence. Clearer execution.
+              Fewer examples. Stronger evidence. Clearer execution.
             </p>
           </div>
 
           <Link
             href="/work"
-            className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-black/10 bg-black/[0.03] px-5 py-3 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+            className="inline-flex items-center justify-center gap-2 bg-black/[0.055] px-5 py-3 text-sm font-black text-black transition hover:bg-black hover:text-white dark:bg-white/[0.08] dark:text-white dark:hover:bg-white dark:hover:text-black"
           >
             View all work
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-[1.18fr_0.82fr]">
-          <article className="group overflow-hidden rounded-[16px] border border-black/10 bg-white shadow-2xl shadow-black/[0.055] transition duration-300 hover:-translate-y-1 hover:shadow-black/[0.1] dark:border-white/10 dark:bg-[#111111]">
+        <div className="mt-7 grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[1.22fr_0.78fr] lg:items-start">
+          <article className="bg-white dark:bg-[#111111]">
             <WorkImage
               project={mainProject}
-              heightClass="h-[280px] sm:h-[390px] lg:h-[460px]"
+              heightClass="h-[260px] sm:h-[360px] lg:h-[420px]"
               priority
             />
 
             <div className="p-5 sm:p-6">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-2 rounded-[11px] bg-[#fd5b38] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-white">
+                <span className="inline-flex items-center gap-2 bg-[#fd5b38] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-white">
                   <CheckCircle2 className="h-3.5 w-3.5" />
                   Featured proof
                 </span>
 
-                <span className="inline-flex items-center rounded-[11px] border border-black/10 bg-black/[0.03] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
+                <span className="inline-flex items-center bg-black/[0.055] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-black/55 dark:bg-white/[0.08] dark:text-white/55">
                   {mainProject.project_type}
                 </span>
               </div>
 
-              <h3 className="mt-5 max-w-3xl text-[clamp(1.65rem,4vw,2.7rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-black dark:text-white">
+              <h3 className="mt-5 max-w-3xl text-[clamp(1.65rem,4vw,2.65rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-black dark:text-white">
                 {mainProject.title}
               </h3>
 
@@ -106,7 +103,7 @@ export function WorkPreviewSectionClient({
                 {mainProject.summary}
               </p>
 
-              <div className="mt-6 grid gap-3 min-[700px]:grid-cols-3">
+              <div className="mt-6 grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 min-[700px]:grid-cols-3">
                 <ProofBlock label="Problem" text={mainProject.problem} />
                 <ProofBlock label="Built" text={mainProject.solution} />
                 <ProofBlock label="Result" text={mainProject.result} />
@@ -115,7 +112,7 @@ export function WorkPreviewSectionClient({
               <div className="mt-6 flex flex-col gap-3 min-[430px]:flex-row">
                 <Link
                   href={`/work/${mainProject.slug}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/20 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+                  className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
                 >
                   Read case study
                   <ArrowRight className="h-4 w-4" />
@@ -126,7 +123,7 @@ export function WorkPreviewSectionClient({
                     href={mainProject.live_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-black/10 bg-black/[0.03] px-5 py-3 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                    className="inline-flex items-center justify-center gap-2 bg-black/[0.055] px-5 py-3 text-sm font-black text-black transition hover:bg-black hover:text-white dark:bg-white/[0.08] dark:text-white dark:hover:bg-white dark:hover:text-black"
                   >
                     Visit live project
                     <ExternalLink className="h-4 w-4" />
@@ -136,7 +133,7 @@ export function WorkPreviewSectionClient({
             </div>
           </article>
 
-          <div className="grid gap-4">
+          <div className="grid gap-px bg-black/10 dark:bg-white/10">
             {otherProjects.map((project) => (
               <SmallWorkCard key={project.id} project={project} />
             ))}
@@ -151,16 +148,16 @@ export function WorkPreviewSectionClient({
 
 function SmallWorkCard({ project }: { project: WorkProject }) {
   return (
-    <article className="group grid overflow-hidden rounded-[16px] border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/[0.08] dark:border-white/10 dark:bg-[#111111] min-[620px]:grid-cols-[0.44fr_0.56fr] lg:grid-cols-1 xl:grid-cols-[0.42fr_0.58fr]">
+    <article className="group grid bg-white transition hover:bg-[#f8f8f8] dark:bg-[#111111] dark:hover:bg-[#151515] min-[620px]:grid-cols-[0.42fr_0.58fr] lg:grid-cols-1 xl:grid-cols-[0.42fr_0.58fr]">
       <WorkImage
         project={project}
-        heightClass="h-[190px] min-[620px]:h-full lg:h-[220px] xl:h-full"
+        heightClass="h-[180px] min-[620px]:h-full lg:h-[210px] xl:h-full"
         small
       />
 
       <div className="flex min-w-0 flex-col justify-between p-5">
         <div>
-          <span className="inline-flex max-w-full rounded-[11px] border border-black/10 bg-black/[0.03] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
+          <span className="inline-flex max-w-full bg-black/[0.055] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-black/55 dark:bg-white/[0.08] dark:text-white/55">
             {project.project_type}
           </span>
 
@@ -187,7 +184,7 @@ function SmallWorkCard({ project }: { project: WorkProject }) {
 
 function ProofBlock({ label, text }: { label: string; text: string }) {
   return (
-    <div className="rounded-[14px] border border-black/10 bg-[#f7f7f7] p-4 dark:border-white/10 dark:bg-white/[0.04]">
+    <div className="bg-[#f7f7f7] p-4 dark:bg-white/[0.04]">
       <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#fd5b38]">
         {label}
       </p>
@@ -200,18 +197,18 @@ function ProofBlock({ label, text }: { label: string; text: string }) {
 
 function ProofStandardCard() {
   return (
-    <div className="rounded-[16px] border border-dashed border-black/15 bg-black/[0.025] p-6 dark:border-white/15 dark:bg-white/[0.04]">
-      <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#fd5b38] text-white">
+    <div className="bg-[#101010] p-6 text-white">
+      <div className="grid h-11 w-11 place-items-center bg-[#fd5b38] text-white">
         <BriefcaseBusiness className="h-5 w-5" />
       </div>
 
-      <h3 className="mt-5 text-2xl font-semibold tracking-[-0.045em] text-black dark:text-white">
+      <h3 className="mt-5 text-2xl font-semibold tracking-[-0.045em]">
         We do not publish filler work.
       </h3>
 
-      <p className="mt-3 text-sm font-medium leading-6 text-black/60 dark:text-white/60">
-        The work page should feel like proof, not a gallery. Every project must
-        show the business problem, the system built, and the result it created.
+      <p className="mt-3 text-sm font-medium leading-6 text-white/62">
+        Every project must show the business problem, the system built, and the
+        result it created.
       </p>
 
       <Link
@@ -247,7 +244,7 @@ function WorkImage({
           src={project.cover_image_url}
           alt={`${project.title} case study preview`}
           loading={priority ? "eager" : "lazy"}
-          className="h-full w-full object-cover object-top opacity-90 transition duration-500 group-hover:scale-[1.02]"
+          className="h-full w-full object-cover object-top opacity-92 transition duration-500 group-hover:scale-[1.02]"
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center bg-[#111111]">
@@ -255,10 +252,8 @@ function WorkImage({
         </div>
       )}
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/48 via-black/10 to-transparent" />
-
       {small ? (
-        <div className="absolute left-4 top-4 rounded-[11px] border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-white/70 backdrop-blur-xl">
+        <div className="absolute left-4 top-4 bg-black/55 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-white/70 backdrop-blur-xl">
           Proof
         </div>
       ) : null}

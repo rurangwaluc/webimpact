@@ -6,7 +6,6 @@ import {
   Code2,
   LayoutDashboard,
   MonitorSmartphone,
-  Sparkles,
 } from "lucide-react";
 
 type BuildLane = {
@@ -21,7 +20,7 @@ const buildLanes: BuildLane[] = [
   {
     title: "Premium websites",
     description:
-      "Positioning, pages, SEO foundations, conversion paths, and trust signals for companies that need buyers to take them seriously.",
+      "Positioning, pages, SEO foundations, conversion paths, and trust signals for serious companies.",
     result: "Better first impression. Better lead quality.",
     href: "/services/web-development",
     icon: MonitorSmartphone,
@@ -29,7 +28,7 @@ const buildLanes: BuildLane[] = [
   {
     title: "Business systems",
     description:
-      "Sales, stock, cash, customers, staff, documents, branches, workflows, dashboards, and reports in one controlled flow.",
+      "Sales, stock, cash, customers, staff, documents, workflows, dashboards, and reports in one controlled flow.",
     result: "Less manual work. More owner visibility.",
     href: "/services/business-systems",
     icon: LayoutDashboard,
@@ -37,82 +36,57 @@ const buildLanes: BuildLane[] = [
   {
     title: "SaaS & automation",
     description:
-      "Product platforms, portals, subscriptions, marketplaces, AI-assisted workflows, alerts, reporting, and integrations.",
-    result: "Turn repeatable work into scalable software.",
+      "Product platforms, portals, subscriptions, marketplaces, AI-assisted workflows, alerts, and integrations.",
+    result: "Repeatable work becomes scalable software.",
     href: "/services/saas-development",
     icon: Bot,
   },
 ];
 
 const decisionChecks = [
-  "What business problem must this solve?",
-  "What should the software replace?",
-  "What will the owner see that they cannot see today?",
-  "What must happen for the project to pay for itself?",
+  "What problem must the system remove?",
+  "What manual work should disappear?",
+  "What should the owner see faster?",
+  "What outcome makes the build worth it?",
 ];
 
 export function ServicesPreviewSection() {
   return (
-    <section className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <section className="px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch">
-          <div className="relative overflow-hidden rounded-[16px] border border-black/10 bg-[#0b0b0b] p-5 text-white shadow-2xl shadow-black/[0.1] dark:border-white/10 sm:p-7 lg:p-8">
-            <div className="pointer-events-none absolute right-[-10rem] top-[-12rem] h-96 w-96 rounded-full bg-[#fd5b38]/25 blur-3xl" />
-            <div className="relative">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
-                What we build
-              </p>
+        <div className="grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="bg-[#101010] p-5 text-white sm:p-7 lg:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
+              What we build
+            </p>
 
-              <h2 className="mt-4 max-w-xl text-[clamp(2rem,5vw,3.35rem)] font-semibold leading-[0.96] tracking-[-0.06em]">
-                Fewer services. Stronger business outcomes.
-              </h2>
+            <h2 className="mt-4 max-w-xl text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.96] tracking-[-0.06em]">
+              Fewer services. Stronger business outcomes.
+            </h2>
 
-              <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-white/64">
-                WebImpact Lab is not trying to sell everything. We build the
-                digital layers that help a serious business sell, operate,
-                measure, and scale.
-              </p>
+            <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-white/64">
+              We build the digital layers that help a serious business sell,
+              operate, measure, and scale.
+            </p>
 
-              <div className="mt-7 overflow-hidden rounded-[16px] border border-white/10 bg-white/[0.05]">
-                <div className="border-b border-white/10 p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[13px] bg-[#fd5b38] text-white">
-                      <Sparkles className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/45">
-                        Before we build
-                      </p>
-                      <p className="mt-1 text-lg font-black tracking-[-0.04em]">
-                        The decision filter
-                      </p>
-                    </div>
-                  </div>
+            <div className="mt-7 grid gap-px overflow-hidden bg-white/10">
+              {decisionChecks.map((check) => (
+                <div key={check} className="bg-[#181818] p-3 text-sm font-bold leading-5 text-white/74">
+                  {check}
                 </div>
-
-                <div className="grid gap-2 p-3">
-                  {decisionChecks.map((check) => (
-                    <div
-                      key={check}
-                      className="rounded-[13px] border border-white/10 bg-black/25 p-3 text-sm font-bold leading-5 text-white/72"
-                    >
-                      {check}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <Link
-                href="/services"
-                className="mt-7 inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
-              >
-                View services
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              ))}
             </div>
+
+            <Link
+              href="/services"
+              className="mt-7 inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+            >
+              View services
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-px bg-black/10 dark:bg-white/10">
             {buildLanes.map((lane, index) => {
               const Icon = lane.icon;
 
@@ -120,27 +94,27 @@ export function ServicesPreviewSection() {
                 <Link
                   key={lane.title}
                   href={lane.href}
-                  className="group grid gap-4 rounded-[16px] border border-black/10 bg-[#f7f7f7] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#fd5b38]/35 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.07] dark:border-white/10 dark:bg-[#111111] dark:hover:bg-[#151515] sm:grid-cols-[72px_1fr_0.76fr] sm:p-5"
+                  className="group grid gap-px bg-black/10 transition hover:bg-[#fd5b38]/45 dark:bg-white/10 sm:grid-cols-[86px_1fr_0.75fr]"
                 >
-                  <div className="flex items-center gap-3 sm:block">
-                    <div className="grid h-12 w-12 place-items-center rounded-[14px] bg-[#fd5b38] text-white shadow-lg shadow-[#fd5b38]/20">
+                  <div className="flex items-center justify-between bg-[#f7f7f7] p-4 dark:bg-[#111111] sm:block sm:p-5">
+                    <div className="grid h-12 w-12 place-items-center bg-[#fd5b38] text-white">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <span className="text-xs font-black text-black/30 dark:text-white/30 sm:mt-4 sm:block">
+                    <span className="text-xs font-black text-black/30 dark:text-white/30 sm:mt-5 sm:block">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <div>
+                  <div className="bg-[#f7f7f7] p-4 dark:bg-[#111111] sm:p-5">
                     <h3 className="text-2xl font-semibold leading-tight tracking-[-0.05em] text-black dark:text-white">
                       {lane.title}
                     </h3>
-                    <p className="mt-3 text-sm font-medium leading-6 text-black/60 dark:text-white/58">
+                    <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-black/60 dark:text-white/58">
                       {lane.description}
                     </p>
                   </div>
 
-                  <div className="flex flex-col justify-between rounded-[14px] border border-[#fd5b38]/20 bg-white p-4 dark:bg-[#070707]">
+                  <div className="flex flex-col justify-between bg-white p-4 dark:bg-[#070707] sm:p-5">
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#fd5b38]">
                         Business result
@@ -158,8 +132,8 @@ export function ServicesPreviewSection() {
               );
             })}
 
-            <div className="grid gap-3 min-[620px]:grid-cols-2">
-              <div className="rounded-[16px] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111]">
+            <div className="grid gap-px bg-black/10 dark:bg-white/10 min-[620px]:grid-cols-[0.82fr_1.18fr]">
+              <div className="bg-white p-5 dark:bg-[#111111]">
                 <Code2 className="h-5 w-5 text-[#fd5b38]" />
                 <p className="mt-4 text-xl font-semibold tracking-[-0.045em] text-black dark:text-white">
                   We cut scope before we write code.
@@ -170,13 +144,11 @@ export function ServicesPreviewSection() {
                 </p>
               </div>
 
-              <div className="overflow-hidden rounded-[16px] border border-black/10 bg-[#0b0b0b] dark:border-white/10">
-                <img
-                  src="/hero-africa-team.webp"
-                  alt="Software team reviewing business system work"
-                  className="h-full min-h-[220px] w-full object-cover opacity-80"
-                />
-              </div>
+              <img
+                src="/hero-africa-team.webp"
+                alt="Software team reviewing business system work"
+                className="h-[220px] w-full object-cover min-[620px]:h-full"
+              />
             </div>
           </div>
         </div>
