@@ -11,8 +11,8 @@ export function FinalCtaSection() {
   return (
     <section className="px-4 pb-14 pt-8 sm:px-6 lg:px-8 lg:pb-18 lg:pt-10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-px overflow-hidden bg-black/10 text-white dark:bg-white/10 lg:grid-cols-[1fr_0.78fr]">
-          <div className="bg-[#101010] p-5 sm:p-8 lg:p-10 xl:p-12">
+        <div className="grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[1fr_0.78fr]">
+          <div className="bg-[#f7f4ef] p-5 text-black dark:bg-[#101010] dark:text-white sm:p-8 lg:p-10 xl:p-12">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
               Start the right conversation
             </p>
@@ -21,15 +21,15 @@ export function FinalCtaSection() {
               Bring the business problem. We will define the system.
             </h2>
 
-            <p className="mt-6 max-w-2xl text-[15px] font-medium leading-7 text-white/68 sm:text-base sm:leading-8">
+            <p className="mt-6 max-w-2xl text-[15px] font-medium leading-7 text-black/64 dark:text-white/68 sm:text-base sm:leading-8">
               The first step is identifying the constraint, the outcome, and
               the simplest software path that can create trust, control, or growth.
             </p>
 
-            <div className="mt-7 grid gap-px overflow-hidden bg-white/10 sm:grid-cols-3">
+            <div className="mt-7 grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 sm:grid-cols-3">
               {projectInputs.map((input) => (
-                <div key={input} className="bg-[#181818] p-4">
-                  <p className="text-sm font-black leading-5 text-white/78">
+                <div key={input} className="bg-white p-4 dark:bg-[#181818]">
+                  <p className="text-sm font-black leading-5 text-black/72 dark:text-white/78">
                     {input}
                   </p>
                 </div>

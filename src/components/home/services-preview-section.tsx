@@ -52,24 +52,24 @@ const decisionChecks = [
 
 export function ServicesPreviewSection() {
   return (
-    <section className="px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <section className="px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[0.72fr_1.28fr]">
+        <div className="grid gap-px bg-black/10 dark:bg-white/10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <div className="bg-[#101010] p-5 text-white sm:p-7 lg:p-8">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
               What we build
             </p>
 
-            <h2 className="mt-4 max-w-xl text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.96] tracking-[-0.06em]">
+            <h2 className="mt-4 max-w-xl text-[clamp(2rem,5vw,3.15rem)] font-semibold leading-[0.96] tracking-[-0.06em]">
               Fewer services. Stronger business outcomes.
             </h2>
 
             <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-white/64">
-              We build the digital layers that help a serious business sell,
-              operate, measure, and scale.
+              Visitors should understand your offer, your proof, and your next
+              step without decoding a long agency page.
             </p>
 
-            <div className="mt-7 grid gap-px overflow-hidden bg-white/10">
+            <div className="mt-6 grid gap-px bg-white/10 min-[560px]:grid-cols-2 lg:grid-cols-1">
               {decisionChecks.map((check) => (
                 <div key={check} className="bg-[#181818] p-3 text-sm font-bold leading-5 text-white/74">
                   {check}
@@ -79,7 +79,7 @@ export function ServicesPreviewSection() {
 
             <Link
               href="/services"
-              className="mt-7 inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:bg-[#e84a2b]"
             >
               View services
               <ArrowRight className="h-4 w-4" />
@@ -87,67 +87,67 @@ export function ServicesPreviewSection() {
           </div>
 
           <div className="grid gap-px bg-black/10 dark:bg-white/10">
-            {buildLanes.map((lane, index) => {
-              const Icon = lane.icon;
+            <div className="grid gap-px bg-black/10 dark:bg-white/10 md:grid-cols-3">
+              {buildLanes.map((lane, index) => {
+                const Icon = lane.icon;
 
-              return (
-                <Link
-                  key={lane.title}
-                  href={lane.href}
-                  className="group grid gap-px bg-black/10 transition hover:bg-[#fd5b38]/45 dark:bg-white/10 sm:grid-cols-[86px_1fr_0.75fr]"
-                >
-                  <div className="flex items-center justify-between bg-[#f7f7f7] p-4 dark:bg-[#111111] sm:block sm:p-5">
-                    <div className="grid h-12 w-12 place-items-center bg-[#fd5b38] text-white">
-                      <Icon className="h-5 w-5" />
+                return (
+                  <Link
+                    key={lane.title}
+                    href={lane.href}
+                    className="group grid bg-white transition hover:bg-[#f8f8f8] dark:bg-[#111111] dark:hover:bg-[#151515]"
+                  >
+                    <div className="p-5 sm:p-6">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="grid h-11 w-11 place-items-center bg-[#fd5b38] text-white">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <span className="text-xs font-black text-black/24 dark:text-white/24">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-6 text-2xl font-semibold leading-tight tracking-[-0.05em] text-black dark:text-white">
+                        {lane.title}
+                      </h3>
+                      <p className="mt-3 text-sm font-medium leading-6 text-black/60 dark:text-white/58">
+                        {lane.description}
+                      </p>
                     </div>
-                    <span className="text-xs font-black text-black/30 dark:text-white/30 sm:mt-5 sm:block">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
 
-                  <div className="bg-[#f7f7f7] p-4 dark:bg-[#111111] sm:p-5">
-                    <h3 className="text-2xl font-semibold leading-tight tracking-[-0.05em] text-black dark:text-white">
-                      {lane.title}
-                    </h3>
-                    <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-black/60 dark:text-white/58">
-                      {lane.description}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col justify-between bg-white p-4 dark:bg-[#070707] sm:p-5">
-                    <div>
+                    <div className="mt-auto bg-[#f7f7f7] p-5 dark:bg-white/[0.04]">
                       <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#fd5b38]">
                         Business result
                       </p>
                       <p className="mt-2 text-sm font-black leading-6 text-black/72 dark:text-white/72">
                         {lane.result}
                       </p>
+                      <div className="mt-4 inline-flex items-center gap-2 text-sm font-black text-[#fd5b38] transition group-hover:gap-3">
+                        Explore
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
                     </div>
-                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-black text-[#fd5b38] transition group-hover:gap-3">
-                      Explore
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
+            </div>
 
-            <div className="grid gap-px bg-black/10 dark:bg-white/10 min-[620px]:grid-cols-[0.82fr_1.18fr]">
-              <div className="bg-white p-5 dark:bg-[#111111]">
+            <div className="grid gap-px bg-black/10 dark:bg-white/10 min-[700px]:grid-cols-[0.72fr_1.28fr]">
+              <div className="bg-white p-5 dark:bg-[#111111] sm:p-6">
                 <Code2 className="h-5 w-5 text-[#fd5b38]" />
                 <p className="mt-4 text-xl font-semibold tracking-[-0.045em] text-black dark:text-white">
                   We cut scope before we write code.
                 </p>
                 <p className="mt-3 text-sm font-medium leading-6 text-black/58 dark:text-white/58">
-                  Premium execution is not more features. It is building the
-                  few things that actually move the business.
+                  Premium execution is building the few things that actually
+                  move trust, control, and revenue.
                 </p>
               </div>
 
               <img
                 src="/hero-africa-team.webp"
                 alt="Software team reviewing business system work"
-                className="h-[220px] w-full object-cover min-[620px]:h-full"
+                className="h-[190px] w-full object-cover min-[700px]:h-full"
               />
             </div>
           </div>

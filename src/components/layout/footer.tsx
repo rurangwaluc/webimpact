@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { type ElementType, useEffect, useState } from "react";
+import { type ElementType } from "react";
 import { ArrowRight, Mail, MapPin, MessageCircle } from "lucide-react";
-import { useTheme } from "next-themes";
 
 const services = [
   { label: "Software Development", href: "/services/software-development" },
@@ -23,66 +22,43 @@ const company = [
 ];
 
 export function Footer() {
-  const { resolvedTheme } = useTheme();
-  const [themeReady, setThemeReady] = useState(false);
-
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setThemeReady(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  const isDark = resolvedTheme === "dark";
-  const logoSrc = themeReady && isDark ? "/logo.webp" : "/darkLogo.webp";
-
   return (
     <footer className="bg-white px-4 pb-5 dark:bg-[#070707] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl overflow-hidden bg-[#f7f7f7] dark:bg-[#111111]">
-        <div className="grid gap-px bg-black/10 dark:bg-white/10 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="bg-[#101010] p-5 text-white sm:p-7 lg:p-8">
+        <div className="grid gap-px bg-black/10 dark:bg-white/10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div className="bg-[#101010] p-5 text-white sm:p-6 lg:p-7">
             <Link
               href="/"
               aria-label="WebImpact Lab home"
-              className="relative block h-11 w-[190px] overflow-hidden sm:h-14 sm:w-[245px]"
+              className="relative block h-10 w-[180px] overflow-hidden sm:h-12 sm:w-[220px]"
             >
               <Image
-                src={themeReady && isDark ? "/logo.webp" : logoSrc}
+                src="/logo.webp"
                 alt="WebImpact Lab - Software development company in Rwanda"
                 fill
-                sizes="(max-width: 640px) 190px, 245px"
+                sizes="(max-width: 640px) 180px, 220px"
                 className="object-contain object-left"
               />
             </Link>
 
-            <h2 className="mt-6 max-w-xl text-[clamp(1.55rem,5vw,2.35rem)] font-semibold leading-[1.03] tracking-[-0.055em]">
-              Software systems for companies that need control, speed, and clarity.
-            </h2>
+            <p className="mt-5 max-w-md text-2xl font-semibold leading-[1.05] tracking-[-0.055em] sm:text-3xl">
+              Serious software for companies that need control, speed, and clarity.
+            </p>
 
-            <div className="mt-6 grid gap-3 min-[430px]:grid-cols-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
-              >
-                Start a project
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <Link
-                href="https://wa.me/+250785587830"
-                className="inline-flex items-center justify-center gap-2 bg-white/[0.08] px-5 py-3 text-sm font-black text-white transition hover:bg-white hover:text-black"
-              >
-                <MessageCircle className="h-4 w-4" />
-                WhatsApp
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:bg-[#e84a2b]"
+            >
+              Start a project
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
 
-          <div className="grid gap-px bg-black/10 dark:bg-white/10">
-            <div className="grid gap-px bg-black/10 dark:bg-white/10 min-[640px]:grid-cols-2">
-              <FooterLinkGroup title="Services" items={services} />
-              <FooterLinkGroup title="Company" items={company} />
-            </div>
+          <div className="grid gap-px bg-black/10 dark:bg-white/10 md:grid-cols-[1fr_1fr_1.05fr]">
+            <FooterLinkGroup title="Services" items={services} />
+            <FooterLinkGroup title="Company" items={company} />
 
-            <div className="grid gap-px bg-black/10 dark:bg-white/10 min-[760px]:grid-cols-3">
+            <div className="grid gap-px bg-black/10 dark:bg-white/10">
               <ContactItem icon={MapPin} text="Kigali, Rwanda" />
               <ContactItem
                 icon={Mail}
@@ -115,7 +91,7 @@ function FooterLinkGroup({
   items: { label: string; href: string }[];
 }) {
   return (
-    <div className="bg-[#f7f7f7] p-5 dark:bg-[#111111] sm:p-6 lg:p-7">
+    <div className="bg-[#f7f7f7] p-5 dark:bg-[#111111] sm:p-6">
       <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#fd5b38]">
         {title}
       </h3>

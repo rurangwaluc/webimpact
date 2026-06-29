@@ -13,13 +13,13 @@ export function WorkPreviewSectionClient({
 }: {
   projects: WorkProject[];
 }) {
-  const featuredProjects = projects.slice(0, 3);
+  const featuredProjects = projects.slice(0, 5);
 
   if (featuredProjects.length === 0) {
     return (
-      <section className="px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+      <section className="px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+          <div className="grid gap-px bg-black/10 dark:bg-white/10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div className="bg-[#f7f7f7] p-5 dark:bg-[#111111] sm:p-8">
               <div className="grid h-14 w-14 place-items-center bg-[#fd5b38] text-white">
                 <Search className="h-6 w-6" />
@@ -37,7 +37,7 @@ export function WorkPreviewSectionClient({
             <img
               src="/work/bcs-full.webp"
               alt="Business system case study preview"
-              className="h-[280px] w-full object-cover object-top sm:h-[360px] lg:h-full"
+              className="h-[260px] w-full object-cover object-top sm:h-[340px] lg:h-full"
             />
           </div>
         </div>
@@ -46,12 +46,12 @@ export function WorkPreviewSectionClient({
   }
 
   const mainProject = featuredProjects[0];
-  const otherProjects = featuredProjects.slice(1);
+  const otherProjects = featuredProjects.slice(1, 5);
 
   return (
-    <section className="px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <section className="px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-6 border-y border-black/10 py-7 dark:border-white/10 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="grid gap-5 border-y border-black/10 py-6 dark:border-white/10 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
               Proof
@@ -61,8 +61,8 @@ export function WorkPreviewSectionClient({
               Real work built for business trust, control, and growth.
             </h2>
 
-            <p className="mt-5 max-w-2xl text-[15px] font-medium leading-7 text-black/60 dark:text-white/60">
-              Fewer examples. Stronger evidence. Clearer execution.
+            <p className="mt-4 max-w-2xl text-[15px] font-medium leading-7 text-black/60 dark:text-white/60">
+              Enough examples to understand the standard. Not a long gallery.
             </p>
           </div>
 
@@ -75,11 +75,11 @@ export function WorkPreviewSectionClient({
           </Link>
         </div>
 
-        <div className="mt-7 grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 lg:grid-cols-[1.22fr_0.78fr] lg:items-start">
-          <article className="bg-white dark:bg-[#111111]">
+        <div className="mt-6 grid gap-px bg-black/10 dark:bg-white/10 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
+          <article className="self-start bg-white dark:bg-[#111111]">
             <WorkImage
               project={mainProject}
-              heightClass="h-[260px] sm:h-[360px] lg:h-[420px]"
+              heightClass="h-[220px] sm:h-[300px] lg:h-[340px]"
               priority
             />
 
@@ -95,7 +95,7 @@ export function WorkPreviewSectionClient({
                 </span>
               </div>
 
-              <h3 className="mt-5 max-w-3xl text-[clamp(1.65rem,4vw,2.65rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-black dark:text-white">
+              <h3 className="mt-5 max-w-3xl text-[clamp(1.55rem,4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-black dark:text-white">
                 {mainProject.title}
               </h3>
 
@@ -103,16 +103,16 @@ export function WorkPreviewSectionClient({
                 {mainProject.summary}
               </p>
 
-              <div className="mt-6 grid gap-px overflow-hidden bg-black/10 dark:bg-white/10 min-[700px]:grid-cols-3">
+              <div className="mt-5 grid gap-px bg-black/10 dark:bg-white/10 min-[700px]:grid-cols-3">
                 <ProofBlock label="Problem" text={mainProject.problem} />
                 <ProofBlock label="Built" text={mainProject.solution} />
                 <ProofBlock label="Result" text={mainProject.result} />
               </div>
 
-              <div className="mt-6 flex flex-col gap-3 min-[430px]:flex-row">
+              <div className="mt-5 flex flex-col gap-3 min-[430px]:flex-row">
                 <Link
                   href={`/work/${mainProject.slug}`}
-                  className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+                  className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:bg-[#e84a2b]"
                 >
                   Read case study
                   <ArrowRight className="h-4 w-4" />
@@ -133,12 +133,34 @@ export function WorkPreviewSectionClient({
             </div>
           </article>
 
-          <div className="grid gap-px bg-black/10 dark:bg-white/10">
-            {otherProjects.map((project) => (
-              <SmallWorkCard key={project.id} project={project} />
+          <div className="grid gap-px bg-black/10 dark:bg-white/10 md:grid-cols-2 xl:self-start">
+            {otherProjects.map((project, index) => (
+              <SmallWorkCard
+                key={project.id}
+                project={project}
+                className={index > 1 ? "hidden sm:grid" : ""}
+              />
             ))}
 
-            <ProofStandardCard />
+            <Link
+              href="/work"
+              className="group flex items-center justify-between gap-4 bg-[#101010] p-5 text-white transition hover:bg-[#161616] md:col-span-2 xl:col-span-2"
+            >
+              <span className="flex min-w-0 items-center gap-3">
+                <span className="grid h-10 w-10 shrink-0 place-items-center bg-[#fd5b38] text-white">
+                  <BriefcaseBusiness className="h-4 w-4" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-black leading-5">
+                    See the full proof library
+                  </span>
+                  <span className="mt-1 block text-xs font-semibold leading-5 text-white/52">
+                    Projects with problem, system, and result.
+                  </span>
+                </span>
+              </span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-[#fd5b38] transition group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </div>
@@ -146,12 +168,18 @@ export function WorkPreviewSectionClient({
   );
 }
 
-function SmallWorkCard({ project }: { project: WorkProject }) {
+function SmallWorkCard({
+  project,
+  className = "",
+}: {
+  project: WorkProject;
+  className?: string;
+}) {
   return (
-    <article className="group grid bg-white transition hover:bg-[#f8f8f8] dark:bg-[#111111] dark:hover:bg-[#151515] min-[620px]:grid-cols-[0.42fr_0.58fr] lg:grid-cols-1 xl:grid-cols-[0.42fr_0.58fr]">
+    <article className={`group grid bg-white transition hover:bg-[#f8f8f8] dark:bg-[#111111] dark:hover:bg-[#151515] ${className}`}>
       <WorkImage
         project={project}
-        heightClass="h-[180px] min-[620px]:h-full lg:h-[210px] xl:h-full"
+        heightClass="h-[180px] sm:h-[210px] lg:h-[230px] xl:h-[210px]"
         small
       />
 
@@ -161,7 +189,7 @@ function SmallWorkCard({ project }: { project: WorkProject }) {
             {project.project_type}
           </span>
 
-          <h3 className="mt-4 line-clamp-2 text-2xl font-semibold leading-[1.05] tracking-[-0.05em] text-black transition group-hover:text-[#fd5b38] dark:text-white">
+          <h3 className="mt-4 line-clamp-2 text-xl font-semibold leading-[1.05] tracking-[-0.05em] text-black transition group-hover:text-[#fd5b38] dark:text-white sm:text-2xl">
             {project.title}
           </h3>
 
@@ -191,33 +219,6 @@ function ProofBlock({ label, text }: { label: string; text: string }) {
       <p className="mt-2 line-clamp-3 text-sm font-bold leading-6 text-black/66 dark:text-white/66">
         {text}
       </p>
-    </div>
-  );
-}
-
-function ProofStandardCard() {
-  return (
-    <div className="bg-[#101010] p-6 text-white">
-      <div className="grid h-11 w-11 place-items-center bg-[#fd5b38] text-white">
-        <BriefcaseBusiness className="h-5 w-5" />
-      </div>
-
-      <h3 className="mt-5 text-2xl font-semibold tracking-[-0.045em]">
-        We do not publish filler work.
-      </h3>
-
-      <p className="mt-3 text-sm font-medium leading-6 text-white/62">
-        Every project must show the business problem, the system built, and the
-        result it created.
-      </p>
-
-      <Link
-        href="/work"
-        className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[#fd5b38] transition hover:gap-3"
-      >
-        View all work
-        <ArrowRight className="h-4 w-4" />
-      </Link>
     </div>
   );
 }
