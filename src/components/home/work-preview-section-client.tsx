@@ -14,28 +14,28 @@ export function WorkPreviewSectionClient({
 }) {
   const visualProjects = projects
     .filter((project) => Boolean(project.cover_image_url))
-    .slice(0, 5);
+    .slice(0, 6);
 
   if (visualProjects.length === 0) {
     return <EmptyWorkState />;
   }
 
   const mainProject = visualProjects[0];
-  const sideProjects = visualProjects.slice(1, 5);
+  const supportingProjects = visualProjects.slice(1, 5);
 
   return (
-    <section className="px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
+    <section className="px-4 py-7 sm:px-6 lg:px-8 lg:py-10">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-5 border-y border-black/10 py-6 dark:border-white/10 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-4 border-y border-black/10 py-5 dark:border-white/10 sm:gap-5 md:flex-row md:items-end md:justify-between lg:py-7">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.24em] text-[#fd5b38]">
               Proof
             </p>
-            <h2 className="mt-4 max-w-3xl text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
+            <h2 className="mt-3 max-w-3xl text-[clamp(1.9rem,4.6vw,3.1rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
               Real systems. Real interfaces. Real business use.
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] font-medium leading-7 text-black/60 dark:text-white/58">
-              Visual proof first. Full context stays inside the case studies.
+            <p className="mt-3 max-w-2xl text-[14px] font-medium leading-6 text-black/60 dark:text-white/58 sm:text-[15px]">
+              Visual proof first. Full project details stay inside the case studies.
             </p>
           </div>
 
@@ -48,25 +48,25 @@ export function WorkPreviewSectionClient({
           </Link>
         </div>
 
-        <div className="mt-5 grid items-start gap-px bg-black/10 dark:bg-white/10 xl:grid-cols-[1.06fr_0.94fr]">
+        <div className="mt-5 grid gap-px bg-black/10 dark:bg-white/10 lg:grid-cols-[1.05fr_0.95fr]">
           <FeaturedWorkCard project={mainProject} />
 
-          {sideProjects.length > 0 ? (
-            <aside className="grid gap-px bg-black/10 dark:bg-white/10 sm:grid-cols-2">
-              {sideProjects.map((project, index) => (
+          {supportingProjects.length > 0 ? (
+            <aside className="grid gap-px bg-black/10 dark:bg-white/10 sm:grid-cols-2 lg:auto-rows-fr">
+              {supportingProjects.map((project, index) => (
                 <CompactWorkCard
                   key={project.id}
                   project={project}
-                  className={index > 1 ? "hidden lg:grid" : ""}
+                  className={index > 1 ? "hidden md:grid" : ""}
                 />
               ))}
 
               <Link
                 href="/work"
-                className="group flex items-center justify-between gap-4 bg-[#101010] p-5 text-white transition hover:bg-[#161616] sm:col-span-2"
+                className="group flex items-center justify-between gap-4 bg-[#101010] p-4 text-white transition hover:bg-[#161616] sm:col-span-2 sm:p-5"
               >
                 <span className="flex min-w-0 items-center gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center bg-[#fd5b38] text-white">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center bg-[#fd5b38] text-white sm:h-10 sm:w-10">
                     <BriefcaseBusiness className="h-4 w-4" />
                   </span>
                   <span className="min-w-0">
@@ -74,7 +74,7 @@ export function WorkPreviewSectionClient({
                       See the full proof library
                     </span>
                     <span className="mt-1 block text-xs font-semibold leading-5 text-white/52">
-                      More real projects with screenshots and case studies.
+                      More visual projects with problem, system, and result.
                     </span>
                   </span>
                 </span>
@@ -90,38 +90,35 @@ export function WorkPreviewSectionClient({
 
 function FeaturedWorkCard({ project }: { project: WorkProject }) {
   return (
-    <article className="grid bg-white dark:bg-[#111111] lg:grid-cols-[0.98fr_1.02fr] xl:block">
+    <article className="grid bg-white dark:bg-[#111111]">
       <WorkImage
         project={project}
-        heightClass="h-[210px] sm:h-[280px] lg:h-full xl:h-[330px]"
+        heightClass="h-[210px] min-[430px]:h-[250px] sm:h-[310px] lg:h-[330px] xl:h-[350px]"
         priority
       />
 
-      <div className="flex min-h-full flex-col justify-between p-5 sm:p-6 lg:p-7">
-        <div>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 bg-[#fd5b38] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-white">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              Featured proof
-            </span>
-            <span className="inline-flex bg-black/[0.055] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-black/55 dark:bg-white/[0.08] dark:text-white/55">
-              {project.project_type}
-            </span>
-          </div>
-
-          <h3 className="mt-5 max-w-3xl text-[clamp(1.65rem,4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-black dark:text-white">
-            {project.title}
-          </h3>
-
+      <div className="p-5 sm:p-6 lg:p-7">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-2 bg-[#fd5b38] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-white">
+            <CheckCircle2 className="h-3.5 w-3.5" />
+            Featured proof
+          </span>
+          <span className="inline-flex bg-black/[0.055] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-black/55 dark:bg-white/[0.08] dark:text-white/55">
+            {project.project_type}
+          </span>
         </div>
 
-        <div className="mt-6 grid gap-px bg-black/10 dark:bg-white/10 min-[720px]:grid-cols-3">
+        <h3 className="mt-4 max-w-3xl text-[clamp(1.55rem,3.4vw,2.25rem)] font-semibold leading-[1.03] tracking-[-0.055em] text-black dark:text-white">
+          {project.title}
+        </h3>
+
+        <div className="mt-5 grid gap-px bg-black/10 dark:bg-white/10 min-[680px]:grid-cols-3">
           <ProofBlock label="Problem" text={project.problem} />
           <ProofBlock label="System" text={project.solution} />
           <ProofBlock label="Result" text={project.result} />
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 min-[430px]:flex-row">
+        <div className="mt-5 flex flex-col gap-3 min-[430px]:flex-row">
           <Link
             href={`/work/${project.slug}`}
             className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:bg-[#e84a2b]"
@@ -160,25 +157,24 @@ function CompactWorkCard({
     >
       <WorkImage
         project={project}
-        heightClass="h-[145px] sm:h-[165px] xl:h-[170px]"
+        heightClass="h-[155px] min-[430px]:h-[180px] sm:h-[170px] lg:h-[165px] xl:h-[180px]"
         small
       />
 
-      <div className="grid min-h-[145px] content-between p-5">
+      <div className="grid min-h-[128px] content-between p-4 sm:min-h-[145px] sm:p-5">
         <div>
           <span className="inline-flex max-w-full bg-black/[0.055] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-black/55 dark:bg-white/[0.08] dark:text-white/55">
             {project.project_type}
           </span>
 
-          <h3 className="mt-4 line-clamp-2 text-xl font-semibold leading-[1.05] tracking-[-0.05em] text-black transition group-hover:text-[#fd5b38] dark:text-white sm:text-2xl">
+          <h3 className="mt-3 line-clamp-2 text-[1.2rem] font-semibold leading-[1.05] tracking-[-0.05em] text-black transition group-hover:text-[#fd5b38] dark:text-white sm:text-[1.35rem] lg:text-[1.25rem] xl:text-[1.45rem]">
             {project.title}
           </h3>
-
         </div>
 
         <Link
           href={`/work/${project.slug}`}
-          className="mt-5 inline-flex items-center gap-2 border-t border-black/10 pt-4 text-sm font-black text-[#fd5b38] transition group-hover:gap-3 dark:border-white/10"
+          className="mt-4 inline-flex items-center gap-2 border-t border-black/10 pt-3 text-sm font-black text-[#fd5b38] transition group-hover:gap-3 dark:border-white/10"
         >
           Read case study
           <ArrowRight className="h-4 w-4" />
@@ -232,7 +228,7 @@ function WorkImage({
       )}
 
       {small ? (
-        <div className="absolute left-4 top-4 bg-black/60 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-white/72 backdrop-blur-xl">
+        <div className="absolute left-3 top-3 bg-black/60 px-2.5 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-white/72 backdrop-blur-xl sm:left-4 sm:top-4 sm:px-3">
           Proof
         </div>
       ) : null}
@@ -258,11 +254,15 @@ function EmptyWorkState() {
             </p>
           </div>
 
-          <img
-            src="/work/bcs-full.webp"
-            alt="Business system case study preview"
-            className="h-[260px] w-full object-cover object-top sm:h-[340px] lg:h-full"
-          />
+          <div className="grid content-center bg-white p-5 dark:bg-[#111111] sm:p-8">
+            <Link
+              href="/work"
+              className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:bg-[#e84a2b]"
+            >
+              Open work page
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

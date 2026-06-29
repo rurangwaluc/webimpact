@@ -6,7 +6,7 @@ export async function WorkPreviewSection() {
 
   const visualProjects = projects
     .filter((project) => Boolean(project.cover_image_url))
-    .slice(0, 5);
+    .slice(0, 6);
 
   return <WorkPreviewSectionClient projects={visualProjects} />;
 }
