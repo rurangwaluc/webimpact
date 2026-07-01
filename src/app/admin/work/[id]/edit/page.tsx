@@ -189,6 +189,7 @@ export default async function EditWorkProjectPage({ params }: PageProps) {
       throw new Error(updateError.message);
     }
 
+    revalidatePath("/");
     revalidatePath("/work");
     revalidatePath(`/work/${slug}`);
     revalidatePath("/admin/work");
@@ -212,6 +213,7 @@ export default async function EditWorkProjectPage({ params }: PageProps) {
 
     if (error) throw new Error(error.message);
 
+    revalidatePath("/");
     revalidatePath("/work");
     revalidatePath(`/work/${project.slug}`);
     revalidatePath("/admin/work");
@@ -234,6 +236,7 @@ export default async function EditWorkProjectPage({ params }: PageProps) {
 
     if (error) throw new Error(error.message);
 
+    revalidatePath("/");
     revalidatePath("/work");
     revalidatePath(`/work/${project.slug}`);
     revalidatePath("/admin/work");
