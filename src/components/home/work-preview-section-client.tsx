@@ -16,60 +16,58 @@ export function WorkPreviewSectionClient({
 }) {
   const visualProjects = projects
     .filter((project) => Boolean(project.cover_image_url))
-    .slice(0, 6);
+    .slice(0, 5);
 
   if (visualProjects.length === 0) {
     return <EmptyWorkState />;
   }
 
   const mainProject = visualProjects[0];
-  const supportingProjects = visualProjects.slice(1, 5);
+  const supportProjects = visualProjects.slice(1, 5);
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="work-proof">
       <div className={styles.inner}>
         <div className={styles.header}>
           <div>
             <p className={styles.eyebrow}>Proof</p>
-            <h2 className={styles.title}>
-              Real systems. Real interfaces. Real business use.
-            </h2>
+            <h2 className={styles.title}>Real systems. Real interfaces. Real business use.</h2>
             <p className={styles.subtitle}>
-              Visual proof first. Open the case study only when you want the full problem, system, and result.
+              Fast visual proof. Open a case study only when you want the full problem, system, and result.
             </p>
           </div>
 
           <Link href="/work" className={styles.headerLink}>
             View all work
-            <ArrowRight className={styles.linkIcon} />
+            <ArrowRight className={styles.icon} />
           </Link>
         </div>
 
-        <div className={styles.board}>
+        <div className={styles.proofBoard}>
           <FeaturedProject project={mainProject} />
 
-          {supportingProjects.length > 0 ? (
+          {supportProjects.length > 0 ? (
             <div className={styles.supportGrid}>
-              {supportingProjects.map((project) => (
+              {supportProjects.map((project) => (
                 <SupportProject key={project.id} project={project} />
               ))}
             </div>
           ) : null}
-        </div>
 
-        <Link href="/work" className={styles.libraryLink}>
-          <span className={styles.libraryIcon}>
-            <BriefcaseBusiness className={styles.librarySvg} />
-          </span>
-          <span className={styles.libraryCopy}>
-            <strong>See the full proof library</strong>
-            <span>More real projects with screenshots and case studies.</span>
-          </span>
-          <span className={styles.libraryAction}>
-            Open work
-            <ArrowRight className={styles.linkIcon} />
-          </span>
-        </Link>
+          <Link href="/work" className={styles.libraryLink}>
+            <span className={styles.libraryIcon}>
+              <BriefcaseBusiness className={styles.icon} />
+            </span>
+            <span className={styles.libraryText}>
+              <strong>See the full proof library</strong>
+              <span>More real projects with screenshots and case studies.</span>
+            </span>
+            <span className={styles.libraryAction}>
+              Open work
+              <ArrowRight className={styles.icon} />
+            </span>
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -80,7 +78,7 @@ function FeaturedProject({ project }: { project: WorkProject }) {
     <article className={styles.featuredCard}>
       <ProjectImage project={project} className={styles.featuredImage} priority />
 
-      <div className={styles.featuredBody}>
+      <div className={styles.featuredContent}>
         <div>
           <div className={styles.metaRow}>
             <span className={styles.featuredBadge}>
@@ -93,16 +91,16 @@ function FeaturedProject({ project }: { project: WorkProject }) {
           <h3 className={styles.featuredTitle}>{project.title}</h3>
         </div>
 
-        <div className={styles.proofStrip} aria-label="Case study proof points">
-          <ProofItem label="Problem" text={project.problem} />
-          <ProofItem label="System" text={project.solution} />
-          <ProofItem label="Result" text={project.result} />
+        <div className={styles.proofGrid} aria-label="Featured project proof points">
+          <ProofPoint label="Problem" text={project.problem} />
+          <ProofPoint label="System" text={project.solution} />
+          <ProofPoint label="Result" text={project.result} />
         </div>
 
         <div className={styles.actionRow}>
           <Link href={`/work/${project.slug}`} className={styles.primaryAction}>
             Read case study
-            <ArrowRight className={styles.linkIcon} />
+            <ArrowRight className={styles.icon} />
           </Link>
 
           {project.live_url ? (
@@ -113,7 +111,7 @@ function FeaturedProject({ project }: { project: WorkProject }) {
               className={styles.secondaryAction}
             >
               Live project
-              <ExternalLink className={styles.linkIcon} />
+              <ExternalLink className={styles.icon} />
             </Link>
           ) : null}
         </div>
@@ -127,21 +125,21 @@ function SupportProject({ project }: { project: WorkProject }) {
     <article className={styles.supportCard}>
       <ProjectImage project={project} className={styles.supportImage} small />
 
-      <div className={styles.supportBody}>
+      <div className={styles.supportContent}>
         <span className={styles.typeBadge}>{project.project_type}</span>
         <h3 className={styles.supportTitle}>{project.title}</h3>
         <Link href={`/work/${project.slug}`} className={styles.supportAction}>
           Read case study
-          <ArrowRight className={styles.linkIcon} />
+          <ArrowRight className={styles.icon} />
         </Link>
       </div>
     </article>
   );
 }
 
-function ProofItem({ label, text }: { label: string; text: string }) {
+function ProofPoint({ label, text }: { label: string; text: string }) {
   return (
-    <div className={styles.proofItem}>
+    <div className={styles.proofPoint}>
       <p>{label}</p>
       <span>{text}</span>
     </div>
@@ -163,7 +161,7 @@ function ProjectImage({
     <Link
       href={`/work/${project.slug}`}
       aria-label={`View ${project.title} case study`}
-      className={`${styles.imageLink} ${className}`}
+      className={`${styles.imageShell} ${className}`}
     >
       {project.cover_image_url ? (
         <img
@@ -173,12 +171,12 @@ function ProjectImage({
           className={styles.image}
         />
       ) : (
-        <div className={styles.emptyImage}>
+        <span className={styles.emptyImage}>
           <BriefcaseBusiness className={styles.emptyIcon} />
-        </div>
+        </span>
       )}
 
-      {small ? <span className={styles.proofPill}>Proof</span> : null}
+      {small ? <span className={styles.proofTag}>Proof</span> : null}
     </Link>
   );
 }
@@ -188,9 +186,9 @@ function EmptyWorkState() {
     <section className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.emptyState}>
-          <div className={styles.emptyMark}>
-            <Layers3 className={styles.emptyMarkIcon} />
-          </div>
+          <span className={styles.emptyMark}>
+            <Layers3 className={styles.emptyIcon} />
+          </span>
           <div>
             <p className={styles.eyebrow}>Proof</p>
             <h2 className={styles.title}>Add visual published work to power this section.</h2>
@@ -200,7 +198,7 @@ function EmptyWorkState() {
           </div>
           <Link href="/work" className={styles.primaryAction}>
             Open work page
-            <ArrowRight className={styles.linkIcon} />
+            <ArrowRight className={styles.icon} />
           </Link>
         </div>
       </div>
