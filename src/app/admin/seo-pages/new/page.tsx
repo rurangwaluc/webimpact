@@ -13,56 +13,34 @@ import {
 } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { SeoSubmitButton } from "@/components/admin/seo-submit-button";
+import {
+  cleanFaqList,
+  cleanKeywordList,
+  cleanLongText,
+  cleanSlug,
+  cleanText,
+} from "@/lib/text-cleaning";
 
 export const dynamic = "force-dynamic";
 
 function getText(formData: FormData, key: string) {
-  return String(formData.get(key) || "").trim();
+  return cleanText(formData.get(key));
+}
+
+function getLongText(formData: FormData, key: string) {
+  return cleanLongText(formData.get(key));
 }
 
 function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  return cleanSlug(value);
 }
 
-function parseKeywords(value: string) {
-  return value
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
+function parseKeywords(value: FormDataEntryValue | null) {
+  return cleanKeywordList(value);
 }
 
-function parseFaq(value: string) {
-  return value
-    .split(/\n{1,}/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
-      const separatorIndex = line.indexOf("|");
-
-      if (separatorIndex === -1) {
-        return null;
-      }
-
-      const question = line.slice(0, separatorIndex).trim();
-      const answer = line.slice(separatorIndex + 1).trim();
-
-      if (!question || !answer) {
-        return null;
-      }
-
-      return {
-        question,
-        answer,
-      };
-    })
-    .filter(
-      (item): item is { question: string; answer: string } => Boolean(item),
-    );
+function parseFaq(value: FormDataEntryValue | null) {
+  return cleanFaqList(value);
 }
 
 export default function NewSeoPage() {
@@ -74,14 +52,14 @@ export default function NewSeoPage() {
     const slug = slugify(rawSlug || title);
 
     const metaTitle = getText(formData, "meta_title");
-    const metaDescription = getText(formData, "meta_description");
+    const metaDescription = getLongText(formData, "meta_description");
     const heroBadge = getText(formData, "hero_badge") || null;
     const heroTitle = getText(formData, "hero_title");
-    const heroDescription = getText(formData, "hero_description");
+    const heroDescription = getLongText(formData, "hero_description");
     const sectionTitle = getText(formData, "section_title") || null;
-    const sectionContent = getText(formData, "section_content") || null;
-    const keywords = parseKeywords(getText(formData, "keywords"));
-    const faq = parseFaq(getText(formData, "faq"));
+    const sectionContent = getLongText(formData, "section_content") || null;
+    const keywords = parseKeywords(formData.get("keywords"));
+    const faq = parseFaq(formData.get("faq"));
     const isPublished = formData.get("is_published") === "on";
 
     if (
