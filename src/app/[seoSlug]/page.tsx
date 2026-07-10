@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   CircleHelp,
   Code2,
-  Gauge,
   Globe2,
   LineChart,
   LockKeyhole,
@@ -15,7 +14,6 @@ import {
   SearchCheck,
   ShieldCheck,
   Sparkles,
-  Target,
   Workflow,
 } from "lucide-react";
 import {
