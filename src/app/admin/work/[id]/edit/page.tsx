@@ -17,6 +17,10 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { WorkProjectDangerControls } from "@/components/admin/work-project-danger-controls";
+import {
+  WORK_PROJECT_TYPE_OPTIONS,
+  normalizeWorkProjectType,
+} from "@/lib/work-project-types";
 
 type PageProps = {
   params: Promise<{
@@ -109,7 +113,7 @@ export default async function EditWorkProjectPage({ params }: PageProps) {
     const title = getText(formData, "title");
     const rawSlug = getText(formData, "slug");
     const slug = slugify(rawSlug || title);
-    const projectType = getText(formData, "project_type");
+    const projectType = normalizeWorkProjectType(getText(formData, "project_type"));
     const summary = getText(formData, "summary");
     const problem = getText(formData, "problem");
     const solution = getText(formData, "solution");
@@ -376,12 +380,31 @@ export default async function EditWorkProjectPage({ params }: PageProps) {
                   </Field>
 
                   <Field label="Project type" required>
-                    <input
+                    <select
                       name="project_type"
                       required
-                      defaultValue={project.project_type}
+                      defaultValue={
+                        WORK_PROJECT_TYPE_OPTIONS.some(
+                          (option) => option.value === project.project_type,
+                        )
+                          ? project.project_type
+                          : "Business Systems"
+                      }
                       className={inputClass}
-                    />
+                    >
+                      {WORK_PROJECT_TYPE_OPTIONS.map((option) => (
+                        <option
+                          key={option.value}
+                          value={option.value}
+                          className="bg-white text-black dark:bg-[#111111] dark:text-white"
+                        >
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="mt-2 text-xs font-semibold leading-5 text-black/45 dark:text-white/45">
+                      This controls the public Work page filter.
+                    </p>
                   </Field>
                 </div>
 

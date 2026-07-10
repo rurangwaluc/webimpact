@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { SubmitButton } from "@/components/ui/submit-button";
+import { WORK_PROJECT_TYPE_OPTIONS } from "@/lib/work-project-types";
 
 type WorkProjectFormProps = {
   action: (formData: FormData) => void | Promise<void>;
@@ -125,12 +126,21 @@ export function WorkProjectForm({ action }: WorkProjectFormProps) {
               </Field>
 
               <Field label="Project type" required>
-                <input
-                  name="project_type"
-                  required
-                  placeholder="Example: Retail Control System"
-                  className={inputClass}
-                />
+                <select name="project_type" required className={inputClass}>
+                  {WORK_PROJECT_TYPE_OPTIONS.map((option) => (
+                    <option
+                      key={option.value}
+                      value={option.value}
+                      className="bg-white text-black dark:bg-[#111111] dark:text-white"
+                    >
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <p className="mt-2 text-xs font-semibold leading-5 text-black/45 dark:text-white/45">
+                  Used as the public Work page filter. Keep this controlled so
+                  the proof library stays clean.
+                </p>
               </Field>
             </div>
 

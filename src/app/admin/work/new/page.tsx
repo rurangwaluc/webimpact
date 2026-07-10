@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { WorkProjectForm } from "@/components/admin/work-project-form";
+import { normalizeWorkProjectType } from "@/lib/work-project-types";
 
 function clean(value: FormDataEntryValue | null) {
   return typeof value === "string" ? value.trim() : "";
@@ -81,7 +82,7 @@ async function createProject(formData: FormData) {
   const manualSlug = clean(formData.get("slug"));
   const slug = slugify(manualSlug || title);
   const clientName = clean(formData.get("client_name"));
-  const projectType = clean(formData.get("project_type"));
+  const projectType = normalizeWorkProjectType(clean(formData.get("project_type")));
   const summary = clean(formData.get("summary"));
   const problem = clean(formData.get("problem"));
   const solution = clean(formData.get("solution"));

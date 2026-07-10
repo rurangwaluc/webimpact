@@ -13,6 +13,11 @@ import {
   Star,
 } from "lucide-react";
 import { getPublishedWorkProjects, type WorkProject } from "@/lib/cms/work";
+import {
+  WORK_PROJECT_TYPE_OPTIONS,
+  normalizeWorkProjectType,
+  slugifyWorkProjectType,
+} from "@/lib/work-project-types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { JsonLd } from "@/components/seo/json-ld";
 
@@ -40,12 +45,7 @@ type SearchParams = Promise<{
 const PAGE_SIZE = 10;
 
 function slugifyType(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  return slugifyWorkProjectType(value);
 }
 
 function getVisibleCount(value?: string) {
@@ -55,29 +55,34 @@ function getVisibleCount(value?: string) {
 }
 
 function getVisibleFilters(projects: WorkProject[]) {
-  const uniqueTypes = new Map<string, string>();
+  const counts = new Map<string, number>();
+
+  WORK_PROJECT_TYPE_OPTIONS.forEach((option) => {
+    counts.set(slugifyWorkProjectType(option.value), 0);
+  });
 
   projects.forEach((project) => {
-    const label = project.project_type.trim();
-    const value = slugifyType(label);
-
-    if (label && value && !uniqueTypes.has(value)) {
-      uniqueTypes.set(value, label);
-    }
+    const value = slugifyWorkProjectType(project.project_type);
+    counts.set(value, (counts.get(value) || 0) + 1);
   });
 
   return [
-    { value: "all", label: "All work" },
-    ...Array.from(uniqueTypes.entries()).map(([value, label]) => ({
-      value,
-      label,
-    })),
+    { value: "all", label: "All work", count: projects.length },
+    ...WORK_PROJECT_TYPE_OPTIONS.map((option) => {
+      const value = slugifyWorkProjectType(option.value);
+
+      return {
+        value,
+        label: option.label,
+        count: counts.get(value) || 0,
+      };
+    }).filter((filter) => filter.count > 0),
   ];
 }
 
 function projectMatchesType(project: WorkProject, selectedType: string) {
   if (selectedType === "all") return true;
-  return slugifyType(project.project_type) === selectedType;
+  return slugifyWorkProjectType(project.project_type) === selectedType;
 }
 
 function getLoadMoreHref({
@@ -238,8 +243,7 @@ export default async function WorkPage({
                       </h2>
 
                       <p className="mt-3 max-w-xl text-sm leading-6 text-black/55 dark:text-white/55">
-                        Filter by project type and study the work that matches
-                        your business problem.
+                        Choose a clean project category and scan the proof that matches your business problem.
                       </p>
                     </div>
 
@@ -279,14 +283,23 @@ export default async function WorkPage({
                             href={href}
                             className={
                               active
-                                ? "inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-[#fd5b38]/20 sm:w-auto"
-                                : "inline-flex w-full items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] text-black/60 transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white/60 sm:w-auto"
+                                ? "inline-flex w-full items-center justify-center gap-2 rounded-[12px] bg-[#fd5b38] px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] text-white shadow-lg shadow-[#fd5b38]/20 sm:w-auto"
+                                : "inline-flex w-full items-center justify-center gap-2 rounded-[12px] border border-black/10 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] text-black/60 transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white/60 sm:w-auto"
                             }
                           >
                             {active ? (
                               <CheckCircle2 className="h-3.5 w-3.5" />
                             ) : null}
-                            {filter.label}
+                            <span>{filter.label}</span>
+                            <span
+                              className={
+                                active
+                                  ? "rounded-full bg-white/18 px-2 py-0.5 text-[10px] text-white"
+                                  : "rounded-full bg-black/[0.04] px-2 py-0.5 text-[10px] text-black/40 dark:bg-white/[0.06] dark:text-white/40"
+                              }
+                            >
+                              {filter.count}
+                            </span>
                           </Link>
                         );
                       })}
@@ -296,19 +309,19 @@ export default async function WorkPage({
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     <div className="rounded-[1.5rem] border border-black/10 bg-black/[0.025] p-4 dark:border-white/10 dark:bg-white/[0.04]">
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-[#fd5b38]">
-                        Auto-generated
+                        Controlled
                       </p>
                       <p className="mt-2 text-sm leading-6 text-black/60 dark:text-white/60">
-                        New project types become filters automatically.
+                        Only fixed professional categories appear here.
                       </p>
                     </div>
 
                     <div className="rounded-[1.5rem] border border-black/10 bg-black/[0.025] p-4 dark:border-white/10 dark:bg-white/[0.04]">
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-[#fd5b38]">
-                        Buyer-focused
+                        Buyer-ready
                       </p>
                       <p className="mt-2 text-sm leading-6 text-black/60 dark:text-white/60">
-                        Each case study helps prove capability before contact.
+                        Each project type is clear enough for serious buyers to scan fast.
                       </p>
                     </div>
                   </div>
@@ -445,7 +458,7 @@ function FeaturedWorkCard({ project }: { project: WorkProject }) {
               </span>
 
               <span className="inline-flex rounded-full border border-black/10 bg-black/[0.03] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
-                {project.project_type}
+                {normalizeWorkProjectType(project.project_type)}
               </span>
             </div>
 
@@ -542,7 +555,7 @@ function CompactWorkCard({ project }: { project: WorkProject }) {
           ) : null}
 
           <span className="inline-flex items-center rounded-full border border-black/10 bg-black/[0.03] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
-            {project.project_type}
+            {normalizeWorkProjectType(project.project_type)}
           </span>
         </div>
 
@@ -615,7 +628,7 @@ function WorkImage({
 
       <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-white">
         <p className="truncate text-xs font-black uppercase tracking-[0.16em] text-white/70">
-          {project.project_type}
+          {normalizeWorkProjectType(project.project_type)}
         </p>
 
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#fd5b38] text-white opacity-0 shadow-lg shadow-[#fd5b38]/20 transition group-hover:opacity-100">
