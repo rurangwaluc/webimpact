@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -125,11 +126,16 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <img
-                src="/images/hero-business-systems.webp"
-                alt="Business software dashboard interface preview"
-                className="h-[220px] w-full object-cover object-top sm:h-[300px] md:h-[390px] lg:h-[430px] xl:h-[455px]"
-              />
+              <div className="relative h-[220px] w-full overflow-hidden sm:h-[300px] md:h-[390px] lg:h-[430px] xl:h-[455px]">
+                <Image
+                  src="/images/hero-business-systems.webp"
+                  alt="Business software dashboard interface preview"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-top"
+                />
+              </div>
 
               <div className="grid grid-cols-3 gap-px bg-black/10 dark:bg-white/10">
                 {operatingSignals.map((signal) => (

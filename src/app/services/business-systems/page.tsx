@@ -5,11 +5,9 @@ import {
   BarChart3,
   Building2,
   CheckCircle2,
-  ClipboardList,
   CreditCard,
   PackageSearch,
   Rocket,
-  ShieldCheck,
   UsersRound,
 } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";

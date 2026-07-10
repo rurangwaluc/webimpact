@@ -44,9 +44,6 @@ type SearchParams = Promise<{
 
 const PAGE_SIZE = 10;
 
-function slugifyType(value: string) {
-  return slugifyWorkProjectType(value);
-}
 
 function getVisibleCount(value?: string) {
   const count = Number(value);

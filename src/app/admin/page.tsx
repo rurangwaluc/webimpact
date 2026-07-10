@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   FilePlus2,
   FileText,
-  LayoutDashboard,
   LockKeyhole,
   LogOut,
   Search,
@@ -53,7 +52,6 @@ export default async function AdminDashboardPage() {
     { count: featuredWork },
     { count: totalPosts },
     { count: publishedPosts },
-    { count: featuredPosts },
     { count: totalSeoPages },
     { count: publishedSeoPages },
   ] = await Promise.all([
@@ -75,10 +73,6 @@ export default async function AdminDashboardPage() {
       .from("blog_posts")
       .select("id", { count: "exact", head: true })
       .eq("status", "published"),
-    supabaseAdmin
-      .from("blog_posts")
-      .select("id", { count: "exact", head: true })
-      .eq("is_featured", true),
     supabaseAdmin
       .from("seo_pages")
       .select("id", { count: "exact", head: true }),

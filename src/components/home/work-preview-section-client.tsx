@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -164,10 +165,13 @@ function ProjectImage({
       className={`${styles.imageShell} ${className}`}
     >
       {project.cover_image_url ? (
-        <img
+        <Image
           src={project.cover_image_url}
           alt={`${project.title} case study preview`}
-          loading={priority ? "eager" : "lazy"}
+          fill
+          priority={priority}
+          sizes={small ? "(min-width: 1024px) 22vw, 50vw" : "(min-width: 1024px) 48vw, 100vw"}
+          unoptimized
           className={styles.image}
         />
       ) : (

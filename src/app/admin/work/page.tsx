@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import {
   ArrowRight,
   BriefcaseBusiness,
-  CheckCircle2,
   Clock3,
   Eye,
   FilePlus2,
@@ -465,26 +464,4 @@ export default async function AdminWorkPage({
       </div>
     </main>
   );
-}
-
-
-
-function buildFilterHref({
-  status,
-  featured,
-  q,
-}: {
-  status: string;
-  featured: string;
-  q: string;
-}) {
-  const params = new URLSearchParams();
-
-  if (q) params.set("q", q);
-  if (status !== "all") params.set("status", status);
-  if (featured !== "all") params.set("featured", featured);
-
-  const query = params.toString();
-
-  return query ? `/admin/work?${query}` : "/admin/work";
 }

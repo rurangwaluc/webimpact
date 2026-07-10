@@ -3,12 +3,9 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import {
   ArrowRight,
-  CheckCircle2,
   ExternalLink,
   MessageCircle,
   ShieldCheck,
-  Trash2,
-  XCircle,
 } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
