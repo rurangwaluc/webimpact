@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   CircleHelp,
   Code2,
-  Cpu,
   Gauge,
   Globe2,
   LineChart,
@@ -48,6 +47,8 @@ type ContentBlock =
 
 export const dynamicParams = true;
 
+const proofSignals = ["Trust", "Control", "Speed", "Revenue clarity"];
+
 const outcomes = [
   {
     icon: ShieldCheck,
@@ -62,7 +63,7 @@ const outcomes = [
   {
     icon: Workflow,
     title: "Less manual work",
-    text: "Automate repetitive steps so your team spends less time chasing information.",
+    text: "Reduce repetitive steps so the team spends less time chasing information.",
   },
 ];
 
@@ -77,21 +78,21 @@ const systemCapabilities = [
   "Business data visibility",
 ];
 
-const trustCards = [
+const processSteps = [
   {
-    icon: Target,
-    title: "Built around the business problem",
-    text: "The page is not just targeting a keyword. It explains the pain, the system needed, and the business outcome.",
+    label: "01",
+    title: "Find the business leak",
+    text: "We identify the manual work, weak visibility, or customer friction that is costing time and money.",
   },
   {
-    icon: Cpu,
-    title: "Focused on operational control",
-    text: "The offer is positioned around visibility, automation, decision-making, and reducing expensive business leaks.",
+    label: "02",
+    title: "Define the right system",
+    text: "We map the workflow, user roles, core screens, data, and business rules before writing code.",
   },
   {
-    icon: Gauge,
-    title: "Designed for serious buyers",
-    text: "The structure guides visitors from problem awareness to proof, process, trust, and a clear next action.",
+    label: "03",
+    title: "Build for real use",
+    text: "We focus on simple daily use, strong mobile layouts, clean admin control, and measurable business value.",
   },
 ];
 
@@ -156,7 +157,7 @@ They lose money because their systems are weak, disconnected, or invisible. WebI
 We design and develop:
 
 • Business websites that increase trust and conversion
-• SaaS platforms with subscriptions, dashboards, and automation
+• SaaS platforms with dashboards and automation
 • Internal systems for operations, staff, inventory, and reporting
 • Dashboards that show real-time business performance
 • AI-assisted workflows that reduce repetitive work
@@ -164,7 +165,7 @@ We design and develop:
       );
 
   return (
-    <main className="bg-white dark:bg-[#070707]">
+    <main className="bg-[#f4f1eb] text-black dark:bg-[#050505] dark:text-white">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -197,261 +198,209 @@ We design and develop:
         />
       ) : null}
 
-      <section className="px-4 pb-12 pt-8 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
+      <section className="px-4 pb-10 pt-6 sm:px-6 lg:px-8 lg:pb-16 lg:pt-12">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2.25rem] border border-black/10 bg-[#f7f7f7] shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:rounded-[2.75rem]">
-            <div className="pointer-events-none absolute right-[-180px] top-[-180px] h-[30rem] w-[30rem] rounded-full bg-[#fd5b38]/22 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-[-220px] left-[-180px] h-[34rem] w-[34rem] rounded-full bg-black/[0.05] blur-3xl dark:bg-white/[0.08]" />
-
-            <div className="relative grid gap-10 p-5 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:p-12 xl:p-16">
-              <div>
-                <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#fd5b38]/20 bg-[#fd5b38]/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#fd5b38] sm:text-xs">
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-[#fd5b38]" />
-                  <span className="truncate">
-                    {page.hero_badge || "WebImpact Lab"}
-                  </span>
-                </div>
-
-                <h1 className="mt-6 max-w-4xl text-[clamp(2.25rem,7vw,5rem)] font-semibold leading-[0.92] tracking-[-0.08em] text-black dark:text-white">
-                  {page.hero_title}
-                </h1>
-
-                <p className="mt-6 max-w-2xl text-[15px] leading-7 text-black/62 dark:text-white/62 sm:text-base">
-                  {page.hero_description}
-                </p>
-
-                <div className="mt-8 flex flex-col gap-3 min-[420px]:flex-row">
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-6 py-4 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
-                  >
-                    Start with an audit
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition group-hover:translate-x-0.5">
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </Link>
-
-                  <Link
-                    href="/work"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-4 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.05] dark:text-white"
-                  >
-                    See proof
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-
-                <div className="mt-8 grid gap-3 border-t border-black/10 pt-6 dark:border-white/10 sm:grid-cols-3">
-                  {["Trust", "Visibility", "Growth"].map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-black/10 bg-white/70 p-4 dark:border-white/10 dark:bg-white/[0.04]"
-                    >
-                      <CheckCircle2 className="h-5 w-5 text-[#fd5b38]" />
-                      <p className="mt-3 text-sm font-black text-black dark:text-white">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+          <div className="grid border border-black/10 bg-white shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#0b0b0b] lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="p-5 sm:p-8 lg:p-10 xl:p-12">
+              <div className="inline-flex max-w-full items-center gap-2 bg-black/[0.045] px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-black/55 dark:bg-white/[0.07] dark:text-white/60">
+                <span className="h-2 w-2 shrink-0 bg-[#fd5b38]" />
+                <span className="truncate">
+                  {page.hero_badge || "WebImpact Lab"}
+                </span>
               </div>
 
-              <div className="relative">
-                <div className="absolute -inset-4 rounded-[2.5rem] bg-[#fd5b38]/10 blur-2xl" />
+              <h1 className="mt-6 max-w-4xl text-[clamp(2.45rem,7.5vw,5.35rem)] font-bold leading-[0.88] tracking-[-0.085em] text-black dark:text-white">
+                {page.hero_title}
+              </h1>
 
-                <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-3 shadow-2xl shadow-black/[0.08] dark:border-white/10 dark:bg-[#070707] sm:p-4">
-                  <div className="rounded-[1.65rem] border border-black/10 bg-[#0b0b0b] p-4 text-white dark:border-white/10 sm:p-5">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#fd5b38]">
-                          Business system map
-                        </p>
-                        <h2 className="mt-2 text-2xl font-semibold tracking-[-0.05em]">
-                          From scattered work to operational control.
-                        </h2>
-                      </div>
+              <p className="mt-6 max-w-2xl text-[15px] font-semibold leading-7 text-black/62 dark:text-white/62 sm:text-base sm:leading-8">
+                {page.hero_description}
+              </p>
 
-                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#fd5b38] text-white">
-                        <Code2 className="h-5 w-5" />
-                      </div>
-                    </div>
+              <div className="mt-8 grid gap-2 min-[430px]:grid-cols-2 sm:max-w-xl">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3.5 text-sm font-black text-white transition hover:bg-[#e84a2b]"
+                >
+                  Start with an audit
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                </Link>
 
-                    <div className="mt-6 grid gap-3">
-                      {trustCards.map((card) => {
-                        const Icon = card.icon;
+                <Link
+                  href="/work"
+                  className="group inline-flex items-center justify-center gap-2 bg-black/[0.06] px-5 py-3.5 text-sm font-black text-black transition hover:bg-black hover:text-white dark:bg-white/[0.08] dark:text-white dark:hover:bg-white dark:hover:text-black"
+                >
+                  See proof
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                </Link>
+              </div>
 
-                        return (
-                          <div
-                            key={card.title}
-                            className="rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-4"
-                          >
-                            <div className="flex gap-4">
-                              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#fd5b38]/15 text-[#fd5b38]">
-                                <Icon className="h-5 w-5" />
-                              </div>
-
-                              <div>
-                                <h3 className="text-sm font-black text-white">
-                                  {card.title}
-                                </h3>
-                                <p className="mt-2 text-sm leading-6 text-white/55">
-                                  {card.text}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    <div className="mt-5 rounded-[1.5rem] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
-                      <div className="flex items-start gap-3">
-                        <SearchCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#fd5b38]" />
-                        <div>
-                          <p className="text-sm font-black text-white">
-                            Built for search intent and buyer confidence.
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-white/55">
-                            The goal is not traffic alone. The goal is qualified
-                            visitors who understand the value and take action.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+              <div className="mt-8 grid gap-px border-t border-black/10 pt-5 dark:border-white/10 min-[560px]:grid-cols-4">
+                {proofSignals.map((item) => (
+                  <div
+                    key={item}
+                    className="bg-black/[0.025] p-3 dark:bg-white/[0.045]"
+                  >
+                    <CheckCircle2 className="h-4 w-4 text-[#fd5b38]" />
+                    <p className="mt-3 text-[12px] font-black leading-4 text-black/68 dark:text-white/68">
+                      {item}
+                    </p>
                   </div>
-
-                  <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {systemCapabilities.slice(0, 4).map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-2xl border border-black/10 bg-black/[0.025] p-3 text-center text-[11px] font-black text-black/60 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/60"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative border-t border-black/10 px-5 py-4 dark:border-white/10 sm:px-8 lg:px-12">
-              <div className="flex flex-col gap-3 text-sm font-semibold text-black/55 dark:text-white/55 md:flex-row md:items-center md:justify-between">
-                <p className="font-black text-black dark:text-white">
-                  Built for serious businesses, not decoration.
-                </p>
+            <div className="grid border-t border-black/10 bg-[#111111] text-white dark:border-white/10 lg:border-l lg:border-t-0">
+              <div className="grid gap-px bg-white/10">
+                <div className="bg-[#161616] p-5 sm:p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#fd5b38]">
+                        System direction
+                      </p>
+                      <h2 className="mt-3 max-w-md text-3xl font-bold leading-[0.96] tracking-[-0.06em]">
+                        From weak visibility to operational control.
+                      </h2>
+                    </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {["Audit", "Strategy", "Build", "Improve"].map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-black text-black/50 dark:border-white/10 dark:bg-white/[0.05] dark:text-white/50"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                    <div className="grid h-11 w-11 shrink-0 place-items-center bg-[#fd5b38]">
+                      <Code2 className="h-5 w-5" />
+                    </div>
+                  </div>
                 </div>
+
+                {processSteps.map((step) => (
+                  <div key={step.label} className="grid gap-4 bg-[#111111] p-5 sm:grid-cols-[4rem_1fr] sm:p-6">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#fd5b38]">
+                      {step.label}
+                    </p>
+                    <div>
+                      <h3 className="text-base font-black text-white">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-white/58">
+                        {step.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="bg-[#fd5b38] p-5 text-white sm:p-6">
+                  <div className="flex items-start gap-3">
+                    <SearchCheck className="mt-0.5 h-5 w-5 shrink-0" />
+                    <p className="text-sm font-black leading-6">
+                      Built for buyer intent, business clarity, and serious project conversations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+                {systemCapabilities.slice(0, 4).map((item) => (
+                  <div key={item} className="bg-[#0b0b0b] p-4">
+                    <p className="text-[11px] font-black leading-4 text-white/72">
+                      {item}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 pb-12 sm:px-6 lg:px-8 lg:pb-20">
-        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.72fr_0.28fr]">
-          <article className="relative overflow-hidden rounded-[2.35rem] border border-black/10 bg-white p-6 shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-10">
-            <div className="pointer-events-none absolute right-[-140px] top-[-140px] h-96 w-96 rounded-full bg-[#fd5b38]/10 blur-3xl" />
+      <section className="px-4 pb-10 sm:px-6 lg:px-8 lg:pb-16">
+        <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[0.7fr_0.3fr]">
+          <article className="border border-black/10 bg-white p-5 shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#0b0b0b] sm:p-8 lg:p-10">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
+              What this means
+            </p>
 
-            <div className="relative">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
-                What this means
-              </p>
+            <h2 className="mt-4 max-w-4xl text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[0.96] tracking-[-0.065em] text-black dark:text-white">
+              {page.section_title || page.title}
+            </h2>
 
-              <h2 className="mt-4 max-w-4xl text-[clamp(2rem,5vw,3.45rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
-                {page.section_title || page.title}
-              </h2>
-
-              <div className="mt-8 space-y-5">
-                {contentBlocks.map((block, index) => {
-                  if (block.type === "list") {
-                    return (
-                      <ul key={index} className="grid gap-3">
-                        {block.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex gap-3 text-[15px] leading-7 text-black/65 dark:text-white/65"
-                          >
-                            <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#fd5b38]" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    );
-                  }
-
+            <div className="mt-8 space-y-5">
+              {contentBlocks.map((block, index) => {
+                if (block.type === "list") {
                   return (
-                    <p
-                      key={index}
-                      className="max-w-4xl text-[15px] leading-8 text-black/65 dark:text-white/65"
-                    >
-                      {block.text}
-                    </p>
+                    <ul key={index} className="grid gap-3">
+                      {block.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex gap-3 text-[15px] leading-7 text-black/65 dark:text-white/65"
+                        >
+                          <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#fd5b38]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   );
-                })}
-              </div>
+                }
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {outcomes.map((item) => {
-                  const Icon = item.icon;
+                return (
+                  <p
+                    key={index}
+                    className="max-w-4xl text-[15px] leading-8 text-black/65 dark:text-white/65"
+                  >
+                    {block.text}
+                  </p>
+                );
+              })}
+            </div>
 
-                  return (
-                    <div
-                      key={item.title}
-                      className="rounded-[1.65rem] border border-black/10 bg-black/[0.025] p-5 dark:border-white/10 dark:bg-white/[0.04]"
-                    >
-                      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#fd5b38] text-white">
-                        <Icon className="h-5 w-5" />
-                      </div>
+            <div className="mt-8 grid gap-px bg-black/10 dark:bg-white/10 sm:grid-cols-3">
+              {outcomes.map((item) => {
+                const Icon = item.icon;
 
-                      <h3 className="mt-5 text-base font-black text-black dark:text-white">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-2 text-sm leading-6 text-black/55 dark:text-white/55">
-                        {item.text}
-                      </p>
+                return (
+                  <div
+                    key={item.title}
+                    className="bg-[#f7f4ef] p-5 dark:bg-[#111111]"
+                  >
+                    <div className="grid h-10 w-10 place-items-center bg-[#fd5b38] text-white">
+                      <Icon className="h-5 w-5" />
                     </div>
-                  );
-                })}
-              </div>
+
+                    <h3 className="mt-5 text-base font-black text-black dark:text-white">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-6 text-black/55 dark:text-white/55">
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </article>
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="overflow-hidden rounded-[2rem] border border-black/10 bg-[#f7f7f7] shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#111111]">
+            <div className="border border-black/10 bg-white shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#0b0b0b]">
               <div className="p-5">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fd5b38] text-white">
+                <div className="grid h-11 w-11 place-items-center bg-[#fd5b38] text-white">
                   <Sparkles className="h-5 w-5" />
                 </div>
 
-                <h2 className="mt-6 text-2xl font-semibold tracking-[-0.045em] text-black dark:text-white">
-                  Need this built?
+                <h2 className="mt-6 text-2xl font-bold leading-[1] tracking-[-0.05em] text-black dark:text-white">
+                  Need this built properly?
                 </h2>
 
                 <p className="mt-3 text-sm leading-6 text-black/60 dark:text-white/60">
-                  Start with a clear audit. We identify what should be built
-                  first before you waste time on random features.
+                  Start with a clear audit. We identify what should be built first before you waste time on random features.
                 </p>
 
                 <Link
                   href="/contact"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-5 py-3 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-[#fd5b38] px-5 py-3 text-sm font-black text-white transition hover:bg-[#e84a2b]"
                 >
                   Book audit
                   <ArrowRight className="h-4 w-4" />
                 </Link>
 
                 <Link
-                  href="https://wa.me/+250785587830"
-                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-black text-black transition hover:border-[#fd5b38] hover:text-[#fd5b38] dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                  href="https://wa.me/250785587830"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-2 bg-black/[0.06] px-5 py-3 text-sm font-black text-black transition hover:bg-black hover:text-white dark:bg-white/[0.08] dark:text-white dark:hover:bg-white dark:hover:text-black"
                 >
                   WhatsApp
                   <MessageCircle className="h-4 w-4" />
@@ -468,7 +417,7 @@ We design and develop:
                     {keywords.slice(0, 10).map((keyword) => (
                       <span
                         key={keyword}
-                        className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55"
+                        className="border border-black/10 bg-black/[0.025] px-3 py-1.5 text-xs font-bold text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55"
                       >
                         {keyword}
                       </span>
@@ -478,12 +427,11 @@ We design and develop:
               ) : null}
 
               <div className="border-t border-black/10 p-5 dark:border-white/10">
-                <div className="rounded-[1.5rem] border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
+                <div className="border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
                   <div className="flex gap-3">
                     <LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-[#fd5b38]" />
                     <p className="text-sm font-semibold leading-6 text-black/70 dark:text-white/70">
-                      We build systems around business visibility, control,
-                      automation, and measurable growth.
+                      We build systems around business visibility, control, automation, and measurable growth.
                     </p>
                   </div>
                 </div>
@@ -493,30 +441,29 @@ We design and develop:
         </div>
       </section>
 
-      <section className="px-4 pb-12 sm:px-6 lg:px-8 lg:pb-20">
+      <section className="px-4 pb-10 sm:px-6 lg:px-8 lg:pb-16">
         <div className="mx-auto max-w-7xl">
-          <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-10">
-            <div className="grid gap-8 lg:grid-cols-[0.42fr_1fr] lg:items-start">
+          <div className="border border-black/10 bg-white p-5 shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#0b0b0b] sm:p-8 lg:p-10">
+            <div className="grid gap-8 lg:grid-cols-[0.38fr_1fr] lg:items-start">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
                   What we can build
                 </p>
 
-                <h2 className="mt-4 text-[clamp(2rem,5vw,3.15rem)] font-semibold leading-[1] tracking-[-0.055em] text-black dark:text-white">
+                <h2 className="mt-4 text-[clamp(2rem,5vw,3.15rem)] font-bold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
                   Software that supports how the business actually works.
                 </h2>
 
                 <p className="mt-5 text-sm leading-7 text-black/60 dark:text-white/60">
-                  The right system should connect the daily work, the numbers,
-                  the customers, and the decisions that move the business.
+                  The right system should connect the daily work, the numbers, the customers, and the decisions that move the business.
                 </p>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-px bg-black/10 dark:bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
                 {systemCapabilities.map((item) => (
                   <div
                     key={item}
-                    className="rounded-[1.5rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#070707]"
+                    className="bg-[#f7f4ef] p-5 dark:bg-[#111111]"
                   >
                     <Globe2 className="h-5 w-5 text-[#fd5b38]" />
                     <p className="mt-5 text-sm font-black text-black dark:text-white">
@@ -531,28 +478,28 @@ We design and develop:
       </section>
 
       {faqItems.length > 0 ? (
-        <section className="px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+        <section className="px-4 pb-10 sm:px-6 lg:px-8 lg:pb-16">
           <div className="mx-auto max-w-7xl">
-            <div className="rounded-[2.5rem] border border-black/10 bg-[#f7f7f7] p-6 shadow-2xl shadow-black/[0.06] dark:border-white/10 dark:bg-[#111111] sm:p-8 lg:p-10">
+            <div className="border border-black/10 bg-white p-5 shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#0b0b0b] sm:p-8 lg:p-10">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
                 Questions
               </p>
 
-              <h2 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3.35rem)] font-semibold leading-[1] tracking-[-0.055em] text-black dark:text-white">
+              <h2 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3.35rem)] font-bold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
                 Common questions before building.
               </h2>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <div className="mt-8 grid gap-px bg-black/10 dark:bg-white/10 md:grid-cols-2">
                 {faqItems.map((item) => (
                   <article
                     key={item.question}
-                    className="rounded-[1.75rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#070707]"
+                    className="bg-[#f7f4ef] p-5 dark:bg-[#111111]"
                   >
                     <div className="flex gap-3">
                       <CircleHelp className="mt-1 h-5 w-5 shrink-0 text-[#fd5b38]" />
 
                       <div>
-                        <h3 className="text-lg font-semibold tracking-[-0.035em] text-black dark:text-white">
+                        <h3 className="text-lg font-bold tracking-[-0.04em] text-black dark:text-white">
                           {item.question}
                         </h3>
 
@@ -569,30 +516,27 @@ We design and develop:
         </section>
       ) : null}
 
-      <section className="px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+      <section className="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-black p-6 text-white shadow-2xl shadow-black/[0.12] dark:border-white/10 sm:p-8 lg:p-10">
-            <div className="pointer-events-none absolute right-[-120px] top-[-120px] h-96 w-96 rounded-full bg-[#fd5b38]/25 blur-3xl" />
-
-            <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="border border-white/10 bg-black p-5 text-white shadow-2xl shadow-black/[0.14] sm:p-8 lg:p-10">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
                   Start with clarity
                 </p>
 
-                <h2 className="mt-4 max-w-3xl text-[clamp(2rem,5vw,3.65rem)] font-semibold leading-[0.96] tracking-[-0.065em]">
+                <h2 className="mt-4 max-w-3xl text-[clamp(2rem,5vw,3.65rem)] font-bold leading-[0.94] tracking-[-0.07em]">
                   Before you build another tool, find the business leak first.
                 </h2>
 
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-white/60">
-                  We help you decide what should be built, what should be
-                  automated, what should be measured, and what should wait.
+                  We help you decide what should be built, what should be automated, what should be measured, and what should wait.
                 </p>
               </div>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#fd5b38] px-6 py-4 text-sm font-black text-white shadow-lg shadow-[#fd5b38]/25 transition hover:-translate-y-0.5 hover:bg-[#e84a2b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#fd5b38] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e84a2b]"
               >
                 Book an audit
                 <Rocket className="h-4 w-4" />
