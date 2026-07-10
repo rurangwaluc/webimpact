@@ -11,6 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
+import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 
 export const metadata: Metadata = {
   title: "Web Development Company in Rwanda",
@@ -93,6 +94,21 @@ const process = [
     "Improve after launch",
     "We refine the website based on goals, user behavior, search performance, and customer feedback.",
   ],
+];
+
+const relatedSeoPages = [
+  {
+    title: "Web Development Company in Kigali",
+    href: "/web-development-company-kigali",
+    description:
+      "A focused page for businesses in Kigali that need a professional website built for trust and action.",
+  },
+  {
+    title: "E-Commerce Website Development in Rwanda",
+    href: "/ecommerce-website-development-rwanda",
+    description:
+      "For businesses that need clean product presentation, clear categories, and better online buying confidence.",
+  },
 ];
 
 export default function WebDevelopmentPage() {
@@ -295,6 +311,12 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSeoLinks
+        links={relatedSeoPages}
+        title="Explore related WebImpact Lab pages."
+        description="These focused pages connect this service to specific buyer searches, business problems, and project needs."
+      />
 
       <section className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">

@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
+import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 
 export const metadata: Metadata = {
   title: "SaaS Development in Rwanda",
@@ -72,6 +73,21 @@ const process = [
   ["03", "Design", "Plan the product so it feels simple and clear for users."],
   ["04", "Build", "Develop in phases with testing, feedback, and clean delivery."],
   ["05", "Grow", "Launch, track usage, improve, and prepare the platform to scale."],
+];
+
+const relatedSeoPages = [
+  {
+    title: "SaaS Development Company in Rwanda",
+    href: "/saas-development-company-rwanda",
+    description:
+      "A focused page for founders and businesses building SaaS platforms, portals, marketplaces, and user systems.",
+  },
+  {
+    title: "Custom Business Software in Rwanda",
+    href: "/custom-business-software-rwanda",
+    description:
+      "For businesses that need structured software before growing into a larger platform.",
+  },
 ];
 
 export default function SaaSDevelopmentPage() {
@@ -278,6 +294,12 @@ export default function SaaSDevelopmentPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSeoLinks
+        links={relatedSeoPages}
+        title="Explore related WebImpact Lab pages."
+        description="These focused pages connect this service to specific buyer searches, business problems, and project needs."
+      />
 
       <section className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">

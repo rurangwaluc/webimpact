@@ -11,6 +11,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
+import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 
 export const metadata: Metadata = {
   title: "Custom Software Development in Rwanda",
@@ -89,6 +90,21 @@ const process = [
     "Improve",
     "Launch, watch real usage, fix friction, and prepare the system to grow.",
   ],
+];
+
+const relatedSeoPages = [
+  {
+    title: "Software Development Company in Rwanda",
+    href: "/software-development-company-rwanda",
+    description:
+      "A focused page for companies searching for serious software development support in Rwanda.",
+  },
+  {
+    title: "Custom Business Software in Rwanda",
+    href: "/custom-business-software-rwanda",
+    description:
+      "For businesses that need internal tools, dashboards, workflows, and systems built around real operations.",
+  },
 ];
 
 export default function SoftwareDevelopmentPage() {
@@ -298,6 +314,12 @@ export default function SoftwareDevelopmentPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSeoLinks
+        links={relatedSeoPages}
+        title="Explore related WebImpact Lab pages."
+        description="These focused pages connect this service to specific buyer searches, business problems, and project needs."
+      />
 
       <section className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">

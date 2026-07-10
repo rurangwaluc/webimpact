@@ -11,6 +11,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
+import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 
 export const metadata: Metadata = {
   title: "Business Systems & Dashboard Development in Rwanda",
@@ -93,6 +94,21 @@ const process = [
     "Improve",
     "Launch, watch usage, fix friction, and improve the system around real operations.",
   ],
+];
+
+const relatedSeoPages = [
+  {
+    title: "Business Management System in Rwanda",
+    href: "/business-management-system-rwanda",
+    description:
+      "A focused page for owners who need better sales, stock, staff, customer, payment, and report control.",
+  },
+  {
+    title: "Custom Business Software in Rwanda",
+    href: "/custom-business-software-rwanda",
+    description:
+      "For companies that have outgrown spreadsheets, WhatsApp records, notebooks, and disconnected tools.",
+  },
 ];
 
 export default function BusinessSystemsPage() {
@@ -297,6 +313,12 @@ export default function BusinessSystemsPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSeoLinks
+        links={relatedSeoPages}
+        title="Explore related WebImpact Lab pages."
+        description="These focused pages connect this service to specific buyer searches, business problems, and project needs."
+      />
 
       <section className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
