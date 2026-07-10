@@ -487,11 +487,11 @@ We design and develop:
                 Common questions before building.
               </h2>
 
-              <div className="mt-8 grid gap-px bg-black/10 dark:bg-white/10 md:grid-cols-2">
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {faqItems.map((item) => (
                   <article
                     key={item.question}
-                    className="bg-[#f7f4ef] p-5 dark:bg-[#111111]"
+                    className="border border-black/10 bg-[#f7f4ef] p-5 dark:border-white/10 dark:bg-[#111111]"
                   >
                     <div className="flex gap-3">
                       <CircleHelp className="mt-1 h-5 w-5 shrink-0 text-[#fd5b38]" />
