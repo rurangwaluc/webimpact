@@ -1,3 +1,4 @@
+import { cleanSlug } from "@/lib/text-cleaning";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -7,15 +8,6 @@ import { normalizeWorkProjectType } from "@/lib/work-project-types";
 
 function clean(value: FormDataEntryValue | null) {
   return typeof value === "string" ? value.trim() : "";
-}
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 }
 
 async function ensureAdmin() {
@@ -80,9 +72,11 @@ async function createProject(formData: FormData) {
 
   const title = clean(formData.get("title"));
   const manualSlug = clean(formData.get("slug"));
-  const slug = slugify(manualSlug || title);
+  const slug = cleanSlug(manualSlug || title);
   const clientName = clean(formData.get("client_name"));
-  const projectType = normalizeWorkProjectType(clean(formData.get("project_type")));
+  const projectType = normalizeWorkProjectType(
+    clean(formData.get("project_type")),
+  );
   const summary = clean(formData.get("summary"));
   const problem = clean(formData.get("problem"));
   const solution = clean(formData.get("solution"));
