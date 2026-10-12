@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   CircleHelp,
   Code2,
-  Globe2,
   LineChart,
   LockKeyhole,
   MessageCircle,
@@ -144,23 +143,13 @@ export default async function SeoLandingPage({ params }: PageProps) {
   }
 
   const faqItems = normalizeFaq(page.faq);
-  const keywords = Array.isArray(page.keywords) ? page.keywords : [];
-  const contentBlocks = page.section_content
-    ? splitParagraphs(page.section_content)
-    : splitParagraphs(
-        `Most businesses do not lose money because they lack effort.
+  const content = page.section_content?.trim();
 
-They lose money because their systems are weak, disconnected, or invisible. WebImpact Lab helps businesses replace manual work, scattered communication, weak websites, and disconnected operations with structured software systems built for growth.
+  if (!content) {
+    notFound();
+  }
 
-We design and develop:
-
-• Business websites that increase trust and conversion
-• SaaS platforms with dashboards and automation
-• Internal systems for operations, staff, inventory, and reporting
-• Dashboards that show real-time business performance
-• AI-assisted workflows that reduce repetitive work
-• Customer portals, admin systems, and scalable platforms`,
-      );
+  const contentBlocks = splitParagraphs(content);
 
   return (
     <main className="bg-[#f4f1eb] text-black dark:bg-[#050505] dark:text-white">
@@ -268,7 +257,10 @@ We design and develop:
                 </div>
 
                 {processSteps.map((step) => (
-                  <div key={step.label} className="grid gap-4 bg-[#111111] p-5 sm:grid-cols-[4rem_1fr] sm:p-6">
+                  <div
+                    key={step.label}
+                    className="grid gap-4 bg-[#111111] p-5 sm:grid-cols-[4rem_1fr] sm:p-6"
+                  >
                     <p className="text-xs font-black uppercase tracking-[0.2em] text-[#fd5b38]">
                       {step.label}
                     </p>
@@ -287,7 +279,8 @@ We design and develop:
                   <div className="flex items-start gap-3">
                     <SearchCheck className="mt-0.5 h-5 w-5 shrink-0" />
                     <p className="text-sm font-black leading-6">
-                      Built for buyer intent, business clarity, and serious project conversations.
+                      Built for buyer intent, business clarity, and serious
+                      project conversations.
                     </p>
                   </div>
                 </div>
@@ -385,7 +378,8 @@ We design and develop:
                 </h2>
 
                 <p className="mt-3 text-sm leading-6 text-black/60 dark:text-white/60">
-                  Start with a clear audit. We identify what should be built first before you waste time on random features.
+                  Start with a clear audit. We identify what should be built
+                  first before you waste time on random features.
                 </p>
 
                 <Link
@@ -405,73 +399,19 @@ We design and develop:
                 </Link>
               </div>
 
-              {keywords.length > 0 ? (
-                <div className="border-t border-black/10 p-5 dark:border-white/10">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-black/35 dark:text-white/35">
-                    Related focus
-                  </p>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {keywords.slice(0, 10).map((keyword) => (
-                      <span
-                        key={keyword}
-                        className="border border-black/10 bg-black/[0.025] px-3 py-1.5 text-xs font-bold text-black/55 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
               <div className="border-t border-black/10 p-5 dark:border-white/10">
                 <div className="border border-[#fd5b38]/20 bg-[#fd5b38]/10 p-4">
                   <div className="flex gap-3">
                     <LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-[#fd5b38]" />
                     <p className="text-sm font-semibold leading-6 text-black/70 dark:text-white/70">
-                      We build systems around business visibility, control, automation, and measurable growth.
+                      We build systems around business visibility, control,
+                      automation, and measurable growth.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </aside>
-        </div>
-      </section>
-
-      <section className="px-4 pb-10 sm:px-6 lg:px-8 lg:pb-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="border border-black/10 bg-white p-5 shadow-xl shadow-black/[0.04] dark:border-white/10 dark:bg-[#0b0b0b] sm:p-8 lg:p-10">
-            <div className="grid gap-8 lg:grid-cols-[0.38fr_1fr] lg:items-start">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fd5b38]">
-                  What we can build
-                </p>
-
-                <h2 className="mt-4 text-[clamp(2rem,5vw,3.15rem)] font-bold leading-[0.98] tracking-[-0.06em] text-black dark:text-white">
-                  Software that supports how the business actually works.
-                </h2>
-
-                <p className="mt-5 text-sm leading-7 text-black/60 dark:text-white/60">
-                  The right system should connect the daily work, the numbers, the customers, and the decisions that move the business.
-                </p>
-              </div>
-
-              <div className="grid gap-px bg-black/10 dark:bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-                {systemCapabilities.map((item) => (
-                  <div
-                    key={item}
-                    className="bg-[#f7f4ef] p-5 dark:bg-[#111111]"
-                  >
-                    <Globe2 className="h-5 w-5 text-[#fd5b38]" />
-                    <p className="mt-5 text-sm font-black text-black dark:text-white">
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -528,7 +468,8 @@ We design and develop:
                 </h2>
 
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-white/60">
-                  We help you decide what should be built, what should be automated, what should be measured, and what should wait.
+                  We help you decide what should be built, what should be
+                  automated, what should be measured, and what should wait.
                 </p>
               </div>
 
