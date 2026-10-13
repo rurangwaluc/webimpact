@@ -48,6 +48,7 @@ type ContentBlock =
     };
 
 export const dynamicParams = true;
+export const revalidate = 3600;
 
 const proofSignals = ["Trust", "Control", "Speed", "Revenue clarity"];
 
