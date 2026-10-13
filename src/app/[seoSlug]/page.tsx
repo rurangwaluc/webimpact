@@ -120,7 +120,9 @@ export async function generateMetadata({
   }
 
   return {
-    title: page.meta_title,
+    title: {
+      absolute: page.meta_title,
+    },
     description: page.meta_description,
     alternates: {
       canonical: `/${page.slug}`,

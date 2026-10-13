@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/hero-section";
 import { ServicesPreviewSection } from "@/components/home/services-preview-section";
 import { WorkPreviewSection } from "@/components/home/work-preview-section";
 import { FinalCtaSection } from "@/components/home/final-cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (
