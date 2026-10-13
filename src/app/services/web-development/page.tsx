@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Web Development Company in Rwanda | WebImpact Lab",
     description:
       "Websites built to explain, rank, and convert. Not just design, but real business results.",
-    url: "https://webimpactlab.com/services/web-development",
+    url: "https://www.webimpactlab.com/services/web-development",
     type: "website",
   },
 };
@@ -122,11 +122,11 @@ export default function WebDevelopmentPage() {
           provider: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
           areaServed: ["Rwanda", "Kigali", "East Africa", "Africa"],
           serviceType: "Web Development",
-          url: "https://webimpactlab.com/services/web-development",
+          url: "https://www.webimpactlab.com/services/web-development",
           description:
             "Web development services for businesses that need websites that explain, rank, and convert.",
         }}

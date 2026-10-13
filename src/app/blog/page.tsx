@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Blog | WebImpact Lab",
     description:
       "Practical articles about software, websites, dashboards, business systems, automation, and SaaS development.",
-    url: "https://webimpactlab.com/blog",
+    url: "https://www.webimpactlab.com/blog",
     type: "website",
   },
 };
@@ -38,7 +38,7 @@ export default async function BlogPage() {
           "@context": "https://schema.org",
           "@type": "Blog",
           name: "WebImpact Lab Blog",
-          url: "https://webimpactlab.com/blog",
+          url: "https://www.webimpactlab.com/blog",
           description:
             "Software, web development, business systems, automation, dashboards, and SaaS insights for businesses.",
         }}

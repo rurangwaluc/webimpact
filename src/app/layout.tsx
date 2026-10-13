@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     "dashboard development services",
     "business systems Rwanda",
   ],
-  metadataBase: new URL("https://webimpactlab.com"),
+  metadataBase: new URL("https://www.webimpactlab.com"),
   openGraph: {
     title: "Software Development Company in Rwanda | WebImpact Lab",
     description:
       "WebImpact Lab builds websites, business systems, SaaS platforms, dashboards, and automation tools for serious businesses.",
-    url: "https://webimpactlab.com",
+    url: "https://www.webimpactlab.com",
     siteName: "WebImpact Lab",
     locale: "en_US",
     type: "website",

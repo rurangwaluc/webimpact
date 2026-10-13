@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Custom Software Development in Rwanda | WebImpact Lab",
     description:
       "Custom software for businesses that need better control, clearer reporting, less manual work, and stronger operations.",
-    url: "https://webimpactlab.com/services/software-development",
+    url: "https://www.webimpactlab.com/services/software-development",
     type: "website",
   },
 };
@@ -118,11 +118,11 @@ export default function SoftwareDevelopmentPage() {
           provider: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
           areaServed: ["Rwanda", "Kigali", "East Africa", "Africa"],
           serviceType: "Custom Software Development",
-          url: "https://webimpactlab.com/services/software-development",
+          url: "https://www.webimpactlab.com/services/software-development",
           description:
             "Custom software development for businesses that need internal systems, dashboards, portals, automation, reporting, and better control.",
         }}

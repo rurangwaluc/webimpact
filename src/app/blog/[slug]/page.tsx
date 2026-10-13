@@ -84,7 +84,7 @@ export async function generateMetadata({
     openGraph: {
       title: post.og_title || title,
       description: post.og_description || description,
-      url: `https://webimpactlab.com/blog/${post.slug}`,
+      url: `https://www.webimpactlab.com/blog/${post.slug}`,
       type: "article",
       publishedTime: post.published_at || post.created_at,
       modifiedTime: post.updated_at,
@@ -168,7 +168,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = maybePost;
   const engagement = await getBlogEngagement(post.id);
   const allPosts = await getPublishedBlogPosts();
-  const articleUrl = `https://webimpactlab.com/blog/${post.slug}`;
+  const articleUrl = `https://www.webimpactlab.com/blog/${post.slug}`;
 
   const parts = post.content.split("\n\n");
   const mid = Math.max(1, Math.floor(parts.length / 2));
@@ -305,7 +305,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           publisher: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
           mainEntityOfPage: {
             "@type": "WebPage",

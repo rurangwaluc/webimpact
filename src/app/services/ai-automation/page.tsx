@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "AI & Business Automation Services in Rwanda | WebImpact Lab",
     description:
       "Automation systems that reduce repetitive work, speed up teams, and help businesses operate with fewer bottlenecks.",
-    url: "https://webimpactlab.com/services/ai-automation",
+    url: "https://www.webimpactlab.com/services/ai-automation",
     type: "website",
   },
 };
@@ -105,11 +105,11 @@ export default function AiAutomationPage() {
           provider: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
           areaServed: ["Rwanda", "Kigali", "East Africa", "Africa"],
           serviceType: "AI and Business Automation",
-          url: "https://webimpactlab.com/services/ai-automation",
+          url: "https://www.webimpactlab.com/services/ai-automation",
           description:
             "AI and automation services for businesses that need workflow automation, smart alerts, reporting tools, AI assistants, and faster operations.",
         }}

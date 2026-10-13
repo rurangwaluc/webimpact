@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Business Systems & Dashboard Development in Rwanda | WebImpact Lab",
     description:
       "Business systems and dashboards for owners who need visibility, control, reporting, and better daily operations.",
-    url: "https://webimpactlab.com/services/business-systems",
+    url: "https://www.webimpactlab.com/services/business-systems",
     type: "website",
   },
 };
@@ -122,11 +122,11 @@ export default function BusinessSystemsPage() {
           provider: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
           areaServed: ["Rwanda", "Kigali", "East Africa", "Africa"],
           serviceType: "Business Systems and Dashboard Development",
-          url: "https://webimpactlab.com/services/business-systems",
+          url: "https://www.webimpactlab.com/services/business-systems",
           description:
             "Business systems and dashboard development for companies that need clearer sales, cash, stock, staff, customer, and operational visibility.",
         }}

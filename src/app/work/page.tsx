@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Work & Case Studies | WebImpact Lab",
     description:
       "Real websites, SaaS platforms, dashboards, and business systems built for serious businesses.",
-    url: "https://webimpactlab.com/work",
+    url: "https://www.webimpactlab.com/work",
     type: "website",
   },
 };
@@ -149,7 +149,7 @@ export default async function WorkPage({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "WebImpact Lab Work and Case Studies",
-          url: "https://webimpactlab.com/work",
+          url: "https://www.webimpactlab.com/work",
           description:
             "Case studies and work examples from WebImpact Lab, a software development company in Rwanda.",
         }}

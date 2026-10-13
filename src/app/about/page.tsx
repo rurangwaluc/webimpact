@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "About | WebImpact Lab",
     description:
       "We build systems that help businesses grow with clarity, control, and confidence.",
-    url: "https://webimpactlab.com/about",
+    url: "https://www.webimpactlab.com/about",
     type: "website",
   },
 };
@@ -35,7 +35,7 @@ export default function AboutPage() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "WebImpact Lab",
-          url: "https://webimpactlab.com",
+          url: "https://www.webimpactlab.com",
           description:
             "WebImpact Lab builds websites, dashboards, SaaS platforms, and automation systems for businesses.",
         }}

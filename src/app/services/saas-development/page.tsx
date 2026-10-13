@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "SaaS Development in Rwanda | WebImpact Lab",
     description:
       "SaaS platforms, marketplaces, portals, and subscription systems built to scale.",
-    url: "https://webimpactlab.com/services/saas-development",
+    url: "https://www.webimpactlab.com/services/saas-development",
     type: "website",
   },
 };
@@ -101,11 +101,11 @@ export default function SaaSDevelopmentPage() {
           provider: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
           areaServed: ["Rwanda", "Kigali", "East Africa", "Africa"],
           serviceType: "SaaS Development",
-          url: "https://webimpactlab.com/services/saas-development",
+          url: "https://www.webimpactlab.com/services/saas-development",
           description:
             "SaaS development for founders and businesses that need platforms, marketplaces, portals, subscriptions, payments, and scalable user systems.",
         }}

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Contact WebImpact Lab | Software Development Company in Rwanda",
     description:
       "Start with a free audit for your website, software idea, dashboard, SaaS platform, or automation project.",
-    url: "https://webimpactlab.com/contact",
+    url: "https://www.webimpactlab.com/contact",
     type: "website",
   },
 };
@@ -63,7 +63,7 @@ export default function ContactPage() {
           "@context": "https://schema.org",
           "@type": "ContactPage",
           name: "Contact WebImpact Lab",
-          url: "https://webimpactlab.com/contact",
+          url: "https://www.webimpactlab.com/contact",
           description:
             "Contact WebImpact Lab for websites, custom software, dashboards, SaaS platforms, and automation services in Rwanda.",
         }}

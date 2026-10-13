@@ -53,7 +53,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${project.title} Case Study | WebImpact Lab`,
       description: project.summary,
-      url: `https://webimpactlab.com/work/${project.slug}`,
+      url: `https://www.webimpactlab.com/work/${project.slug}`,
       type: "article",
       images: project.cover_image_url
         ? [
@@ -82,12 +82,12 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
           "@context": "https://schema.org",
           "@type": "CreativeWork",
           name: project.title,
-          url: `https://webimpactlab.com/work/${project.slug}`,
+          url: `https://www.webimpactlab.com/work/${project.slug}`,
           description: project.summary,
           creator: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
         }}
       />

@@ -6,7 +6,7 @@ import { getAllPublishedSeoPages } from "@/lib/cms/seo-pages-service";
 export const revalidate = 3600;
 
 const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://webimpactlab.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.webimpactlab.com"
 ).replace(/\/+$/, "");
 
 function absoluteUrl(path: string): string {

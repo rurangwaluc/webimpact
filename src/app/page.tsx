@@ -12,7 +12,7 @@ export default function HomePage() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "WebImpact Lab",
-          url: "https://webimpactlab.com",
+          url: "https://www.webimpactlab.com",
           description:
             "Software development company in Rwanda building websites, SaaS platforms, business systems, dashboards, and automation tools.",
           areaServed: ["Rwanda", "East Africa", "Africa"],

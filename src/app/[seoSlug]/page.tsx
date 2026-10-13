@@ -128,7 +128,7 @@ export async function generateMetadata({
     openGraph: {
       title: page.meta_title,
       description: page.meta_description,
-      url: `https://webimpactlab.com/${page.slug}`,
+      url: `https://www.webimpactlab.com/${page.slug}`,
       type: "website",
       siteName: "WebImpact Lab",
     },
@@ -164,12 +164,12 @@ export default async function SeoLandingPage({ params }: PageProps) {
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: page.title,
-          url: `https://webimpactlab.com/${page.slug}`,
+          url: `https://www.webimpactlab.com/${page.slug}`,
           description: page.meta_description,
           publisher: {
             "@type": "Organization",
             name: "WebImpact Lab",
-            url: "https://webimpactlab.com",
+            url: "https://www.webimpactlab.com",
           },
         }}
       />
