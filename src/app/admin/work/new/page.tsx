@@ -1,4 +1,4 @@
-import { cleanSlug } from "@/lib/text-cleaning";
+import { cleanLongText, cleanSlug, cleanText } from "@/lib/text-cleaning";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -7,7 +7,7 @@ import { WorkProjectForm } from "@/components/admin/work-project-form";
 import { normalizeWorkProjectType } from "@/lib/work-project-types";
 
 function clean(value: FormDataEntryValue | null) {
-  return typeof value === "string" ? value.trim() : "";
+  return cleanText(value);
 }
 
 async function ensureAdmin() {
@@ -77,10 +77,10 @@ async function createProject(formData: FormData) {
   const projectType = normalizeWorkProjectType(
     clean(formData.get("project_type")),
   );
-  const summary = clean(formData.get("summary"));
-  const problem = clean(formData.get("problem"));
-  const solution = clean(formData.get("solution"));
-  const result = clean(formData.get("result"));
+  const summary = cleanLongText(formData.get("summary"));
+  const problem = cleanLongText(formData.get("problem"));
+  const solution = cleanLongText(formData.get("solution"));
+  const result = cleanLongText(formData.get("result"));
   const liveUrl = clean(formData.get("live_url"));
   const status =
     clean(formData.get("status")) === "published" ? "published" : "draft";

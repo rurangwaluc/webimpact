@@ -1,4 +1,4 @@
-import { cleanSlug } from "@/lib/text-cleaning";
+import { cleanLongText, cleanSlug, cleanText } from "@/lib/text-cleaning";
 import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -53,7 +53,11 @@ const textareaClass =
   "min-h-[190px] w-full resize-none rounded-[1.75rem] border border-black/10 bg-black/[0.025] px-5 py-4 text-sm font-bold leading-7 text-black/78 outline-none transition placeholder:text-black/35 focus:border-[#fd5b38]/55 focus:bg-white focus:shadow-[0_0_0_4px_rgb(253_91_56_/_0.12)] dark:border-white/10 dark:bg-white/[0.04] dark:text-white/78 dark:placeholder:text-white/35 dark:focus:bg-white/[0.06]";
 
 function getText(formData: FormData, key: string) {
-  return String(formData.get(key) || "").trim();
+  return cleanText(formData.get(key));
+}
+
+function getLongText(formData: FormData, key: string) {
+  return cleanLongText(formData.get(key));
 }
 
 async function requireAdmin() {
@@ -108,10 +112,10 @@ export default async function EditWorkProjectPage({ params }: PageProps) {
     const projectType = normalizeWorkProjectType(
       getText(formData, "project_type"),
     );
-    const summary = getText(formData, "summary");
-    const problem = getText(formData, "problem");
-    const solution = getText(formData, "solution");
-    const result = getText(formData, "result");
+    const summary = getLongText(formData, "summary");
+    const problem = getLongText(formData, "problem");
+    const solution = getLongText(formData, "solution");
+    const result = getLongText(formData, "result");
     const clientName = getText(formData, "client_name") || null;
     const liveUrl = getText(formData, "live_url") || null;
     const status =
