@@ -20,6 +20,7 @@ import {
   getPublishedSeoPageBySlug,
 } from "@/lib/cms/seo-pages-service";
 import { JsonLd } from "@/components/seo/json-ld";
+import { SeoProjectEvidence } from "@/components/seo/seo-project-evidence";
 
 type PageProps = {
   params: Promise<{
@@ -414,6 +415,8 @@ export default async function SeoLandingPage({ params }: PageProps) {
           </aside>
         </div>
       </section>
+
+      <SeoProjectEvidence seoSlug={page.slug} />
 
       {faqItems.length > 0 ? (
         <section className="px-4 pb-10 sm:px-6 lg:px-8 lg:pb-16">
