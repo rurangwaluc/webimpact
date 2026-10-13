@@ -35,6 +35,10 @@ type FaqItem = {
 
 type ContentBlock =
   | {
+      type: "heading";
+      text: string;
+    }
+  | {
       type: "paragraph";
       text: string;
     }
@@ -314,6 +318,17 @@ export default async function SeoLandingPage({ params }: PageProps) {
 
             <div className="mt-8 space-y-5">
               {contentBlocks.map((block, index) => {
+                if (block.type === "heading") {
+                  return (
+                    <h3
+                      key={index}
+                      className="pt-5 text-[clamp(1.35rem,3vw,1.8rem)] font-bold leading-tight tracking-[-0.04em] text-black dark:text-white"
+                    >
+                      {block.text}
+                    </h3>
+                  );
+                }
+
                 if (block.type === "list") {
                   return (
                     <ul key={index} className="grid gap-3">
@@ -547,6 +562,20 @@ function splitParagraphs(value: string): ContentBlock[] {
   }
 
   for (const line of lines) {
+    const headingMatch = /^##\s+(.+)$/.exec(line);
+
+    if (headingMatch) {
+      flushParagraph();
+      flushList();
+
+      blocks.push({
+        type: "heading",
+        text: headingMatch[1],
+      });
+
+      continue;
+    }
+
     const isListItem = /^[-•*]\s+/.test(line);
 
     if (isListItem) {
